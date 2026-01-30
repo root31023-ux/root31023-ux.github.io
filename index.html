@@ -1,33 +1,113 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>موقعي الشخصي</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>ROOT TEAM | نحمي عالمك الرقمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     body {
-      font-family: Tahoma, Arial;
-      background: #0f172a;
-      color: #fff;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 { color: #38bdf8; }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: bold;
+      font-family: 'Tajawal', system-ui;
     }
   </style>
 </head>
-<body>
-  <h1>مرحبًا 👋</h1>
-  <p>أنا [اسمك]، وهذا موقعي التعريفي.</p>
-  <p>مهتم بـ [مجالك أو تخصصك]</p>
-  <p>
-    تواصل معي:
-    <br>
-    <a href="mailto:you@email.com">you@email.com</a>
-  </p>
+
+<body class="bg-black text-gray-200">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="fixed w-full bg-black/80 backdrop-blur border-b border-gray-800 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" class="w-10" alt="ROOT TEAM">
+      <span class="text-orange-500 font-bold text-xl">ROOT TEAM</span>
+    </div>
+    <ul class="hidden md:flex gap-6 text-sm">
+      <li><a href="#home" class="hover:text-orange-500">الرئيسية</a></li>
+      <li><a href="#about" class="hover:text-orange-500">عن الفريق</a></li>
+      <li><a href="#sections" class="hover:text-orange-500">الأقسام</a></li>
+      <li><a href="#services" class="hover:text-orange-500">الخدمات</a></li>
+      <li><a href="#projects" class="hover:text-orange-500">المشاريع</a></li>
+      <li><a href="#contact" class="hover:text-orange-500">اتصل بنا</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="min-h-screen flex items-center justify-center text-center px-6">
+  <div class="mt-24">
+    <img src="logo.png" class="w-32 mx-auto mb-6" />
+    <h1 class="text-4xl md:text-5xl font-bold text-orange-500 mb-4">
+      ROOT TEAM
+    </h1>
+    <p class="text-xl mb-2">نحمي عالمك الرقمي بتقنيات مستقبلية</p>
+    <p class="text-gray-400 mb-8">
+      فريق متخصص في الأمن السيبراني • حماية متقدمة • رؤية مستقبلية
+    </p>
+    <div class="flex gap-4 justify-center">
+      <a href="#about" class="px-6 py-3 bg-orange-500 text-black font-bold rounded">
+        اكتشف المزيد
+      </a>
+      <a href="#contact" class="px-6 py-3 border border-orange-500 text-orange-500 rounded">
+        تواصل معنا
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="py-20 bg-gray-950 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-orange-500 mb-6">عن ROOT TEAM</h2>
+    <p class="text-gray-300 leading-relaxed">
+      ROOT TEAM هو فريق متخصص في الأمن السيبراني يجمع بين الخبرة التقنية والرؤية
+      الاستراتيجية لحماية العالم الرقمي. نعمل على تطوير حلول أمنية متقدمة،
+      وتقديم خدمات استشارية عالية الجودة، ونشر الوعي الأمني في المجتمع.
+    </p>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="py-16 bg-black">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div><p class="text-3xl text-orange-500 font-bold">6</p><p>أقسام متخصصة</p></div>
+    <div><p class="text-3xl text-orange-500 font-bold">20+</p><p>عضو فعال</p></div>
+    <div><p class="text-3xl text-orange-500 font-bold">100%</p><p>التزام بالجودة</p></div>
+    <div><p class="text-3xl text-orange-500 font-bold">24/7</p><p>دعم مستمر</p></div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="py-20 bg-gray-950 px-6">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl text-orange-500 font-bold text-center mb-12">خدماتنا</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border border-gray-800 p-6 rounded">
+        <h3 class="text-orange-500 font-bold mb-2">تحليل الثغرات</h3>
+        <p class="text-gray-400 text-sm">فحص شامل للأنظمة والتطبيقات</p>
+      </div>
+      <div class="border border-gray-800 p-6 rounded">
+        <h3 class="text-orange-500 font-bold mb-2">اختبار الاختراق</h3>
+        <p class="text-gray-400 text-sm">محاكاة هجمات حقيقية</p>
+      </div>
+      <div class="border border-gray-800 p-6 rounded">
+        <h3 class="text-orange-500 font-bold mb-2">التوعية الأمنية</h3>
+        <p class="text-gray-400 text-sm">ورش عمل ودورات تدريبية</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-20 bg-black px-6">
+  <div class="max-w-xl mx-auto text-center">
+    <h2 class="text-3xl text-orange-500 font-bold mb-6">تواصل معنا</h2>
+    <p class="mb-4 text-gray-400">info@rootteam.com</p>
+    <p class="text-gray-500">© 2026 ROOT TEAM. جميع الحقوق محفوظة.</p>
+  </div>
+</section>
+
 </body>
 </html>
