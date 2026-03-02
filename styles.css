@@ -1654,3 +1654,60 @@ a {
 
 /* Body scroll lock when modal is open */
 body.modal-open { overflow: hidden; }
+
+
+
+  .dark-section {
+    background-color: #020817; /* لون الخلفية الداكن */
+    color: #ffffff;
+  }
+
+  .tree-plan-img {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 242, 255, 0.2); /* حدود سماوية خفيفة */
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+  }
+
+  .download-card-dark {
+    background: rgba(15, 23, 42, 0.6); /* خلفية الكروت الشفافة */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .download-card-dark:hover {
+    border-color: #00f2ff; /* اللون السماوي عند التحويم */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+  }
+
+  .icon-box {
+    background: rgba(0, 242, 255, 0.1);
+    color: #00f2ff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin: 0 auto 20px;
+    font-size: 24px;
+  }
+
+  .btn-cyan {
+    background: #00f2ff;
+    color: #020817 !important;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 12px 24px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .btn-cyan:hover {
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);}
