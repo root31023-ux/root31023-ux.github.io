@@ -1,0 +1,53 @@
+/* الحالة الافتراضية: مخفية تماماً */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* خارج الشاشة يميناً */
+    width: 280px;
+    height: 100vh;
+    background: #0f172a;
+    z-index: 10000; /* رقم عالٍ جداً لتكون فوق كل شيء */
+    display: flex;
+    flex-direction: column;
+    padding: 100px 30px;
+    gap: 25px;
+    transition: 0.4s ease;
+    border-left: 2px solid #00f2ff;
+}
+
+/* الحالة عند الضغط على الزر: تظهر في الشاشة */
+.mobile-menu.active {
+    right: 0;
+}
+
+/* تنسيق الروابط داخل القائمة */
+.mobile-link {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 10px 0;
+    border-bottom: 1px solid #1e293b;
+}
+
+.mobile-link:hover, .mobile-link.active {
+    color: #00f2ff;
+    padding-right: 10px; /* حركة بسيطة عند التمرير */
+}
+
+/* طبقة تعتيم خلفية (اختياري) لمنع التفاعل مع الصفحة أثناء فتح القائمة */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 9999;
+}
+
+.menu-overlay.active {
+    display: block;
+}
