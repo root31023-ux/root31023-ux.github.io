@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="خارطة طريق هندسة البرمجيات - ROOT TEAM" />
+    <meta name="theme-color" content="#030712" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030712",
+              secondary: "#0b1329",
+              card: "#0d1527",
+            },
+            fontFamily: { cairo: ["Cairo", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+    <title>خارطة طريق هندسة البرمجيات | Software Engineering</title>
+    <style>
+      .tech-grid {
+        background-image:
+          linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+    </style>
+  </head>
+  <body
+    class="font-cairo bg-primary text-slate-100 leading-relaxed overflow-x-hidden antialiased tech-grid"
+    dir="rtl"
+  >
+   
+    <div
+      class="absolute top-[-5%] right-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none z-0"
+    ></div>
+    <div
+      class="absolute bottom-[10%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"
+    ></div>
+
+    <div
+      class="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+    >
+      <!-- زر العودة -->
+      <a
+        href="../cyber.html"
+        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-blue-400 transition-colors mb-8 group"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="group-hover:translate-x-[4px] transition-transform"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 19 12 12 5"></polyline>
+        </svg>
+        العودة للرئيسية
+      </a>
+
+      <!-- العنوان الرئيسي -->
+      <div class="text-center mb-16">
+        <span
+          class="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4 inline-block"
+          >Software Engineering Roadmap</span
+        >
+        <h1
+          class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 mb-4"
+        >
+          خارطة طريق هندسة البرمجيات
+        </h1>
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+          بناء الأنظمة البرمجية المستدامة؛ دليلك الشامل من جودة الكود وبنائه
+          المعماري إلى إدارة عمليات النشر والتشغيل السحابي الذكي لقاعدة مستخدمين
+          ضخمة.
+        </p>
+      </div>
+
+      <!-- الخط الزمني للرود ماب (Timeline) -->
+      <div
+        class="relative border-r-2 border-blue-500/20 mr-4 sm:mr-8 space-y-12 pb-12"
+      >
+        <!-- المرحلة 1 -->
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-4 border-primary shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1"
+              >المرحلة الأولى</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              التميز البرمجي وكتابة الكود النظيف (Clean Code & OOP)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              كتابة كود يعمل ليست كافية؛ المهندس يكتب كوداً يسهل قراءته وتعديله
+              من قبل الآخرين في المستقبل.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> إتقان
+                البرمجة كائنية التوجه (**OOP**) بلغات قوية مثل **C#** أو
+                **Java**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> تطبيق
+                مبادئ الكود النظيف ومبادئ **SOLID Principles**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> هياكل
+                البيانات والخوارزميات الأساسية لحل المشكلات بكفاءة
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                التحكم بالإصدارات باستخدام نظام **Git & GitHub** والعمل الجماعي
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- المرحلة 2 -->
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 border-4 border-primary shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-indigo-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-indigo-400 uppercase tracking-widest block mb-1"
+              >المرحلة الثانية</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              أنماط التصميم وبناء قواعد البيانات (Design Patterns & DB)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              استخدام الحلول الهندسية المجربة للمشاكل البرمجية الشائعة وبناء
+              قواعد بيانات متكاملة وآمنة.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                دراسة أنماط التصميم البرمجية المتكررة (Design Patterns)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                تصميم قواعد البيانات العلاقية وغير العلاقية (SQL & NoSQL)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> ربط
+                البرمجة بقواعد البيانات عبر أدوات الـ **ORM** (مثل Entity
+                Framework)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                هندسة واجهات برمجة التطبيقات واستدعائها (RESTful APIs)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- المرحلة 3 -->
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-violet-500 border-4 border-primary shadow-[0_0_15px_rgba(139,92,246,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-violet-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-violet-400 uppercase tracking-widest block mb-1"
+              >المرحلة الثالثة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              اختبار البرمجيات وضمان الجودة (Software Testing)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              التأكد من خلو النظام من العيوب البرمجية تماماً قبل تسليمه للعميل
+              وتعميمه في بيئة العمل الحية.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                كتابة الاختبارات الوحدوية الآلية (**Unit Testing**)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                اختبارات التكامل والقبول (Integration & Acceptance Testing)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                أسلوب التطوير القائم على الاختبار (**TDD - Test Driven
+                Development**)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                مراجعة جودة الأكواد وإصلاح الثغرات التراكمية (Code Review)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- المرحلة 4 -->
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-4 border-primary shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-purple-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-purple-400 uppercase tracking-widest block mb-1"
+              >المرحلة الرابعة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              هندسة معمارية الأنظمة (System Design & Architecture)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              كيف تخطط لبناء أنظمة مرنة قادرة على التوسع (Scalability) لخدمة
+              ملايين الطلبات في نفس الثانية دون توقف.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> فهم
+                المعماريات الضخمة: **Monolith vs Microservices**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                توزيع الأحمال والتخزين المؤقت (Load Balancers & Caching)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                طوابير الرسائل والمعالجة غير المتزامنة (Message Queues كـ
+                RabbitMQ)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                نمذجة الأنظمة الكبيرة ورسم مخططات تدفق البيانات المتكاملة
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- المرحلة 5 -->
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-fuchsia-500 border-4 border-primary shadow-[0_0_15px_rgba(217,70,239,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-fuchsia-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-fuchsia-400 uppercase tracking-widest block mb-1"
+              >المرحلة الخامسة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              العمليات المؤتمتة والحوسبة السحابية (DevOps & Cloud)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              المرحلة النهائية لمهندس البرمجيات؛ أتمتة اختبار البرامج، رفعها
+              تلقائياً للسحابة، ومراقبة أدائها على مدار الساعة.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400"></span>
+                أتمتة بناء واختبار البرمجيات المستمر (**CI/CD Pipelines**)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400"></span>
+                تقنيات الحاويات البرمجية والعزل باستخدام **Docker**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400"></span>
+                رفع البرمجيات وإدارتها على السحابة (AWS, Azure, or Google Cloud)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400"></span>
+                منهجيات التطوير السريع والمستمر لإدارة المهام والفرق التقنية
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- نصيحة ذهبية -->
+      <div
+        class="mt-8 bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 text-center"
+      >
+        <h4 class="text-lg font-bold text-blue-400 mb-2">
+          💡 بصمة مهندس البرمجيات الحقيقي
+        </h4>
+        <p
+          class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed"
+        >
+          الهواة يكتبون برامج تعمل بصعوبة، أما المهندسون فيصممون أنظمة قوية تعيش
+          لسنوات وتتحمل التوسع المتزايد. ركزوا جداً في دراستكم الجامعية على فهم
+          معمارية الأنظمة (System Design) ومبادئ الـ SOLID؛ لأن المبرمج التقليدي
+          يمكن استبداله بالذكاء الاصطناعي، أما المهندس الذي يخطط لبناء الأنظمة
+          الكبرى المعقدة ويهتم بجودتها، فهو الركيزة الأساسية التي لا تستغني عنها
+          أي شركة تكنولوجية عالمية.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

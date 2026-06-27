@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="خارطة طريق نظم المعلومات الحاسوبية - ROOT TEAM"
+    />
+    <meta name="theme-color" content="#030712" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030712",
+              secondary: "#0b1329",
+              card: "#0d1527",
+            },
+            fontFamily: { cairo: ["Cairo", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+    <title>خارطة طريق نظم المعلومات الحاسوبية | CIS Roadmap</title>
+    <style>
+      .tech-grid {
+        background-image:
+          linear-gradient(rgba(245, 158, 11px, 0.02) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(245, 158, 11px, 0.02) 1px,
+            transparent 1px
+          );
+        background-size: 30px 30px;
+      }
+    </style>
+  </head>
+  <body
+    class="font-cairo bg-primary text-slate-100 leading-relaxed overflow-x-hidden antialiased tech-grid"
+    dir="rtl"
+  >
+    <div
+      class="absolute top-[-5%] right-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none z-0"
+    ></div>
+    <div
+      class="absolute bottom-[10%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none z-0"
+    ></div>
+
+    <div
+      class="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+    >
+      <a
+        href="../cyber.html"
+        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-amber-400 transition-colors mb-8 group"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="group-hover:translate-x-[4px] transition-transform"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 19 12 12 5"></polyline>
+        </svg>
+        العودة للرئيسية
+      </a>
+
+      <div class="text-center mb-16">
+        <span
+          class="px-4 py-1.5 rounded-full bg-amber-500/10 border border-emerald-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider mb-4 inline-block"
+          >Computer Information Systems Roadmap</span
+        >
+        <h1
+          class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-400 mb-4"
+        >
+          خارطة طريق نظم المعلومات الحاسوبية
+        </h1>
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+          دليلك الاحترافي لربط البرمجة بقطاع الأعمال؛ من بناء قواعد البيانات
+          الكبرى وتحليل النظم إلى ذكاء الأعمال وإدارة المشاريع التقنية.
+        </p>
+      </div>
+
+      <div
+        class="relative border-r-2 border-amber-500/20 mr-4 sm:mr-8 space-y-12 pb-12"
+      >
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-primary shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-amber-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1"
+              >المرحلة الأولى</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              أساسيات البرمجة وقواعد البيانات (The Data Foundation)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              نظم المعلومات تبدأ بالبيانات؛ في هذه المرحلة يتعلم الطالب كيفية
+              التفكير برمجياً وبناء المستودعات الأساسية لحفظ معلومات الشركات.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                أساسيات البرمجة ولغة تفاعلية مثل **Python** أو **C#**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                المفاهيم الأساسية لقواعد البيانات وعلاقاتها (ERD)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                احتراف لغة الاستعلام الهيكلية **SQL** لاستخراج وتعديل البيانات
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                مبادئ تدفق البيانات والأعمال (Workflow Concepts)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-orange-500 border-4 border-primary shadow-[0_0_15px_rgba(249,115,22,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-orange-400 uppercase tracking-widest block mb-1"
+              >المرحلة الثانية</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              تحليل وتصميم النظم (Systems Analysis & Design)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              قبل كتابة أي كود للمؤسسات، يجب فهم متطلباتها. هنا يتعلم الطالب كيف
+              يخطط للنظام البرمجي ويرسم خرائط عمله.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span> جمع
+                وتحليل متطلبات المستخدمين والشركات (Requirements Gathering)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+                نمذجة النظم باستخدام لغة المخططات الموحدة (**UML**)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+                دراسة دورة حياة تطوير النظام (SDLC)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+                تصميم واجهات وتجربة المستخدم الأولية (Wireframing / UI-UX)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-yellow-500 border-4 border-primary shadow-[0_0_15px_rgba(234,179,8,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-yellow-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-yellow-400 uppercase tracking-widest block mb-1"
+              >المرحلة الثالثة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              تطوير تطبيقات الأعمال والويب (Enterprise Applications)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              تحويل المخططات إلى أنظمة فعلية تعمل على الويب وتخدم آلاف الموظفين
+              والعملاء.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                تطوير الويب الأساسي (HTML, CSS, JavaScript)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                بناء الواجهات الخلفية وإدارة قواعد البيانات باستخدام بيئة مثل
+                **ASP.NET** أو **PHP**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span> فهم
+                الأنظمة الجاهزة للمؤسسات وإدارتها مثل **ERP Systems** و **CRM**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                أساسيات أمن المعلومات وحماية البيانات داخل المؤسسة
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-red-400 border-4 border-primary shadow-[0_0_15px_rgba(248,113,113,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-red-400/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-red-400 uppercase tracking-widest block mb-1"
+              >المرحلة الرابعة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              ذكاء الأعمال وتحليل البيانات (Business Intelligence)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              هنا تكمن القوة الحقيقية لمتخصص الـ CIS؛ استخراج البيانات الضخمة
+              وتحويلها إلى أشكال بيانية وتقارير تساعد المدراء على اتخاذ القرارات
+              المصيرية.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                مستودعات البيانات (Data Warehousing) وعمليات ETL
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> أدوات
+                تصور البيانات المتقدمة مثل **Power BI** أو **Tableau**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                استكشاف البيانات (Data Mining) لمعرفة أنماط السوق
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> قراءة
+                المؤشرات الرقمية للأداء (KPIs) وتقارير الأرباح والخسائر
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-600 border-4 border-primary shadow-[0_0_15px_rgba(217,119,6,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-amber-600/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-amber-600 uppercase tracking-widest block mb-1"
+              >المرحلة الخامسة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              إدارة المشاريع التقنية والريادة (IT Project Management)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              المرحلة القيادية؛ كيف تقود فريقاً من المبرمجين والمهندسين لإنتاج
+              مشروع تقني ناجح في الوقت والميزانية المحددة.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                منهجيات إدارة المشاريع الحديثة والمرنة مثل **Agile & Scrum**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                استخدام أدوات الإدارة والمتابعة مثل **Jira** أو **Trello**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                التجارة الإلكترونية (E-Commerce) وإدارة الإستراتيجيات الرقمية
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                مهارات التواصل وعرض المشاريع (Presentation & Pitching Skills)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-8 bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6 text-center"
+      >
+        <h4 class="text-lg font-bold text-amber-400 mb-2">
+          💡 ميزة تخصص CIS في سوق العمل
+        </h4>
+        <p
+          class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed"
+        >
+          تذكر دائماً أن الشركات لا تبحث فقط عمن يكتب الكود، بل عن الشخص الذي
+          يفهم كيف يجلب هذا الكود الأرباح للشركة! بصفتك طالب CIS، ركز على الجمع
+          بين قوة التحليل وفهم لغة الـ Business بجانب مهاراتك التقنية في SQL
+          والويب لتكون المُرشّح الأقوى للمناصب الإدارية والتقنية (كـ Systems
+          Analyst أو Data Analyst).
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

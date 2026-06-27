@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="خارطة طريق هندسة الحاسوب - ROOT TEAM" />
+    <meta name="theme-color" content="#030712" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030712",
+              secondary: "#0b1329",
+              card: "#0d1527",
+            },
+            fontFamily: { cairo: ["Cairo", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+    <title>خارطة طريق هندسة الحاسوب | Computer Engineering</title>
+    <style>
+      .tech-grid {
+        background-image:
+          linear-gradient(rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+    </style>
+  </head>
+  <body
+    class="font-cairo bg-primary text-slate-100 leading-relaxed overflow-x-hidden antialiased tech-grid"
+    dir="rtl"
+  >
+    <div
+      class="absolute top-[-5%] right-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none z-0"
+    ></div>
+    <div
+      class="absolute bottom-[10%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none z-0"
+    ></div>
+
+    <div
+      class="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+    >
+      <a
+        href="../cyber.html"
+        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-emerald-400 transition-colors mb-8 group"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="group-hover:translate-x-[4px] transition-transform"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 19 12 12 5"></polyline>
+        </svg>
+        العودة للرئيسية
+      </a>
+
+      <div class="text-center mb-16">
+        <span
+          class="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 inline-block"
+          >Computer Engineering Roadmap</span
+        >
+        <h1
+          class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 mb-4"
+        >
+          خارطة طريق هندسة الحاسوب
+        </h1>
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+          دليلك المتكامل لفهم العتاد والبرمجيات، من أساسيات الدوائر المنطقية إلى
+          تصميم الأنظمة المدمجة الذكية والتحكم بها.
+        </p>
+      </div>
+
+      <div
+        class="relative border-r-2 border-emerald-500/20 mr-4 sm:mr-8 space-y-12 pb-12"
+      >
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-primary shadow-[0_0_15px_rgba(16,185,129,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-emerald-400 uppercase tracking-widest block mb-1"
+              >المرحلة الأولى</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              الأسس الكهربائية والمنطق الرقمي (The Hardware Core)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              هنا تبدأ برؤية الحاسوب من الداخل؛ كيف تتدفق البيانات كإشارات
+              كهربائية وكيف يفكر الحاسوب بلغة الصفر والواحد.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                تحليل الدوائر الكهربائية والإلكترونية (AC/DC Circuits)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                التصميم المنطقي الرقمي (Digital Logic Design)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                التعامل مع البوابات المنطقية وجداول الحقيقة (Truth Tables)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                الدوائر المتكاملة والمكونات الأساسية مثل الرقاقات والمكثفات
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-teal-500 border-4 border-primary shadow-[0_0_15px_rgba(20,184,166,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-teal-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-teal-400 uppercase tracking-widest block mb-1"
+              >المرحلة الثانية</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              البرمجة منخفضة المستوى (Low-Level Programming)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              التخاطب المباشر مع عتاد الحاسوب والذاكرة دون وسيط، وهو السر وراء
+              سرعة وكفاءة الأنظمة الهندسية.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span> إتقان
+                لغة **C / C++** (أساس لغات هندسة الحاسوب)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span> لغة
+                التجميع (**Assembly Language**) وفهم المعالج
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span> فهم
+                إدارة الذاكرة والمؤشرات (Pointers & Memory)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                خوارزميات وهياكل البيانات الأساسية للأنظمة
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-primary shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-cyan-400 uppercase tracking-widest block mb-1"
+              >المرحلة الثالثة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              معمارية الحاسوب والمعالجات الفائقة (Computer Architecture)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              دراسة العقل المدبر للحاسوب (CPU). كيف يصمم المهندسون المعالجات
+              لتنفيذ ملايين العمليات في جزء من الثانية.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> تنظيم
+                ومعمارية الحاسوب (Computer Organization)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> دراسة
+                المعالجات الدقيقة ووحدات التحكم (Microprocessors)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> لغات
+                وصف العتاد: هندسة الرقاقات باستخدام **VHDL** أو **Verilog**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                معمارية خطوط الأنابيب والذاكرة المخبئية (Pipelining & Cache)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-4 border-primary shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1"
+              >المرحلة الرابعة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              الأنظمة المدمجة وإنترنت الأشياء (Embedded Systems & IoT)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              قلب هندسة الحاسوب النابض؛ ربط الأكواد البرمجية بقطع ملموسة للتحكم
+              في الآلات والروبوتات والسيارات الذكية.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                البرمجة الميكروية: والتحكم باللوحات مثل **Arduino & ARM**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                التعامل مع الحواسب المصغرة مثل **Raspberry Pi**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> أنظمة
+                التشغيل في الوقت الفعلي (RTOS)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                بروتوكولات الاتصال بين القطع: **I2C, SPI, UART**
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pr-8 sm:pr-12 group">
+          <div
+            class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 border-4 border-primary shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-125 transition-transform"
+          ></div>
+          <div
+            class="bg-card/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-indigo-500/30 transition-all shadow-lg"
+          >
+            <span
+              class="text-xs font-bold text-indigo-400 uppercase tracking-widest block mb-1"
+              >المرحلة الخامسة</span
+            >
+            <h3 class="text-xl font-bold text-slate-100 mb-3">
+              تصميم اللوحات المطبوعة والأنظمة المتقدمة (PCB Design & Hardware
+              Projects)
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              المرحلة الاحترافية؛ تصميم لوحاتك الإلكترونية المخصصة من الصفر،
+              وربطها بالشبكات السحابية وهندسة الروبوتات.
+            </p>
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"
+            >
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                تصميم اللوحات الإلكترونية الخضراء باستخدام برامج مثل **Altium
+                Designer** أو **Eagle**
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                أساسيات شبكات الحاسوب وبروتوكولات الإنترنت (TCP/IP)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> ربط
+                الأنظمة المدمجة بالسحابة ومعالجة إشارات الحساسات (Sensors)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                بناء مشاريع عتادية كاملة (مثل نظام أتمتة منزلية ذكي أو روبوت
+                ذاتي القيادة)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-8 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 text-center"
+      >
+        <h4 class="text-lg font-bold text-emerald-400 mb-2">
+          💡 نصيحة لمهندسي المستقبل في AHU
+        </h4>
+        <p
+          class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed"
+        >
+          تذكروا دائماً أن مهندس الحاسوب المتميز هو من يمتلك محاكياً برمجياً في
+          عقله ومفك براغي في يده! لا تكتفوا بالجانب النظري، بل قوموا بشراء لوحة
+          تجارب (Breadboard) وقطع أردوينو بسيطة، واصنعوا دوائركم بأنفسكم لتروا
+          البرمجة وهي تتحرك على أرض الواقع.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
