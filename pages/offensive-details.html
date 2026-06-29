@@ -1,1 +1,464 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="تفاصيل مسار الأمن الهجومي والاختراق الأخلاقي - RED TEAM"
+    />
+    <meta name="theme-color" content="#030712" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030712",
+              secondary: "#0f111a",
+              card: "#16121e",
+            },
+            fontFamily: {
+              cairo: ["Cairo", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <title>مسار الأمن الهجومي والاختراق الأخلاقي | Red Team Path</title>
+    <style>
+      .tech-grid {
+        background-image:
+          linear-gradient(rgba(244, 63, 94, 0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(244, 63, 94, 0.015) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+    </style>
+  </head>
+  <body
+    class="font-cairo bg-primary text-slate-100 leading-relaxed overflow-x-hidden antialiased tech-grid"
+  >
+    <div
+      class="absolute top-[-5%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-rose-500/5 rounded-full blur-[120px] pointer-events-none z-0"
+    ></div>
+    <div
+      class="absolute bottom-[10%] right-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-red-500/5 rounded-full blur-[120px] pointer-events-none z-0"
+    ></div>
 
+    <div class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <a
+        href="./cybersecurity-roadmap.html"
+        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-rose-400 transition-colors mb-8 group"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="group-hover:translate-x-[4px] transition-transform"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 19 12 12 5"></polyline>
+        </svg>
+        العودة لشجرة التخصصات
+      </a>
+
+      <div class="text-center mb-12">
+        <span
+          class="px-4 py-1.5 rounded-full bg-rose-400/10 border border-rose-400/20 text-rose-400 text-xs font-bold uppercase tracking-wider mb-4 inline-block"
+          >Offensive Security Depth</span
+        >
+        <h1
+          class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-slate-200 to-red-400 mb-4"
+        >
+          دليل تخصص الأمن الهجومي والـ Red Team
+        </h1>
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+          الشرح الشامل لمفهوم محاكاة الهجمات، اختبار الاختراق، المهارات
+          المطلوبة، وسوق العمل مع خطة التطبيق العملي.
+        </p>
+      </div>
+
+      <section
+        class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 sm:p-8 mb-8 shadow-xl"
+      >
+        <h2
+          class="text-xl sm:text-2xl font-black text-rose-400 mb-4 flex items-center gap-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-rose-400"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          ما هو الـ Red Team والـ Ethical Hacking؟
+        </h2>
+        <div class="space-y-4 text-sm sm:text-base text-slate-300">
+          <p>
+            <strong class="text-slate-100"
+              >الاختراق الأخلاقي (Ethical Hacking):</strong
+            >
+            هو عملية فحص الأنظمة والشبكات والشركات للبحث عن نقاط الضعف والثغرات
+            الأمنية باستخدام نفس الأساليب والأدوات التي يستخدمها المخترقون
+            الحقيقيون (الشريرون)، ولكن بإذن مسبق وهدف نبيل وهو سد هذه الثغرات.
+          </p>
+          <p>
+            <strong class="text-slate-100"
+              >الـ Red Team (الفريق الأحمر):</strong
+            >
+            هو فريق هجومي متقدم يحاكي سيناريوهات الهجمات الواقعية الكاملة على
+            المؤسسة. لا يقتصر عملهم على فحص الثغرات البرمجية فحسب، بل يمتد
+            لاختبار مدى جهوزية الفريق الدفاعي (Blue Team)، واختراق الحماية
+            الفيزيائية، وتطبيق الهندسة الاجتماعية المتطورة.
+          </p>
+        </div>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div
+          class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 shadow-xl"
+        >
+          <h3
+            class="text-lg font-black text-slate-100 mb-4 flex items-center gap-2"
+          >
+            <span class="w-2 h-2 rounded-full bg-rose-400"></span> ماذا سيتعلم
+            الطالب في هذا المسار؟
+          </h3>
+          <div class="space-y-4 text-xs sm:text-sm">
+            <div>
+              <h4 class="font-bold text-rose-400 mb-1">
+                المهارات التقنية (Hard Skills):
+              </h4>
+              <p class="text-slate-400">
+                استغلال ثغرات الويب والتطبيقات (Web Pentesting)، فهم البرمجة
+                لكتابة أدوات الاختراق وتعديل الثغرات (Python/Bash)، التعامل مع
+                أدوات الفحص (مثل Nmap, Metasploit, Burp Suite)، وفهم عميق
+                للثغرات الشهيرة مثل OWASP Top 10.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-bold text-rose-400 mb-1">
+                المهارات الشخصية (Soft Skills):
+              </h4>
+              <p class="text-slate-400">
+                التفكير خارج الصندوق (Out of the box)، الصبر الطويل والمثابرة
+                عند فشل محاولات الاستغلال، والقدرة على كتابة تقارير تقنية
+                احترافية ومفهومة لمدراء الشركات.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 shadow-xl"
+        >
+          <h3
+            class="text-lg font-black text-slate-100 mb-4 flex items-center gap-2"
+          >
+            <span class="w-2 h-2 rounded-full bg-rose-400"></span> المسميات
+            الوظيفية والتدرج المهني
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-400 mb-4">
+            يبدأ الشغوفون بهذا المسار في مجالات تقييم الثغرات واختبار الاختراق،
+            ومن ثم يتطورون إلى قيادة عمليات المحاكاة الكاملة:
+          </p>
+          <ul class="space-y-2 text-xs sm:text-sm font-bold text-slate-300">
+            <li class="flex items-center gap-2 text-rose-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path
+                  d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                ></path>
+              </svg>
+              Vulnerability Assessment Specialist (مختص تقييم ثغرات)
+            </li>
+            <li class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path
+                  d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                ></path>
+              </svg>
+              Penetration Tester / Pentester (مختبر اختراق أنظمة/ويب/شبكات)
+            </li>
+            <li class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path
+                  d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                ></path>
+              </svg>
+              Red Team Operator (عضو الفريق الأحمر المحاكي للهجمات)
+            </li>
+            <li class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path
+                  d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                ></path>
+              </svg>
+              Exploit Developer (مطور ثغرات برمجية)
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <section
+        class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 sm:p-8 mb-12 shadow-xl"
+      >
+        <h2
+          class="text-xl sm:text-2xl font-black text-slate-100 mb-4 flex items-center gap-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="text-rose-400"
+          >
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          فرص العمل والرواتب المتوقعة في السوق الهجومي
+        </h2>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-300"
+        >
+          <div
+            class="bg-slate-900/50 p-5 rounded-xl border border-slate-800 hover:border-rose-500/20 transition-all"
+          >
+            <h4 class="font-bold text-rose-400 mb-2">
+              عالمياً وفي دول الخليج العربي:
+            </h4>
+            <p class="leading-relaxed text-xs sm:text-sm">
+              تعتمد كبرى الشركات والمؤسسات الحيوية على الـ Pentesters بشكل دائم
+              لإجراء فحص دوري. تبدأ الرواتب للمبتدئين حاملي الشهادات العمليّة
+              (مثل OSCP) في الخليج من
+              <span class="text-slate-100 font-bold"
+                >10,000 إلى 17,000 درهم/ريال شهرياً</span
+              >، وترتفع بشكل حاد مع العثور على ثغرات حرجة والخبرة المتقدمة.
+            </p>
+          </div>
+          <div
+            class="bg-slate-900/50 p-5 rounded-xl border border-slate-800 hover:border-rose-500/20 transition-all"
+          >
+            <h4 class="font-bold text-rose-400 mb-2">
+              في المملكة الأردنية الهاشمية وربح الـ Bug Bounty:
+            </h4>
+            <p class="leading-relaxed text-xs sm:text-sm">
+              الرواتب في الأردن تتراوح بين
+              <span class="text-slate-100 font-bold">500 إلى 1,000 دينار</span>
+              كبداية في الشركات الاستشارية، وتتجاوز
+              <span class="text-slate-100 font-bold">2,000 دينار</span>
+              للمستويات المتقدمة. ما يميز هذا المسار هو فرصة العمل الحر كصائد
+              ثغرات
+              <span class="text-rose-400 font-bold">(Bug Bounty Hunter)</span>
+              وتحقيق آلاف الدولارات مكافآتٍ من شركات عالمية (مثل Google و
+              Facebook) من المنزل.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-100">
+          الخطة الزمنية المقترحة والتطبيق الهجومي
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2">
+          رحلة الانتقال من الفهم النظري إلى مهارة اختراق الأنظمة والويب بشكل
+          تطبيقي آمن وقانوني.
+        </p>
+      </div>
+
+      <div
+        class="bg-card/60 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-8 relative"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-rose-400 bg-rose-400/10 px-3 py-1 rounded-md"
+              >المرحلة الهجومية التطبيقية الأولى</span
+            >
+            <h3 class="text-lg sm:text-xl font-black text-slate-100 mt-2">
+              TryHackMe: Jr. Penetration Tester Path
+            </h3>
+          </div>
+          <a
+            href="https://tryhackme.com/path/outline/jrpenetrationtester"
+            target="_blank"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-rose-400/10 border border-rose-400/20 hover:bg-rose-400/20 text-xs font-bold text-rose-400 rounded-xl transition-all text-center self-start"
+          >
+            رابط المسار التطبيقي
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              ></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+
+        <div class="space-y-6">
+          <div class="border-r-2 border-rose-500/20 pr-4 relative space-y-4">
+            <div class="relative">
+              <span
+                class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-rose-400"
+              ></span>
+              <h4 class="text-sm font-bold text-slate-100">
+                الأسبوع الأول: منهجيات الاختراق والاستطلاع (Pentesting
+                Methodology & Recon)
+              </h4>
+              <p class="text-xs text-slate-400 mt-1">
+                تعلم خطوات اختبار الاختراق المنظم بدءاً من جمع المعلومات
+                (Information Gathering) والاستطلاع، واستخدام أوامر الفحص
+                المتقدمة للكشف عن المنافذ المفتوحة والخدمات.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span
+                class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-rose-400"
+              ></span>
+              <h4 class="text-sm font-bold text-slate-100">
+                الأسبوع الثاني: اختراق مواقع الويب (Web Application
+                Vulnerabilities)
+              </h4>
+              <p class="text-xs text-slate-400 mt-1">
+                الغوص العملي في ثغرات الويب الشهيرة مثل حقن قواعد البيانات (SQL
+                Injection)، الاختراق المباشر للمتصفحات (XSS)، وثغرات التحكم
+                بالملفات (File Inclusion).
+              </p>
+            </div>
+
+            <div class="relative">
+              <span
+                class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-rose-400"
+              ></span>
+              <h4 class="text-sm font-bold text-slate-100">
+                الأسبوع الثالث: استغلال الأنظمة والشبكات (Network & System
+                Privilege Escalation)
+              </h4>
+              <p class="text-xs text-slate-400 mt-1">
+                فهم كيف يتم استغلال الثغرات العامة للأنظمة، والتعرف على مفهوم
+                "رفع الصلاحيات" للانتقال من مستخدم عادي إلى مدير النظام الكامل
+                (Root / Administrator).
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-slate-900/40 border border-slate-800 rounded-xl p-4 mt-4"
+          >
+            <h5
+              class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-2"
+            >
+              🎯 مخرجات التعليم الهجومي (Learning Outcomes):
+            </h5>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-400"
+            >
+              <div>
+                <span class="font-bold text-slate-200 block mb-1"
+                  >على مستوى المعرفة:</span
+                >
+                فهم عقلية المهاجم وكيفية تسلسل الهجوم السيبراني (Cyber Kill
+                Chain)، استيعاب نقاط الضعف البرمجية في تطبيقات الويب وكيفية
+                معالجتها برمجياً.
+              </div>
+              <div>
+                <span class="font-bold text-slate-200 block mb-1"
+                  >على مستوى المهارات التطبيقية:</span
+                >
+                القدرة على فحص وتحديد ثغرات المواقع يدوياً وبأدوات مثل Burp
+                Suite، كتابة واستخدام البرمجيات الاستغلالية (Exploits)، وإعداد
+                تقارير اختبار اختراق احترافية.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section
+        class="bg-gradient-to-r from-rose-950/20 to-slate-900/50 border border-rose-500/20 rounded-2xl p-6 sm:p-8 text-center shadow-xl"
+      >
+        <h3 class="text-lg sm:text-xl font-black text-rose-400 mb-2">
+          خلاصة المسار الهجومي
+        </h3>
+        <p
+          class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl mx-auto"
+        >
+          مسار الأمن الهجومي ممتع ومثير جداً، ولكنه يتطلب أساساً صلباً للغاية في
+          الشبكات وأنظمة التشغيل (وهو ما تم تغطيته في مسارك التأسيسي). نجاحك هنا
+          يعتمد على الفضول المستمر ومتابعة أحدث الثغرات المكتشفة يومياً!
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
