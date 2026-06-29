@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="تفاصيل مسار الأمن الدفاعي ومراكز العمليات الأمنية SOC - ROOT TEAM"
+    />
+    <meta name="theme-color" content="#030712" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030712",
+              secondary: "#0b1329",
+              card: "#0d1527",
+            },
+            fontFamily: { cairo: ["Cairo", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+    <title>مسار الأمن الدفاعي والـ SOC | Blue Team Path</title>
+    <style>
+      .tech-grid {
+        background-image:
+          linear-gradient(rgba(34, 211, 238, 0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(34, 211, 238, 0.015) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+    </style>
+  </head>
+  <body
+    class="font-cairo bg-primary text-slate-100 leading-relaxed overflow-x-hidden antialiased tech-grid"
+    dir="rtl"
+  >
+    <!-- الخلفية المضيئة -->
+    <div class="absolute top-[-5%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="absolute bottom-[10%] right-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      
+      <!-- زر العودة لخارطة الطريق -->
+      <a
+        href="./cybersecurity-roadmap.html"
+        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors mb-8 group"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="group-hover:translate-x-[4px] transition-transform"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 19 12 12 5"></polyline>
+        </svg>
+        العودة لشجرة التخصصات
+      </a>
+
+      <!-- عنوان الصفحة -->
+      <div class="text-center mb-12">
+        <span class="px-4 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-4 inline-block">Defensive Security Depth</span>
+        <h1 class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-slate-200 to-blue-500 mb-4">
+          دليل تخصص الأمن الدفاعي والـ SOC
+        </h1>
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+          الشرح التفصيلي المتكامل لمراكز العمليات الأمنية، المسميات الوظيفية، الرواتب المتوقعة، والخطة الزمنية الكاملة للتطبيق العملي.
+        </p>
+      </div>
+
+      <!-- قسم: ما هو الـ SOC والـ Blue Team؟ -->
+      <section class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 sm:p-8 mb-8 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-black text-cyan-400 mb-4 flex items-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          ما هو الـ SOC والـ Blue Team؟
+        </h2>
+        <div class="space-y-4 text-sm sm:text-base text-slate-300">
+          <p>
+            <strong class="text-slate-100">الـ SOC (مركز العمليات الأمنية):</strong> هي الغرفة المركزية الحساسة داخل المؤسسات والشركات، والتي يتم فيها مراقبة الأنظمة والشبكات وحركة البيانات على مدار الساعة (24/7) لاكتشاف وتحليل أي نشاط مشبوه أو هجوم سيبراني قبل تغلغله.
+          </p>
+          <p>
+            <strong class="text-slate-100">الـ Blue Team (الفريق الأزرق):</strong> هو الخط الدفاعي الحقيقي الذي يعمل داخل الـ SOC. وتتركز مهامه المحورية في: مراقبة وبناء الدروع الأمنية للأنظمة، كشف الهجمات الإلكترونية لحظة وقوعها، والاستجابة الفورية لإيقافها وعزلها لحماية بيانات المؤسسة.
+          </p>
+        </div>
+      </section>
+
+      <!-- مهارات الطالب والمسار الوظيفي -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <!-- المهارات المطلوبة -->
+        <div class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 shadow-xl">
+          <h3 class="text-lg font-black text-slate-100 mb-4 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400"></span> ماذا سيتعلم الطالب في هذا المسار؟
+          </h3>
+          <div class="space-y-4 text-xs sm:text-sm">
+            <div>
+              <h4 class="font-bold text-cyan-400 mb-1">المهارات التقنية (Hard Skills):</h4>
+              <p class="text-slate-400">أساسيات الشبكات المعمقة، التعامل الاحترافي مع أنظمة التشغيل (Linux & Windows)، تحليل السجلات الرقمية (Logs)، واستخدام أدوات المراقبة المتقدمة وإدارة الأحداث الأمنية (SIEM مثل Splunk).</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-cyan-400 mb-1">المهارات الشخصية (Soft Skills):</h4>
+              <p class="text-slate-400">القدرة العالية على التحليل الدقيق، سرعة البديهة وحفظ التركيز أثناء الهجمات، وحل المشكلات المعقدة والطارئة تحت ضغط العمل المستمر.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- التدرج الوظيفي -->
+        <div class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 shadow-xl">
+          <h3 class="text-lg font-black text-slate-100 mb-4 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400"></span> المسميات الوظيفية والتدرج المهني
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-400 mb-4">
+            يبدأ الخريج شغفه العملي غالباً بوظيفة محلل أمني من المستوى الأول داخل مركز العمليات، ثم يتدرج سريعاً بناءً على الخبرة والشهادات:
+          </p>
+          <ul class="space-y-2 text-xs sm:text-sm font-bold text-slate-300">
+            <li class="flex items-center gap-2 text-cyan-400"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg> SOC Analyst - Level 1 (محلل أمني مبتدئ)</li>
+            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg> Cybersecurity Analyst - L2 / L3</li>
+            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg> Incident Responder (مستجيب ومكافح للحوادث السيبرانية)</li>
+            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg> Cybersecurity Infrastructure Engineer</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- قسم الرواتب وفرص العمل -->
+      <section class="bg-card/60 border border-slate-800 backdrop-blur-md rounded-2xl p-6 sm:p-8 mb-12 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-black text-slate-100 mb-4 flex items-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/xl" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan-400"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          فرص العمل والرواتب المتوقعة في السوق
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-300">
+          <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-800 hover:border-cyan-500/20 transition-all">
+            <h4 class="font-bold text-cyan-400 mb-2">عالمياً وفي دول الخليج العربي:</h4>
+            <p class="leading-relaxed text-xs sm:text-sm">
+              الطلب على مهندسي ومحللي الـ SOC هائل وتصاعدي جداً. تبدأ رواتب الخريجين والمبتدئين في الخليج من <span class="text-slate-100 font-bold">8,000 إلى 14,000 درهم/ريال شهرياً</span>، وتتضاعف هذه الأرقام بشكل سريع وممتاز مع اكتساب الخبرة التطبيقية.
+            </p>
+          </div>
+          <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-800 hover:border-cyan-500/20 transition-all">
+            <h4 class="font-bold text-cyan-400 mb-2">في المملكة الأردنية الهاشمية:</h4>
+            <p class="leading-relaxed text-xs sm:text-sm">
+              فرص ممتازة وقوية جداً خاصة في قطاعات البنوك والمصارف والاتصالات والشركات الأمنية المزودة للخدمات. تبدأ رواتب الخريجين من <span class="text-slate-100 font-bold">400 إلى 800 دينار أردني</span>، ومع إثبات الجدارة واكتساب الشهادات الاحترافية، تتجاوز الرواتب <span class="text-slate-100 font-bold">1,500 دينار وأكثر</span>. كما يتيح التخصص العمل عن بُعد (Remote) مع شركات إقليمية وعالمية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- عنوان الخطة التعليمية والتطبيقية -->
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-100">الخطة الزمنية المقترحة والتطبيق العملي المكثف</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2">رحلة دراسية متكاملة مكونة من 4 كورسات أساسية لتمكينك من دخول غرف الـ SOC باحترافية.</p>
+      </div>
+
+      <!-- الكورس الأول: Introduction to Cybersecurity -->
+      <div class="bg-card/60 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-8 relative">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+          <div>
+            <span class="text-xs font-bold text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded-md">الكورس الأول (تأسيسي ومفاهيمي)</span>
+            <h3 class="text-lg sm:text-xl font-black text-slate-100 mt-2">Cisco: Introduction to Cybersecurity</h3>
+          </div>
+          <a href="https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=en-US" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 hover:bg-cyan-400/20 text-xs font-bold text-cyan-400 rounded-xl transition-all text-center self-start">
+            رابط الكورس الرسمي
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="1Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+                <polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div class="space-y-6">
+          <div class="border-r-2 border-cyan-500/20 pr-4 relative space-y-4">
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-cyan-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الأول: استكشاف المجال وفهم بيئة العمل</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">منصة Cisco:</strong> دراسة (Module 1: Introduction to Cybersecurity) للتعرف على عالم الأمن السيبراني، بيانات المؤسسات، المهاجمين، ومفهوم الحروب السيبرانية.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong> إنجاز غرفة Experience Cyber Security. 
+                <a href="https://tryhackme.com/room/careersincybernH" target="_blank" class="text-cyan-400 hover:underline inline-flex items-center gap-1 font-mono">/room/careersincybernH</a>
+              </p>
+              <p class="text-xs text-slate-300/80 mt-1 bg-slate-900/40 p-2 rounded border border-slate-800/60">
+                💡 <strong class="text-cyan-400">الهدف:</strong> بعد قراءة المفاهيم النظرية في Cisco، ستوضح لكِ هذه الغرفة كيف يترجم هذا الكلام في سوق العمل، وتحديداً ما يفعله الفريق الهجومي (Red Team) والفريق الدفاعي (Blue Team) بشكل يومي.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-cyan-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الثاني: تشريح الهجمات والبرمجيات الخبيثة</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">منصة Cisco:</strong> دراسة (Module 2: Attacks, Concepts and Techniques). هذا الموديول يركز على أساليب الاختراق واستغلال الثغرات.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong> إنجاز غرفة Malware Classification. 
+                <a href="https://tryhackme.com/room/malwareclassification" target="_blank" class="text-cyan-400 hover:underline inline-flex items-center gap-1 font-mono">/room/malwareclassification</a>
+              </p>
+              <p class="text-xs text-slate-300/80 mt-1 bg-slate-900/40 p-2 rounded border border-slate-800/60">
+                💡 <strong class="text-cyan-400">الهدف:</strong> Cisco ستشرح لكِ الهجمات بشكل عام، بينما ستجعلك هذه الغرفة قادرة على تصنيف البرمجيات الخبيثة (Trojans, Ransomware) التي يستخدمها المهاجمون لاختراق الأنظمة، مما يرسخ الفهم النظري.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-cyan-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الثالث: الهندسة الاجتماعية وفنون التصيد (أسبوع مكثف)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">مراجعة:</strong> استذكار ما تم دراسته في الوحدة الثانية حول طرق التسلل (Methods of Infiltration).
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong> 
+                1. إنجاز غرفة Phishing Analysis Fundamentals <a href="https://tryhackme.com/room/phishingemails1tryoe" target="_blank" class="text-cyan-400 hover:underline font-mono">/room/phishingemails1tryoe</a><br>
+                2. مباشرة بعدها، إنجاز غرفة Phishing Emails in Action <a href="https://tryhackme.com/room/phishingemails2rytmuv" target="_blank" class="text-cyan-400 hover:underline font-mono">/room/phishingemails2rytmuv</a>
+              </p>
+              <p class="text-xs text-slate-300/80 mt-1 bg-slate-900/40 p-2 rounded border border-slate-800/60">
+                💡 <strong class="text-cyan-400">الهدف:</strong> رسائل التصيد هي أشهر طرق التسلل. الغرفة الأولى ستؤسسك في كيفية قراءة "ترويسة الإيميل" (Email Headers)، والثانية ستضعك في بيئة حقيقية لاستخراج الروابط والمرفقات الخبيثة بيدك.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-cyan-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الرابع: استراتيجيات الدفاع وحماية الأنظمة</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">منصة Cisco:</strong><br>
+                - دراسة (Module 3: Protecting your Data and Privacy) لفهم حماية الأجهزة، الشبكات اللاسلكية، وكلمات المرور.<br>
+                - دراسة (Module 4: Protecting the Organization) لفهم التقنيات التي تستخدمها المؤسسات للحماية (مثل الجدران النارية وأنظمة كشف التسلل).<br>
+                - دراسة (Module 5: Will Your Future Be in Cybersecurity?) لمعرفة المسارات الأكاديمية والمهنية المتاحة.
+              </p>
+              <p class="text-xs text-slate-300/80 mt-1 bg-cyan-950/20 p-2 rounded border border-cyan-900/50">
+                🏆 <strong class="text-cyan-400">التقييم النهائي:</strong> تقديم استبيان نهاية الدورة والاختبار النهائي (Course Final Exam).
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4 mt-4">
+            <h5 class="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-2">🎯 مخرجات التعليم (Learning Outcomes):</h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-400">
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على مستوى المعرفة:</span>
+                استيعاب شامل لدوافع المهاجمين ومخاطر الحروب السيبرانية، التمييز الدقيق بين أنواع البرمجيات الخبيثة (Ransomware, Trojans)، ومعرفة الفروقات بين مهام الـ Red Team والـ Blue Team في بيئات العمل الحقيقية.
+              </div>
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على مستوى المهارات التطبيقية:</span>
+                القدرة على تشريح رسائل البريد الإلكتروني المشبوهة وقراءة (Email Headers)، استخراج الروابط (URLs) والمرفقات الخطيرة بشكل آمن، وتطبيق إعدادات أمان متقدمة لحماية البيئة الشخصية.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-card/60 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-8 relative">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+          <div>
+            <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-3 py-1 rounded-md">الكورس الثاني (البنية التحتية والشبكات)</span>
+            <h3 class="text-lg sm:text-xl font-black text-slate-100 mt-2">CompTIA Network+ & Traffic Analysis</h3>
+          </div>
+          <a href="https://youtube.com/playlist?list=PLH-n8YK76vIiuIZoWvHL7AvtrDV7hR3He&si=i1cmTimlhXS4dqWl" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-400/10 border border-blue-400/20 hover:bg-blue-400/20 text-xs font-bold text-blue-400 rounded-xl transition-all text-center self-start">
+            قائمة تشغيل الشرح
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div class="space-y-6">
+          <div class="border-r-2 border-blue-500/20 pr-4 relative space-y-4">
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-blue-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الأول: إرساء الجذور وفهم بنية الشبكات (Fundamentals & OSI Model)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس (Network+):</strong> التركيز على الفيديوهات التأسيسية التي تشرح ماهية الشبكات، نماذج الاتصال (مثل نموذج OSI و TCP/IP)، والمعدات الأساسية كالموجهات (Routers) والمحولات (Switches).
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                - غرفة What is Networking? <a href="https://tryhackme.com/room/whatisnetworking" target="_blank" class="text-blue-400 hover:underline font-mono text-[11px]">/room/whatisnetworking</a> لفهم عناوين IP و MAC بشكل مبسط.<br>
+                - غرفة Introductory Networking <a href="https://tryhackme.com/room/introtonetworking" target="_blank" class="text-blue-400 hover:underline font-mono text-[11px]">/room/introtonetworking</a> لتجربة أوامر فحص الشبكة الأساسية مثل ping و traceroute.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-blue-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الثاني: تفكيك بروتوكولات الاتصال ومعمارية الويب (Protocols & Web Architecture)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس (Network+):</strong> الانتقال إلى الدروس التي تشرح بروتوكولات طبقة التطبيقات (Application Layer)، وكيفية عمل مواقع الويب، وأنظمة أسماء النطاقات.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                - غرفة DNS in Detail <a href="https://tryhackme.com/room/dnsindetail" target="_blank" class="text-blue-400 hover:underline font-mono text-[11px]">/room/dnsindetail</a> لفهم توجيه حركة المرور وترجمة الأسماء.<br>
+                - غرف How Websites Work <a href="https://tryhackme.com/room/howwebsiteswork" target="_blank" class="text-blue-400 hover:underline font-mono text-[11px]">/room/howwebsiteswork</a> لمعرفة تفاعل الواجهات والطلب والاستجابة عبر HTTP.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-blue-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الثالث: مراقبة حركة البيانات وتحليلها (Network Traffic Analysis)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس (Network+):</strong> التركيز على دروس مراقبة أداء الشبكة، التقاط حزم البيانات، واستكشاف الأخطاء وإصلاحها (Troubleshooting).
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                غرفة Network Traffic Basics <a href="https://tryhackme.com/room/networktrafficbasics" target="_blank" class="text-blue-400 hover:underline font-mono text-[11px]">/room/networktrafficbasics</a> تمثل تدريباً ممتازاً للبدء في اعتراض حزم البيانات (Packet Sniffing) ورؤية ما يحدث حرفياً داخل أسلاك الشبكة.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-blue-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الرابع: بناء الدروع الأمنية (Network Security)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس (Network+):</strong> إنهاء الكورس بمواضيع أمن الشبكات، الجدران النارية، أنظمة كشف ومنع التسلل، والتهديدات الشائعة.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                غرفة Network Security Essentials <a href="https://tryhackme.com/room/networksecurityessentials" target="_blank" class="text-blue-400 hover:underline font-mono text-[11px]">/room/networksecurityessentials</a> لتطبيق مفاهيم الفلترة الأمنية عملياً، وفهم كيف تقف هذه الأنظمة كخط دفاع أولي.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4 mt-4">
+            <h5 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">🎯 مخرجات التعليم (Learning Outcomes):</h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-400">
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على المستوى المعرفي:</span>
+                إدراك الآلية العميقة لكيفية انتقال البيانات خطوة بخطوة من خلال نموذج OSI، وفهم دقيق لآلية عمل بروتوكولات أساسية مثل HTTP و DNS واستيعاب البنية البرمجية للويب.
+              </div>
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على المستوى المهاري والعملي:</span>
+                التمكن من استخدام أدوات سطر الأوامر لتشخيص مسارات الشبكة، اكتساب القدرة على مراقبة وقراءة البيانات (Packet Analysis)، وإعداد آليات الدفاع الأساسية من خلال ضبط قواعد الجدران النارية (Firewalls).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-card/60 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-8 relative">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+          <div>
+            <span class="text-xs font-bold text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-md">الكورس الثالث (بيئة الأنظمة المفتوحة)</span>
+            <h3 class="text-lg sm:text-xl font-black text-slate-100 mt-2">Linux Fundamentals & Command Line</h3>
+          </div>
+          <a href="https://youtube.com/playlist?list=PLDRMxi70CdSD48OPJbsDZRt4l0GvWJ2iG&si=C5nKJXBrWfzbkM8_" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-400/10 border border-emerald-400/20 hover:bg-emerald-400/20 text-xs font-bold text-emerald-400 rounded-xl transition-all text-center self-start">
+            قائمة تشغيل الشرح
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div class="space-y-6">
+          <div class="border-r-2 border-emerald-500/20 pr-4 relative space-y-4">
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-emerald-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الأول: كسر الجليد وفهم لغة النظام</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس (يوتيوب):</strong> متابعة النصف الأول من قائمة التشغيل. التركيز هنا يجب أن يكون على فهم ماهية "الـ Terminal" أو "الـ Shell"، وكيف تختلف هيكلية المجلدات والملفات في نظام لينكس مقارنة بويندوز.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">المهام:</strong> التعرف النظري والتطبيق الأولي على أوامر التنقل الأساسية مثل (pwd, ls, cd).
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-emerald-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الثاني: التطبيق الفعلي والتمرس المكثف</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس (يوتيوب):</strong> إكمال النصف الثاني من الفيديوهات، والذي يركز عادة على قراءة محتويات الملفات، البحث عنها، وإدارة الصلاحيات (Permissions) عبر سطر الأوامر.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                غرفة Linux Fundamentals Part 1 <a href="https://tryhackme.com/room/linuxfundamentalspart1" target="_blank" class="text-emerald-400 hover:underline font-mono text-[11px]">/room/linuxfundamentalspart1</a> حان وقت التطبيق وتبديد رهبة الشاشة السوداء. ستفتحين الـ Terminal وتبحثين عن ملفات محددة وتقرأين نصوص مخفية.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4 mt-4">
+            <h5 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">🎯 مخرجات التعليم (Learning Outcomes):</h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-400">
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على المستوى المعرفي:</span>
+                إدراك الهيكلية الشجرية لنظام ملفات لينكس (Root Directory) وكيف يتم تنظيم البيانات بداخله، وفهم دور موجه الأوامر (Shell) في ترجمة النصوص المكتوبة مباشرة إلى المعالج.
+              </div>
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على المستوى المهاري والعملي:</span>
+                التمكن من التنقل وإدارة المسارات بسرعة فائقة، القدرة على استعراض وتحليل الملفات الكبيرة والبحث عن الكلمات المفتاحية داخلها (وهي أساسية لقراءة الـ Logs لاحقاً)، وكسر حاجز الخوف من الواجهات النصية.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-card/60 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-8 relative">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+          <div>
+            <span class="text-xs font-bold text-indigo-400 bg-indigo-400/10 px-3 py-1 rounded-md">الكورس الرابع (هندسة النظم الداخلية)</span>
+            <h3 class="text-lg sm:text-xl font-black text-slate-100 mt-2">Operating Systems Architecture & Windows Basics</h3>
+          </div>
+          <a href="https://youtube.com/playlist?list=PLxIvc-MGOs6ib0oK1z9C46DeKd9rRcSMY&si=BHYNW3lfPU8s6U7A" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-400/10 border border-indigo-400/20 hover:bg-indigo-400/20 text-xs font-bold text-indigo-400 rounded-xl transition-all text-center self-start">
+            كورس د. أحمد حجاج
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div class="space-y-6">
+          <div class="border-r-2 border-indigo-500/20 pr-4 relative space-y-4">
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-indigo-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الأول: المفاهيم المعمارية والأساسيات (OS Foundations)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس:</strong> متابعة المحاضرات التي تتناول مقدمة عن نظم التشغيل، بنية النظام (System Structures)، ومفهوم النواة (Kernel).
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                غرفة Operating Systems: Introduction <a href="https://tryhackme.com/room/operatingsystemsintroduction" target="_blank" class="text-indigo-400 hover:underline font-mono text-[11px]">/room/operatingsystemsintroduction</a> لربط المفاهيم النظرية حول إدارة الموارد (المعالج والذاكرة) بالواقع التطبيقي وفهم دور النظام كوسيط.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-indigo-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الثاني: إدارة العمليات وبيئة ويندوز الأساسية (Processes & Windows Basics)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس:</strong> التركيز على دروس إدارة العمليات (Process Management) وكيفية توزيع المهام.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                غرفة Windows Fundamentals 1 <a href="https://tryhackme.com/room/windowsfundamentals1xbx" target="_blank" class="text-indigo-400 hover:underline font-mono text-[11px]">/room/windowsfundamentals1xbx</a> للتعرف على نظام ملفات الويندوز (NTFS)، استخدام مدير المهام (Task Manager) لمراقبة العمليات وفهم الصلاحيات.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-indigo-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الثالث: إدارة الذاكرة والأدوات المتقدمة (Memory & Deep Windows Tools)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس:</strong> دراسة وحدات إدارة الذاكرة (Memory Management) والتخزين.
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                غرفة Windows Fundamentals 2 <a href="https://tryhackme.com/room/windowsfundamentals2x0x" target="_blank" class="text-indigo-400 hover:underline font-mono text-[11px]">/room/windowsfundamentals2x0x</a> للغوص في سجل النظام (Windows Registry) وأدوات مراقبة الموارد والخدمات في الخلفية.
+              </p>
+            </div>
+
+            <div class="relative">
+              <span class="absolute right-[-21px] top-1.5 w-2 h-2 rounded-full bg-indigo-400"></span>
+              <h4 class="text-sm font-bold text-slate-100">الأسبوع الرابع: الحماية والأمن المدمج (OS Security & Protection)</h4>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">من الكورس:</strong> إكمال المحاضرات المتعلقة بحماية النظام وأمنه (Security & Protection).
+              </p>
+              <p class="text-xs text-slate-400 mt-1">
+                <strong class="text-slate-300">التطبيق العملي (TryHackMe):</strong><br>
+                غرفة Windows Fundamentals 3 <a href="https://tryhackme.com/room/windowsfundamentals3xzx" target="_blank" class="text-indigo-400 hover:underline font-mono text-[11px]">/room/windowsfundamentals3xzx</a> لتطبيق مفاهيم الحماية وضبط جدار حماية ويندوز وإدارة (Windows Defender).
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4 mt-4">
+            <h5 class="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-2">🎯 مخرجات التعليم (Learning Outcomes):</h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-400">
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على المستوى المعرفي:</span>
+                فهم عميق لكيفية تفاعل المكونات المادية مع البرمجيات من خلال النواة (Kernel)، وإدراك دور السجل (Registry) كقاعدة بيانات مركزية لإعدادات النظام والبرامج، وفهم أسس حماية العمليات في الذاكرة.
+              </div>
+              <div>
+                <span class="font-bold text-slate-200 block mb-1">على المستوى المهاري والعملي:</span>
+                القدرة على استخدام مدير المهام لاكتشاف العمليات المشبوهة، ضبط صلاحيات الوصول للملفات والمجلدات، فحص وتعطيل الخدمات غير الضرورية لتقليل "مساحة الهجوم"، والتعديل والتعامل الاحترافي الآمن مع الـ Registry لتتبع التغييرات الخبيثة.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="bg-gradient-to-r from-cyan-950/30 to-slate-900/50 border border-cyan-500/20 rounded-2xl p-6 sm:p-8 text-center shadow-xl">
+        <h3 class="text-lg sm:text-xl font-black text-cyan-400 mb-2">خلاصة المسار</h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl mx-auto">
+          هذا المسار هو الأنسب للأشخاص الذين يمتلكون عقلية تحليلية ويحبون فك الألغاز التقنية ومراقبة الأحداث الأمنية بدقة. قد يكون التأسيس فيه مكثفاً ومليئاً بالمعلومات النظرية والشبكية، لكنه يضمن لكِ مستقبلاً وظيفياً مستقراً جداً، ومطلوباً بقوة متصاعدة في سوق العمل المحلي والعالمي.
+        </p>
+      </section>
+
+    </div>
+  </body>
+</html>
