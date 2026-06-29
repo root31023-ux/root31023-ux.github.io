@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,7 +54,7 @@
       class="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
     >
       <a
-        href="../cyber.html"
+        href="index.html"
         class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors mb-8 group"
       >
         <svg
@@ -119,6 +119,8 @@
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 w-full">
+            
+            <!-- قسم الأمن الهجومي -->
             <div class="flex flex-col items-center relative">
               <div class="lg:hidden w-0.5 h-6 bg-red-500/30"></div>
 
@@ -218,9 +220,35 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- خط الوصل إلى زر التفاصيل الهجومية -->
+                <div class="w-0.5 h-6 bg-red-500/20"></div>
+                <!-- زر الشرح للأمن الهجومي -->
+                <a
+                  href="offensive-details.html"
+                  class="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-red-500/10 to-red-600/20 border border-red-500/30 rounded-xl text-xs font-bold text-red-400 hover:from-red-500/20 hover:to-red-600/30 hover:border-red-400 transition-all shadow-lg hover:shadow-red-500/5 group relative z-10"
+                >
+                  تفاصيل التخصص والرواتب
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="group-hover:-translate-x-1 transition-transform"
+                  >
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                </a>
               </div>
             </div>
 
+            <!-- قسم الأمن الدفاعي -->
             <div class="flex flex-col items-center relative">
               <div class="lg:hidden w-0.5 h-6 bg-cyan-500/30"></div>
 
@@ -264,7 +292,7 @@
               <div class="w-full flex flex-col items-center">
                 <div class="w-0.5 h-8 bg-cyan-500/30"></div>
                 <div
-                  class="w-full max-w-md border-r-2 border-cyan-500/20 pr-4 sm:pr-6 space-y-6 relative"
+                  class="w-full max-w-md border-r-2 border-cyan-500/20 pr-4 sm:pr-6 space-y-6 relative before:absolute before:right-0 before:top-0 before:w-0.5 before:h-full before:bg-cyan-500/20"
                 >
                   <div class="relative flex items-start gap-4">
                     <div
@@ -318,11 +346,38 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- خط الوصل إلى زر التفاصيل الدفاعية -->
+                <div class="w-0.5 h-6 bg-cyan-500/20"></div>
+                <!-- زر الشرح للأمن الدفاعي -->
+                <a
+                  href="defensive-details.html"
+                  class="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500/10 to-cyan-600/20 border border-cyan-500/30 rounded-xl text-xs font-bold text-cyan-400 hover:from-cyan-500/20 hover:to-cyan-600/30 hover:border-cyan-400 transition-all shadow-lg hover:shadow-cyan-500/5 group relative z-10"
+                >
+                  تفاصيل التخصص والرواتب
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="group-hover:-translate-x-1 transition-transform"
+                  >
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                </a>
               </div>
             </div>
+
           </div>
         </div>
       </div>
+    </div>
       <hr class="border-slate-800/80 my-20" />
 
       <div class="text-center mb-16">
