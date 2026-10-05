@@ -3,935 +3,1096 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>مكتبة ROOT TEAM | AHU</title>
+
+    <title>ROOT TEAM // LIBRARY</title>
+
     <meta
       name="description"
-      content="مكتبة ROOT TEAM - جميع الملفات التعليمية لطلاب جامعة الحسين بن طلال"
+      content="ROOT TEAM Library - المصادر والملفات التعليمية لطلاب جامعة الحسين بن طلال"
     />
-    <meta name="theme-color" content="#020617" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: "#020617",
-              secondary: "#0f172a",
-              card: "#0a0f1e",
-              "card-hover": "#111827",
-              cyan: {
-                400: "#22d3ee",
-                500: "#06b6d4",
-                600: "#0891b2",
-              },
-              blue: {
-                400: "#60a5fa",
-                500: "#3b82f6",
-              },
-              emerald: {
-                400: "#34d399",
-              },
-              amber: {
-                400: "#fbbf24",
-              },
-              rose: {
-                400: "#fb7185",
-              },
-              purple: {
-                400: "#c084fc",
+              cyber: {
+                bg: "#030608",
+                panel: "#07100d",
+                green: "#00ff88",
+                cyan: "#00e5ff",
+                dark: "#020403",
+                line: "#12352b",
               },
             },
             fontFamily: {
               cairo: ["Cairo", "sans-serif"],
-              space: ["Space Grotesk", "sans-serif"],
+              mono: ["Space Grotesk", "monospace"],
+            },
+            boxShadow: {
+              cyber: "0 0 30px rgba(0,255,136,.12)",
+              green: "0 0 25px rgba(0,255,136,.2)",
             },
           },
         },
       };
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       html {
         scroll-behavior: smooth;
       }
+
       body {
+        margin: 0;
+        background:
+          radial-gradient(
+            circle at 20% 10%,
+            rgba(0, 255, 136, 0.05),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 80% 30%,
+            rgba(0, 229, 255, 0.04),
+            transparent 25%
+          ),
+          #030608;
+        color: #d7ffe9;
         font-family: "Cairo", sans-serif;
+        overflow-x: hidden;
       }
 
-      /* Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #020617;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgba(34, 211, 238, 0.2);
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgba(34, 211, 238, 0.4);
-      }
-
-      /* Selection */
       ::selection {
-        background: rgba(34, 211, 238, 0.3);
-        color: #fff;
+        background: #00ff88;
+        color: #020403;
       }
 
-      /* Mobile menu states */
-      #mobileMenu.active {
+      ::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #020403;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #12352b;
+        border-radius: 20px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00ff88;
+      }
+
+      .mono {
+        font-family: "Space Grotesk", monospace;
+      }
+
+      .scanlines {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 999;
+        opacity: 0.035;
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 3px,
+          rgba(255, 255, 255, 0.12) 4px
+        );
+      }
+
+      .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 998;
+        opacity: 0.025;
+        background-image: radial-gradient(#fff 1px, transparent 1px);
+        background-size: 4px 4px;
+      }
+
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(0, 255, 136, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 255, 136, 0.035) 1px, transparent 1px);
+        background-size: 45px 45px;
+      }
+
+      .terminal-border {
+        border: 1px solid rgba(0, 255, 136, 0.16);
+        box-shadow:
+          inset 0 0 30px rgba(0, 255, 136, 0.025),
+          0 0 30px rgba(0, 0, 0, 0.35);
+      }
+
+      .glow-text {
+        text-shadow:
+          0 0 8px rgba(0, 255, 136, 0.65),
+          0 0 25px rgba(0, 255, 136, 0.25);
+      }
+
+      .glitch {
+        position: relative;
+      }
+
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.65;
+      }
+
+      .glitch::before {
+        color: #00ff88;
+        transform: translate(1px, 0);
+        clip-path: inset(0 0 55% 0);
+        animation: glitch1 3s infinite linear alternate-reverse;
+      }
+
+      .glitch::after {
+        color: #00e5ff;
+        transform: translate(-1px, 0);
+        clip-path: inset(55% 0 0 0);
+        animation: glitch2 2.5s infinite linear alternate-reverse;
+      }
+
+      @keyframes glitch1 {
+        0%,
+        85%,
+        100% {
+          transform: translate(1px, 0);
+        }
+        87% {
+          transform: translate(5px, -2px);
+        }
+        90% {
+          transform: translate(-3px, 1px);
+        }
+      }
+
+      @keyframes glitch2 {
+        0%,
+        80%,
+        100% {
+          transform: translate(-1px, 0);
+        }
+        83% {
+          transform: translate(-5px, 2px);
+        }
+        88% {
+          transform: translate(3px, -1px);
+        }
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 18px;
+        background: #00ff88;
+        margin-right: 5px;
+        animation: blink 0.8s infinite;
+        vertical-align: middle;
+        box-shadow: 0 0 10px #00ff88;
+      }
+
+      @keyframes blink {
+        0%,
+        45% {
+          opacity: 1;
+        }
+        46%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .subject-card {
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .subject-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 1px;
+        background: #00ff88;
+        box-shadow: 0 0 12px #00ff88;
+        transition: right 0.5s ease;
+      }
+
+      .subject-card:hover::before {
         right: 0;
       }
-      #menuBtn.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      #menuBtn.open span:nth-child(2) {
-        opacity: 0;
-      }
-      #menuBtn.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-      }
 
-      /* Subject button hover */
-      .subject-btn:hover {
-        transform: translateY(-8px);
+      .subject-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 255, 136, 0.4);
         box-shadow:
-          0 20px 40px rgba(0, 0, 0, 0.4),
-          0 0 30px rgba(34, 211, 238, 0.15);
-      }
-      .subject-btn:hover .btn-icon {
-        transform: scale(1.15);
+          0 0 30px rgba(0, 255, 136, 0.08),
+          inset 0 0 30px rgba(0, 255, 136, 0.025);
       }
 
-      /* Modal animation */
+      .subject-number {
+        font-family: "Space Grotesk", monospace;
+        color: rgba(0, 255, 136, 0.35);
+        font-size: 3rem;
+        line-height: 1;
+      }
+
+      .terminal-window {
+        background: rgba(2, 6, 4, 0.9);
+        border: 1px solid rgba(0, 255, 136, 0.18);
+      }
+
+      .terminal-top {
+        border-bottom: 1px solid rgba(0, 255, 136, 0.12);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
       .modal {
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
       }
+
       .modal.active {
         opacity: 1;
         visibility: visible;
       }
-      .modal-content {
-        transform: scale(0.9) translateY(20px);
-        transition: all 0.3s ease;
-      }
-      .modal.active .modal-content {
-        transform: scale(1) translateY(0);
+
+      .modal-box {
+        transform: translateY(20px) scale(0.98);
+        transition: transform 0.25s ease;
       }
 
-      /* Roadmap line animation */
-      .roadmap-line {
+      .modal.active .modal-box {
+        transform: translateY(0) scale(1);
+      }
+
+      .file-row {
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .file-row:hover {
+        transform: translateX(-3px);
+        border-color: rgba(0, 255, 136, 0.35);
+        background: rgba(0, 255, 136, 0.035);
+      }
+
+      .timeline-line {
         background: linear-gradient(
-          180deg,
-          #22d3ee 0%,
-          #3b82f6 50%,
-          #22d3ee 100%
+          to bottom,
+          #00ff88,
+          rgba(0, 255, 136, 0.05)
         );
-        background-size: 100% 200%;
-        animation: roadmapFlow 3s linear infinite;
-      }
-      @keyframes roadmapFlow {
-        0% {
-          background-position: 0% 0%;
-        }
-        100% {
-          background-position: 0% 200%;
-        }
       }
 
-      /* File card animation */
-      .file-card {
-        transition: all 0.3s ease;
+      .timeline-dot {
+        box-shadow:
+          0 0 0 5px rgba(0, 255, 136, 0.05),
+          0 0 15px rgba(0, 255, 136, 0.5);
       }
-      .file-card:hover {
-        transform: translateY(-5px);
-        border-color: #22d3ee;
+
+      .ascii {
+        color: rgba(0, 255, 136, 0.35);
+        font-family: monospace;
+        line-height: 1.1;
+        white-space: pre;
+      }
+
+      @media (max-width: 640px) {
+        .subject-number {
+          font-size: 2.2rem;
+        }
+
+        .ascii {
+          font-size: 7px;
+        }
       }
     </style>
   </head>
-  <body class="bg-primary text-slate-50 min-h-screen">
-    <!-- Header -->
+
+  <body class="grid-bg">
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+
+    <!-- HEADER -->
     <header
-      class="fixed top-0 w-full bg-primary/95 backdrop-blur-xl z-50 border-b border-cyan-500/10"
+      class="fixed top-0 left-0 right-0 z-50 bg-[#030608]/85 backdrop-blur-xl border-b border-emerald-400/10"
     >
-      <nav
-        class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between"
+      <div
+        class="max-w-7xl mx-auto px-5 lg:px-8 h-[72px] flex items-center justify-between"
       >
-        <a
-          href="../index.html"
-          class="flex items-center gap-3 font-bold text-white transition-transform hover:scale-105"
-        >
-          <div class="text-cyan-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c3 3 9 3 12 0v-5" />
-            </svg>
+        <!-- LOGO -->
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 border border-emerald-400/40 flex items-center justify-center bg-emerald-400/[0.03] group-hover:border-emerald-400 transition"
+          >
+            <span class="mono text-emerald-400 text-sm font-bold">&gt;_</span>
           </div>
-          <div class="flex flex-col leading-tight">
-            <span
-              class="text-xl font-black font-space bg-gradient-to-br from-cyan-400 to-blue-400 bg-clip-text text-transparent"
-              >ROOT TEAM</span
-            >
-            <span
-              class="text-[0.6rem] font-bold text-slate-500 tracking-[0.2em]"
-              >AHU</span
-            >
+
+          <div>
+            <div class="mono font-bold tracking-[.18em] text-emerald-400">
+              ROOT TEAM
+            </div>
+
+            <div class="mono text-[9px] text-slate-500 tracking-[.35em]">
+              AHU // SYSTEM
+            </div>
           </div>
         </a>
 
-        <div class="hidden md:flex items-center gap-6">
+        <!-- DESKTOP NAV -->
+        <nav class="hidden md:flex items-center gap-8 text-sm">
           <a
             href="../index.html"
-            class="text-slate-400 hover:text-cyan-400 transition-colors text-sm font-semibold"
-            >الرئيسية</a
+            class="text-slate-500 hover:text-emerald-400 transition mono"
           >
-          <a href="#" class="text-cyan-400 text-sm font-semibold">المكتبة</a>
-        </div>
+            ./home
+          </a>
 
+          <a href="#" class="text-emerald-400 mono relative">
+            ./library
+            <span
+              class="absolute -bottom-2 right-0 left-0 h-px bg-emerald-400 shadow-[0_0_8px_#00ff88]"
+            ></span>
+          </a>
+        </nav>
+
+        <!-- MOBILE BUTTON -->
         <button
           id="menuBtn"
-          class="md:hidden flex flex-col gap-1.5 p-2 z-[1001]"
+          class="md:hidden w-10 h-10 border border-emerald-400/20 text-emerald-400 flex items-center justify-center"
         >
-          <span
-            class="block w-6 h-0.5 bg-cyan-400 transition-all duration-300"
-          ></span>
-          <span
-            class="block w-6 h-0.5 bg-cyan-400 transition-all duration-300"
-          ></span>
-          <span
-            class="block w-6 h-0.5 bg-cyan-400 transition-all duration-300"
-          ></span>
+          <span class="mono text-lg">≡</span>
         </button>
-      </nav>
+      </div>
     </header>
 
-    <!-- Mobile Menu -->
+    <!-- MOBILE MENU -->
     <div
       id="mobileMenu"
-      class="fixed top-0 -right-full w-72 h-screen bg-secondary z-[1000] flex flex-col gap-5 pt-24 px-8 transition-all duration-400 border-l-2 border-cyan-400"
+      class="fixed inset-0 z-40 bg-[#020403]/95 backdrop-blur-xl hidden"
     >
-      <a
-        href="../index.html"
-        class="text-white text-lg font-medium border-b border-cyan-500/20 pb-3 hover:text-cyan-400 transition-colors"
-        >الرئيسية</a
+      <div
+        class="absolute top-[72px] right-0 w-full border-t border-emerald-400/10"
       >
-      <a
-        href="#"
-        class="text-cyan-400 text-lg font-medium border-b border-cyan-500/20 pb-3"
-        >المكتبة</a
-      >
+        <div class="p-6 space-y-2">
+          <a
+            href="../index.html"
+            class="block border border-emerald-400/10 px-5 py-4 text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition mono"
+          >
+            ./home
+          </a>
+
+          <a
+            href="#library"
+            class="block border border-emerald-400/30 px-5 py-4 text-emerald-400 mono"
+          >
+            ./library
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- Library Section -->
-    <section class="pt-28 pb-16 px-5 max-w-6xl mx-auto text-center">
-      <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-black mb-4 bg-gradient-to-br from-slate-50 to-slate-400 bg-clip-text text-transparent"
-      >
-        مكتبة ROOT TEAM
-      </h1>
-      <p class="text-slate-400 mb-12 max-w-2xl mx-auto">
-        اختر المادة للوصول إلى الملفات والمصادر التعليمية
-      </p>
-
-      <!-- Subject Buttons -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        <!-- Basics Button -->
-        <button
-          onclick="openModal('basics')"
-          class="subject-btn group bg-secondary/60 p-8 rounded-2xl border border-cyan-500/20 backdrop-blur-xl flex flex-col items-center transition-all duration-300 cursor-pointer"
-        >
+    <!-- MAIN -->
+    <main id="library" class="pt-[72px]">
+      <!-- HERO -->
+      <section class="relative min-h-[560px] flex items-center overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
           <div
-            class="btn-icon w-20 h-20 flex items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-400 mb-5 transition-transform duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-50 mb-2">
-            أساسيات تكنولوجيا المعلومات
-          </h3>
-          <p class="text-slate-400 text-sm">
-            IT Fundamentals - الخطط الذهنية والملخصات
-          </p>
-          <span
-            class="mt-4 px-6 py-2 rounded-lg bg-cyan-400/10 text-cyan-400 text-sm font-semibold group-hover:bg-cyan-400 group-hover:text-primary transition-all duration-300"
-            >عرض الملفات</span
-          >
-        </button>
-
-        <!-- Discrete Math Button -->
-        <button
-          onclick="openModal('discrete')"
-          class="subject-btn group bg-secondary/60 p-8 rounded-2xl border border-blue-500/20 backdrop-blur-xl flex flex-col items-center transition-all duration-300 cursor-pointer"
-        >
-          <div
-            class="btn-icon w-20 h-20 flex items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400 mb-5 transition-transform duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-              <path d="M2 12h20" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-50 mb-2">
-            الرياضيات المتقطعة
-          </h3>
-          <p class="text-slate-400 text-sm">
-            Discrete Mathematics - ملخصات وتمارين
-          </p>
-          <span
-            class="mt-4 px-6 py-2 rounded-lg bg-blue-400/10 text-blue-400 text-sm font-semibold group-hover:bg-blue-400 group-hover:text-primary transition-all duration-300"
-            >عرض الملفات</span
-          >
-        </button>
-
-        <!-- Programming 1 Button -->
-        <button
-          onclick="openModal('programming')"
-          class="subject-btn group bg-secondary/60 p-8 rounded-2xl border border-emerald-500/20 backdrop-blur-xl flex flex-col items-center transition-all duration-300 cursor-pointer"
-        >
-          <div
-            class="btn-icon w-20 h-20 flex items-center justify-center rounded-2xl bg-emerald-400/10 text-emerald-400 mb-5 transition-transform duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-50 mb-2">برمجة 1</h3>
-          <p class="text-slate-400 text-sm">Programming 1 - أكواد وملخصات</p>
-          <span
-            class="mt-4 px-6 py-2 rounded-lg bg-emerald-400/10 text-emerald-400 text-sm font-semibold group-hover:bg-emerald-400 group-hover:text-primary transition-all duration-300"
-            >عرض الملفات</span
-          >
-        </button>
-
-        <!-- Files Button -->
-        <button
-          onclick="openModal('files')"
-          class="subject-btn group bg-secondary/60 p-8 rounded-2xl border border-amber-500/20 backdrop-blur-xl flex flex-col items-center transition-all duration-300 cursor-pointer"
-        >
-          <div
-            class="btn-icon w-20 h-20 flex items-center justify-center rounded-2xl bg-amber-400/10 text-amber-400 mb-5 transition-transform duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-              />
-              <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-              <path d="M10 9H8" />
-              <path d="M16 13H8" />
-              <path d="M16 17H8" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-50 mb-2">
-            ملفات الخطط الشجرية
-          </h3>
-          <p class="text-slate-400 text-sm">
-            General Files - ملفات ومستندات متنوعة
-          </p>
-          <span
-            class="mt-4 px-6 py-2 rounded-lg bg-amber-400/10 text-amber-400 text-sm font-semibold group-hover:bg-amber-400 group-hover:text-primary transition-all duration-300"
-            >عرض الملفات</span
-          >
-        </button>
-
-        <!-- Past Exams Button -->
-        <button
-          onclick="openModal('exams')"
-          class="subject-btn group bg-secondary/60 p-8 rounded-2xl border border-rose-500/20 backdrop-blur-xl flex flex-col items-center transition-all duration-300 cursor-pointer"
-        >
-          <div
-            class="btn-icon w-20 h-20 flex items-center justify-center rounded-2xl bg-rose-400/10 text-rose-400 mb-5 transition-transform duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-              />
-              <path
-                d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"
-              />
-              <path d="m9 14 2 2 4-4" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-50 mb-2">أسئلة تدريبية</h3>
-          <p class="text-slate-400 text-sm">اسئلة تدريبية</p>
-          <span
-            class="mt-4 px-6 py-2 rounded-lg bg-rose-400/10 text-rose-400 text-sm font-semibold group-hover:bg-rose-400 group-hover:text-primary transition-all duration-300"
-            >عرض الملفات</span
-          >
-        </button>
-      </div>
-
-      <!-- Chapter 2 Roadmap Section -->
-      <div class="mt-20 mb-16">
-        <div class="text-center mb-12">
-          <span
-            class="inline-block px-4 py-1.5 rounded-full bg-rose-400/10 border border-rose-400/20 text-rose-400 text-xs font-bold tracking-wide mb-4"
-            >شابتر 2 - أساسيات</span
-          >
-          <h2
-            class="text-2xl md:text-3xl font-black mb-4 bg-gradient-to-br from-slate-50 to-slate-400 bg-clip-text text-transparent"
-          >
-            شرح كامل لي شابتر 2 الأساسيات
-          </h2>
-          <p class="text-base text-slate-400 max-w-xl mx-auto">
-            أنظمة العد المختلفة - دروس فيديو مرتبة للفهم الصحيح
-          </p>
-        </div>
-
-        <div class="relative max-w-4xl mx-auto">
-          <!-- Timeline Line -->
-          <div
-            class="absolute right-[23px] md:right-1/2 md:-translate-x-1/2 top-0 bottom-0 w-1 roadmap-line rounded-full"
+            class="absolute top-20 right-[10%] w-72 h-72 rounded-full bg-emerald-400/[0.025] blur-3xl"
           ></div>
 
-          <!-- Step 1 -->
           <div
-            class="relative flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12 md:justify-center"
-          >
-            <div class="md:w-5/12 md:text-left order-2 md:order-1">
-              <div
-                class="bg-card border border-cyan-500/10 rounded-2xl p-6 transition-all duration-300 hover:border-cyan-500/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
-              >
-                <span
-                  class="inline-block px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-400 text-xs font-bold mb-3"
-                  >الدرس 1</span
-                >
-                <h3 class="text-lg font-bold text-slate-50 mb-2">
-                  النظام الثنائي والعشري
-                </h3>
-                <p class="text-sm text-slate-400 mb-4">
-                  مقدمة في أنظمة العد والتحويل بين الثنائي والعشري
-                </p>
-                <a
-                  href="https://youtu.be/CrA3v6AHTTo?si=YWzpjsUtYOtICHdI"
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-400 text-primary text-sm font-bold transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(0,242,255,0.4)]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-                    />
-                  </svg>
-                  مشاهدة الفيديو
-                </a>
-              </div>
-            </div>
-            <div
-              class="w-12 h-12 rounded-full bg-cyan-400 text-primary flex items-center justify-center font-black text-lg z-10 order-1 md:order-2 shadow-[0_0_20px_rgba(34,211,238,0.5)]"
-            >
-              1
-            </div>
-            <div class="md:w-5/12 order-3 hidden md:block"></div>
-          </div>
+            class="absolute bottom-0 left-[10%] w-80 h-80 rounded-full bg-cyan-400/[0.02] blur-3xl"
+          ></div>
+        </div>
 
-          <!-- Step 2 -->
-          <div
-            class="relative flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12 md:justify-center"
-          >
-            <div class="md:w-5/12 order-3 hidden md:block"></div>
-            <div
-              class="w-12 h-12 rounded-full bg-blue-400 text-primary flex items-center justify-center font-black text-lg z-10 order-1 shadow-[0_0_20px_rgba(96,165,250,0.5)]"
-            >
-              2
-            </div>
-            <div class="md:w-5/12 md:text-right order-2">
-              <div
-                class="bg-card border border-blue-500/10 rounded-2xl p-6 transition-all duration-300 hover:border-blue-500/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
-              >
-                <span
-                  class="inline-block px-3 py-1 rounded-full bg-blue-400/10 text-blue-400 text-xs font-bold mb-3"
-                  >الدرس 2</span
-                >
-                <h3 class="text-lg font-bold text-slate-50 mb-2">
-                  النظام السادس عشر - الجزء الأول
-                </h3>
-                <p class="text-sm text-slate-400 mb-4">
-                  مقدمة في النظام السادس عشر (Hexadecimal)
-                </p>
-                <a
-                  href="https://youtu.be/lGA_3kDhdZM?si=6Au_xUvK3vL-oK42"
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-400 text-primary text-sm font-bold transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(96,165,250,0.4)]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-                    />
-                  </svg>
-                  مشاهدة الفيديو
-                </a>
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full">
+          <div class="grid lg:grid-cols-[1.3fr_.7fr] gap-14 items-center">
+            <div>
+              <div class="mono text-xs text-emerald-400/60 mb-6">
+                [ ROOT_TEAM / LIBRARY / ACCESS_GRANTED ]
               </div>
-            </div>
-          </div>
 
-          <!-- Step 3 -->
-          <div
-            class="relative flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-12 md:justify-center"
-          >
-            <div class="md:w-5/12 md:text-left order-2 md:order-1">
-              <div
-                class="bg-card border border-emerald-500/10 rounded-2xl p-6 transition-all duration-300 hover:border-emerald-500/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
+              <h1
+                data-text="مكتبة ROOT TEAM"
+                class="glitch text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight text-white mb-7"
               >
-                <span
-                  class="inline-block px-3 py-1 rounded-full bg-emerald-400/10 text-emerald-400 text-xs font-bold mb-3"
-                  >الدرس 3</span
-                >
-                <h3 class="text-lg font-bold text-slate-50 mb-2">
-                  النظام السادس عشر - الجزء الثاني
-                </h3>
-                <p class="text-sm text-slate-400 mb-4">
-                  التحويلات والعمليات على النظام السادس عشر
-                </p>
-                <a
-                  href="https://youtu.be/el2mi4khoJg?si=gJ0W8hfU3E1yZi07"
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-400 text-primary text-sm font-bold transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(52,211,153,0.4)]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-                    />
-                  </svg>
-                  مشاهدة الفيديو
-                </a>
+                مكتبة ROOT TEAM
+              </h1>
+
+              <div class="flex items-center gap-2 mb-5">
+                <span class="mono text-emerald-400 text-sm">
+                  root@ahu:~/library$
+                </span>
+
+                <span class="mono text-slate-400 text-sm">
+                  ls educational_files
+                </span>
+
+                <span class="cursor"></span>
               </div>
-            </div>
-            <div
-              class="w-12 h-12 rounded-full bg-emerald-400 text-primary flex items-center justify-center font-black text-lg z-10 order-1 md:order-2 shadow-[0_0_20px_rgba(52,211,153,0.5)]"
-            >
-              3
-            </div>
-            <div class="md:w-5/12 order-3 hidden md:block"></div>
-          </div>
 
-          <!-- Step 4 -->
-          <div
-            class="relative flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 md:justify-center"
-          >
-            <div class="md:w-5/12 order-3 hidden md:block"></div>
-            <div
-              class="w-12 h-12 rounded-full bg-amber-400 text-primary flex items-center justify-center font-black text-lg z-10 order-1 shadow-[0_0_20px_rgba(251,191,36,0.5)]"
-            >
-              4
-            </div>
-            <div class="md:w-5/12 md:text-right order-2">
-              <div
-                class="bg-card border border-amber-500/10 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
+              <p
+                class="text-slate-400 max-w-2xl text-base sm:text-lg leading-8"
               >
-                <span
-                  class="inline-block px-3 py-1 rounded-full bg-amber-400/10 text-amber-400 text-xs font-bold mb-3"
-                  >الدرس 4</span
-                >
-                <h3 class="text-lg font-bold text-slate-50 mb-2">
-                  النظام الثماني
-                </h3>
-                <p class="text-sm text-slate-400 mb-4">
-                  النظام الثماني (Octal) والتحويلات
-                </p>
-                <a
-                  href="https://youtu.be/iRiS9Luixrc?si=o34MC_G4-mXBB02x"
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400 text-primary text-sm font-bold transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(251,191,36,0.4)]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-                    />
-                  </svg>
-                  مشاهدة الفيديو
-                </a>
+                ملفات ومصادر تعليمية لطلاب جامعة الحسين بن طلال مرتبة حسب المواد
+                والشباتر حتى توصل للمعلومة بدون لف ودوران
+              </p>
+            </div>
+
+            <!-- TERMINAL -->
+            <div class="terminal-window hidden lg:block">
+              <div
+                class="terminal-top px-4 py-3 flex items-center justify-between"
+              >
+                <div class="flex gap-2">
+                  <span class="dot bg-red-400/60"></span>
+                  <span class="dot bg-yellow-400/60"></span>
+                  <span class="dot bg-emerald-400/60"></span>
+                </div>
+
+                <span class="mono text-[10px] text-slate-600"> root@ahu </span>
+              </div>
+
+              <div class="p-6 mono text-xs leading-7">
+                <div class="text-slate-600"># scanning directory...</div>
+
+                <div class="text-emerald-400">$ cd /root-team/library</div>
+
+                <div class="text-slate-400">access granted</div>
+
+                <div class="mt-3 text-slate-500">./basics</div>
+
+                <div class="text-slate-500">./discrete_math</div>
+
+                <div class="text-slate-500">./programming_1</div>
+
+                <div class="text-slate-500">./roadmaps</div>
+
+                <div class="text-slate-500">./exams</div>
+
+                <div class="mt-4 text-emerald-400">5 directories found</div>
+
+                <div class="text-cyan-400">system ready_</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Modal for Basics -->
+      <!-- SUBJECTS -->
+      <section class="max-w-7xl mx-auto px-5 lg:px-8 py-20">
+        <div class="flex items-end justify-between gap-5 mb-10">
+          <div>
+            <div class="mono text-xs text-emerald-400/60 mb-3">// MODULES</div>
+
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">
+              اختر المادة
+            </h2>
+          </div>
+
+          <div class="hidden sm:block mono text-xs text-slate-600">
+            [ SELECT_TARGET ]
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- 01 -->
+          <button
+            onclick="openModal('basics')"
+            class="subject-card terminal-border bg-[#07100d]/70 p-6 text-right min-h-[230px] group"
+          >
+            <div class="flex justify-between items-start">
+              <span class="subject-number"> 01 </span>
+
+              <span
+                class="mono text-xs text-emerald-400/40 group-hover:text-emerald-400 transition"
+              >
+                OPEN
+              </span>
+            </div>
+
+            <div class="mt-10">
+              <div
+                class="text-xl font-bold text-white group-hover:text-emerald-400 transition"
+              >
+                أساسيات تكنولوجيا المعلومات
+              </div>
+
+              <div class="mono text-xs text-slate-600 mt-2">
+                IT FUNDAMENTALS
+              </div>
+            </div>
+          </button>
+
+          <!-- 02 -->
+          <button
+            onclick="openModal('discrete')"
+            class="subject-card terminal-border bg-[#07100d]/70 p-6 text-right min-h-[230px] group"
+          >
+            <div class="flex justify-between items-start">
+              <span class="subject-number"> 02 </span>
+
+              <span
+                class="mono text-xs text-cyan-400/40 group-hover:text-cyan-400 transition"
+              >
+                OPEN
+              </span>
+            </div>
+
+            <div class="mt-10">
+              <div
+                class="text-xl font-bold text-white group-hover:text-cyan-400 transition"
+              >
+                الرياضيات المتقطعة
+              </div>
+
+              <div class="mono text-xs text-slate-600 mt-2">
+                DISCRETE MATHEMATICS
+              </div>
+            </div>
+          </button>
+
+          <!-- 03 -->
+          <button
+            onclick="openModal('programming')"
+            class="subject-card terminal-border bg-[#07100d]/70 p-6 text-right min-h-[230px] group"
+          >
+            <div class="flex justify-between items-start">
+              <span class="subject-number"> 03 </span>
+
+              <span
+                class="mono text-xs text-blue-400/40 group-hover:text-blue-400 transition"
+              >
+                OPEN
+              </span>
+            </div>
+
+            <div class="mt-10">
+              <div
+                class="text-xl font-bold text-white group-hover:text-blue-400 transition"
+              >
+                برمجة 1
+              </div>
+
+              <div class="mono text-xs text-slate-600 mt-2">PROGRAMMING 1</div>
+            </div>
+          </button>
+
+          <!-- 04 -->
+          <button
+            onclick="openModal('files')"
+            class="subject-card terminal-border bg-[#07100d]/70 p-6 text-right min-h-[230px] group"
+          >
+            <div class="flex justify-between items-start">
+              <span class="subject-number"> 04 </span>
+
+              <span
+                class="mono text-xs text-yellow-400/40 group-hover:text-yellow-400 transition"
+              >
+                OPEN
+              </span>
+            </div>
+
+            <div class="mt-10">
+              <div
+                class="text-xl font-bold text-white group-hover:text-yellow-400 transition"
+              >
+                ملفات الخطط الشجرية
+              </div>
+
+              <div class="mono text-xs text-slate-600 mt-2">GENERAL FILES</div>
+            </div>
+          </button>
+
+          <!-- 05 -->
+          <button
+            onclick="openModal('exams')"
+            class="subject-card terminal-border bg-[#07100d]/70 p-6 text-right min-h-[230px] group"
+          >
+            <div class="flex justify-between items-start">
+              <span class="subject-number"> 05 </span>
+
+              <span
+                class="mono text-xs text-rose-400/40 group-hover:text-rose-400 transition"
+              >
+                OPEN
+              </span>
+            </div>
+
+            <div class="mt-10">
+              <div
+                class="text-xl font-bold text-white group-hover:text-rose-400 transition"
+              >
+                أسئلة تدريبية
+              </div>
+
+              <div class="mono text-xs text-slate-600 mt-2">PAST EXAMS</div>
+            </div>
+          </button>
+          <!-- 06 -->
+          <button
+            onclick="openModal('os')"
+            class="subject-card terminal-border bg-[#07100d]/70 p-6 text-right min-h-[230px] group"
+          >
+            <div class="flex justify-between items-start">
+              <span class="subject-number"> 06 </span>
+
+              <span
+                class="mono text-xs text-purple-400/40 group-hover:text-purple-400 transition"
+              >
+                OPEN
+              </span>
+            </div>
+
+            <div class="mt-10">
+              <div
+                class="text-xl font-bold text-white group-hover:text-purple-400 transition"
+              >
+                أنظمة التشغيل
+              </div>
+
+              <div class="mono text-xs text-slate-600 mt-2">
+                OPERATING SYSTEMS
+              </div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- ROADMAP -->
+      <section class="border-y border-emerald-400/10 bg-black/20">
+        <div class="max-w-5xl mx-auto px-5 lg:px-8 py-24">
+          <div class="text-center mb-16">
+            <div
+              class="inline-flex items-center gap-3 border border-emerald-400/20 bg-emerald-400/[0.03] px-4 py-2 mb-6"
+            >
+              <span
+                class="w-2 h-2 bg-emerald-400 rounded-full shadow-[0_0_10px_#00ff88]"
+              ></span>
+
+              <span class="mono text-xs text-emerald-400">
+                CHAPTER_02 / BASICS
+              </span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-bold text-white mb-4">
+              شرح كامل لشابتر 2
+            </h2>
+
+            <p class="text-slate-500">
+              أنظمة العد المختلفة - دروس فيديو مرتبة للفهم الصحيح
+            </p>
+          </div>
+
+          <div class="relative">
+            <div
+              class="timeline-line absolute right-[15px] sm:right-[19px] top-0 bottom-0 w-px"
+            ></div>
+
+            <div class="space-y-10">
+              <!-- LESSON 01 -->
+              <a
+                href="https://youtu.be/CrA3v6AHTTo?si=YWzpjsUtYOtICHdI"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative flex gap-7 group"
+              >
+                <div
+                  class="relative z-10 shrink-0 w-8 h-8 border border-emerald-400/50 bg-[#030608] flex items-center justify-center timeline-dot"
+                >
+                  <span class="mono text-[10px] text-emerald-400"> 01 </span>
+                </div>
+
+                <div
+                  class="terminal-border flex-1 p-5 group-hover:border-emerald-400/30 transition"
+                >
+                  <div class="mono text-[10px] text-emerald-400/50 mb-2">
+                    VIDEO_01
+                  </div>
+
+                  <h3
+                    class="font-bold text-white group-hover:text-emerald-400 transition"
+                  >
+                    النظام الثنائي والعشري
+                  </h3>
+
+                  <div class="mono text-xs text-slate-600 mt-2">
+                    youtube // watch
+                  </div>
+                </div>
+              </a>
+
+              <!-- LESSON 02 -->
+              <a
+                href="https://youtu.be/lGA_3kDhdZM?si=6Au_xUvK3vL-oK42"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative flex gap-7 group"
+              >
+                <div
+                  class="relative z-10 shrink-0 w-8 h-8 border border-cyan-400/50 bg-[#030608] flex items-center justify-center"
+                >
+                  <span class="mono text-[10px] text-cyan-400"> 02 </span>
+                </div>
+
+                <div
+                  class="terminal-border flex-1 p-5 group-hover:border-cyan-400/30 transition"
+                >
+                  <div class="mono text-[10px] text-cyan-400/50 mb-2">
+                    VIDEO_02
+                  </div>
+
+                  <h3
+                    class="font-bold text-white group-hover:text-cyan-400 transition"
+                  >
+                    النظام السادس عشر - الجزء الأول
+                  </h3>
+
+                  <div class="mono text-xs text-slate-600 mt-2">
+                    youtube // watch
+                  </div>
+                </div>
+              </a>
+
+              <!-- LESSON 03 -->
+              <a
+                href="https://youtu.be/el2mi4khoJg?si=gJ0W8hfU3E1yZi07"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative flex gap-7 group"
+              >
+                <div
+                  class="relative z-10 shrink-0 w-8 h-8 border border-blue-400/50 bg-[#030608] flex items-center justify-center"
+                >
+                  <span class="mono text-[10px] text-blue-400"> 03 </span>
+                </div>
+
+                <div
+                  class="terminal-border flex-1 p-5 group-hover:border-blue-400/30 transition"
+                >
+                  <div class="mono text-[10px] text-blue-400/50 mb-2">
+                    VIDEO_03
+                  </div>
+
+                  <h3
+                    class="font-bold text-white group-hover:text-blue-400 transition"
+                  >
+                    النظام السادس عشر - الجزء الثاني
+                  </h3>
+
+                  <div class="mono text-xs text-slate-600 mt-2">
+                    youtube // watch
+                  </div>
+                </div>
+              </a>
+
+              <!-- LESSON 04 -->
+              <a
+                href="https://youtu.be/iRiS9Luixrc?si=o34MC_G4-mXBB02x"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative flex gap-7 group"
+              >
+                <div
+                  class="relative z-10 shrink-0 w-8 h-8 border border-purple-400/50 bg-[#030608] flex items-center justify-center"
+                >
+                  <span class="mono text-[10px] text-purple-400"> 04 </span>
+                </div>
+
+                <div
+                  class="terminal-border flex-1 p-5 group-hover:border-purple-400/30 transition"
+                >
+                  <div class="mono text-[10px] text-purple-400/50 mb-2">
+                    VIDEO_04
+                  </div>
+
+                  <h3
+                    class="font-bold text-white group-hover:text-purple-400 transition"
+                  >
+                    النظام الثماني
+                  </h3>
+
+                  <div class="mono text-xs text-slate-600 mt-2">
+                    youtube // watch
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= MODAL BASICS ================= -->
+
     <div
       id="modal-basics"
-      class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md p-4 flex items-center justify-center"
     >
       <div
-        class="modal-content bg-secondary border border-cyan-500/20 rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden"
+        class="modal-box w-full max-w-4xl max-h-[90vh] overflow-hidden terminal-window"
       >
-        <div
-          class="flex items-center justify-between p-6 border-b border-cyan-500/10"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 rounded-xl bg-cyan-400/10 text-cyan-400 flex items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-              </svg>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-slate-50">
-                أساسيات تكنولوجيا المعلومات
-              </h2>
-              <p class="text-sm text-slate-400">IT Fundamentals</p>
-            </div>
+        <div class="terminal-top p-5 flex items-center justify-between">
+          <div>
+            <div class="mono text-[10px] text-emerald-400/50">MODULE // 01</div>
+
+            <h2 class="text-xl font-bold text-white mt-1">
+              أساسيات تكنولوجيا المعلومات
+            </h2>
           </div>
+
           <button
             onclick="closeModal('basics')"
-            class="w-10 h-10 rounded-lg bg-slate-700/50 text-slate-400 flex items-center justify-center transition-all duration-300 hover:bg-rose-500/20 hover:text-rose-400"
+            class="w-9 h-9 border border-red-400/20 text-red-400 hover:bg-red-400/10 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            ×
           </button>
         </div>
-        <div class="p-6 overflow-y-auto max-h-[calc(85vh-88px)]">
-          <div class="p-6 overflow-y-auto max-h-[calc(85vh-88px)]">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                class="file-card bg-card p-6 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-4 text-2xl font-black"
-                >
-                  1
-                </div>
-                <h3 class="text-base font-bold text-slate-50 mb-1">شابتر 1</h3>
-                <p
-                  class="text-slate-400 text-[10px] mb-4 text-center uppercase tracking-wider"
-                >
-                  مقدمة شاملة
-                </p>
 
-                <div class="w-full space-y-2">
-                  <a
-                    href="../CH 1 اساسيات_merged (1).pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-xs transition-all hover:bg-white"
-                  >
-                    <svg
-                      class="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      ></path>
-                    </svg>
-                    الخطة الذهنية
-                  </a>
-                  <a
-                    href="files/CH 1 اساسيات_merged (1).pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-400/20 font-bold text-xs transition-all hover:bg-cyan-400/10"
-                  >
-                    <svg
-                      class="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                      ></path>
-                    </svg>
-                    الملخص الفني
-                  </a>
+        <div class="p-5 overflow-y-auto max-h-[calc(90vh-90px)]">
+          <div class="grid sm:grid-cols-2 gap-3">
+            <!-- CH 1 -->
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="mono text-xs text-emerald-400">CHAPTER_01</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 1</h3>
                 </div>
+
+                <span class="mono text-xs text-emerald-400/40"> PDF </span>
+              </div>
+
+              <div class="mt-5 space-y-2">
+                <a
+                  href="../CH 1 اساسيات_merged (1).pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
+                >
+                  الخريطة الذهنية
+                </a>
+
+                <a
+                  href="files/CH 1 اساسيات_merged (1).pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
+                >
+                  الملخص
+                </a>
+              </div>
+            </div>
+
+            <!-- CH 2 -->
+            <div class="file-row terminal-border p-5 opacity-50">
+              <div class="flex justify-between">
+                <div>
+                  <div class="mono text-xs text-yellow-400">CHAPTER_02</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 2</h3>
+                </div>
+
+                <span class="mono text-xs text-yellow-400/60"> LOCKED </span>
               </div>
 
               <div
-                class="file-card bg-card p-6 rounded-xl border border-rose-500/10 flex flex-col items-center opacity-60"
+                class="mt-5 border border-yellow-400/10 px-4 py-3 text-sm text-slate-600"
               >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-xl bg-rose-400/10 text-rose-400 mb-4 text-2xl"
-                >
-                  2
+                الملفات غير متوفرة حاليا
+              </div>
+            </div>
+
+            <!-- CH 3 -->
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between">
+                <div>
+                  <div class="mono text-xs text-emerald-400">CHAPTER_03</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 3</h3>
                 </div>
-                <h3 class="text-base font-bold text-slate-50 mb-2">شابتر 2</h3>
-                <p class="text-slate-400 text-xs mb-4 text-center">
-                  راجع خارطة الطريق أدناه
-                </p>
-                <span
-                  class="w-full py-2.5 rounded-lg bg-slate-700 text-slate-400 font-bold text-sm text-center cursor-not-allowed"
-                  >غير متاح</span
-                >
+
+                <span class="mono text-xs text-emerald-400/40"> PDF </span>
               </div>
 
-              <div
-                class="file-card bg-card p-6 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-4 text-2xl font-black"
+              <div class="mt-5 space-y-2">
+                <a
+                  href="../CH.3.pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
                 >
-                  3
-                </div>
-                <h3 class="text-base font-bold text-slate-50 mb-1">شابتر 3</h3>
-                <p
-                  class="text-slate-400 text-[10px] mb-4 text-center uppercase tracking-wider"
-                >
-                  الخطة الذهنية
-                </p>
+                  الخريطة الذهنية
+                </a>
 
-                <div class="w-full space-y-2">
-                  <a
-                    href="../CH.3.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-xs transition-all hover:bg-white"
-                    >الخطة الذهنية</a
-                  >
-                  <a
-                    href="../files/CH3 اساسيات_merged.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-400/20 font-bold text-xs transition-all hover:bg-cyan-400/10"
-                    >الملخص</a
-                  >
+                <a
+                  href="../files/CH3 اساسيات_merged.pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
+                >
+                  الملخص
+                </a>
+              </div>
+            </div>
+
+            <!-- CH 4 -->
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between">
+                <div>
+                  <div class="mono text-xs text-cyan-400">CHAPTER_04</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 4</h3>
                 </div>
+
+                <span class="mono text-xs text-cyan-400/40"> PDF </span>
               </div>
 
-              <div
-                class="file-card bg-card p-6 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-4 text-2xl font-black"
+              <div class="mt-5 space-y-2">
+                <a
+                  href="../CH.4.pdf"
+                  target="_blank"
+                  class="block border border-cyan-400/10 px-4 py-3 text-sm text-slate-400 hover:text-cyan-400 hover:border-cyan-400/30 transition"
                 >
-                  4
-                </div>
-                <h3 class="text-base font-bold text-slate-50 mb-1">شابتر 4</h3>
-                <p
-                  class="text-slate-400 text-[10px] mb-4 text-center uppercase tracking-wider"
-                >
-                  الخطة الذهنية
-                </p>
+                  الخريطة الذهنية
+                </a>
 
-                <div class="w-full space-y-2">
-                  <a
-                    href="../CH.4.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-xs transition-all hover:bg-white"
-                    >الخطة الذهنية</a
-                  >
-                  <a
-                    href="https://drive.google.com/file/d/1g6nyQKZFxoVuRc8-I25014W0lPjeA5LK/view?usp=sharing"
-                    target="_blank"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-400/20 font-bold text-xs transition-all hover:bg-cyan-400/10"
-                    >الملخص</a
-                  >
+                <a
+                  href="https://drive.google.com/file/d/1g6nyQKZFxoVuRc8-I25014W0lPjeA5LK/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block border border-cyan-400/10 px-4 py-3 text-sm text-slate-400 hover:text-cyan-400 hover:border-cyan-400/30 transition"
+                >
+                  الملخص
+                </a>
+              </div>
+            </div>
+
+            <!-- CH 5 -->
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between">
+                <div>
+                  <div class="mono text-xs text-emerald-400">CHAPTER_05</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 5</h3>
                 </div>
+
+                <span class="mono text-xs text-emerald-400/40"> PDF </span>
               </div>
 
-              <div
-                class="file-card bg-card p-6 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-4 text-2xl font-black"
+              <div class="mt-5 space-y-2">
+                <a
+                  href="../CH3 AA.pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
                 >
-                  5
-                </div>
-                <h3 class="text-base font-bold text-slate-50 mb-1">شابتر 5</h3>
-                <p
-                  class="text-slate-400 text-[10px] mb-4 text-center uppercase tracking-wider"
-                >
-                  الخطة الذهنية
-                </p>
+                  الخريطة الذهنية
+                </a>
 
-                <div class="w-full space-y-2">
-                  <a
-                    href="../CH.5.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-xs transition-all hover:bg-white"
-                    >الخطة الذهنية</a
-                  >
-                  <a
-                    href="../files/CH5 اساسيات_merged.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-400/20 font-bold text-xs transition-all hover:bg-cyan-400/10"
-                    >الملخص</a
-                  >
+                <a
+                  href="../CH51.pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
+                >
+                  الملخص
+                </a>
+              </div>
+            </div>
+
+            <!-- CH 6 -->
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between">
+                <div>
+                  <div class="mono text-xs text-cyan-400">CHAPTER_06</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 6</h3>
                 </div>
+
+                <span class="mono text-xs text-cyan-400/40"> PDF </span>
               </div>
 
-              <div
-                class="file-card bg-card p-6 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-4 text-2xl font-black"
+              <div class="mt-5 space-y-2">
+                <a
+                  href="../CH.6.pdf"
+                  target="_blank"
+                  class="block border border-cyan-400/10 px-4 py-3 text-sm text-slate-400 hover:text-cyan-400 hover:border-cyan-400/30 transition"
                 >
-                  6
-                </div>
-                <h3 class="text-base font-bold text-slate-50 mb-1">شابتر 6</h3>
-                <p
-                  class="text-slate-400 text-[10px] mb-4 text-center uppercase tracking-wider"
-                >
-                  الخطة الذهنية
-                </p>
+                  الخريطة الذهنية
+                </a>
 
-                <div class="w-full space-y-2">
-                  <a
-                    href="../CH.6.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-xs transition-all hover:bg-white"
-                    >الخطة الذهنية</a
-                  >
-                  <a
-                    href="https://drive.google.com/file/d/10MiFZZncErIV8-4yTCDY9xYEpvN0DBXl/view?usp=sharing"
-                    target="_blank"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-400/20 font-bold text-xs transition-all hover:bg-cyan-400/10"
-                    >الملخص</a
-                  >
+                <a
+                  href="https://drive.google.com/file/d/10MiFZZncErIV8-4yTCDY9xYEpvN0DBXl/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block border border-cyan-400/10 px-4 py-3 text-sm text-slate-400 hover:text-cyan-400 hover:border-cyan-400/30 transition"
+                >
+                  الملخص
+                </a>
+              </div>
+            </div>
+
+            <!-- CH 7 -->
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between">
+                <div>
+                  <div class="mono text-xs text-emerald-400">CHAPTER_07</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 7</h3>
                 </div>
+
+                <span class="mono text-xs text-emerald-400/40"> PDF </span>
               </div>
 
-              <div
-                class="file-card bg-card p-6 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-4 text-2xl font-black"
+              <div class="mt-5 space-y-2">
+                <a
+                  href="../CH.7.pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
                 >
-                  7
-                </div>
-                <h3 class="text-base font-bold text-slate-50 mb-1">شابتر 7</h3>
-                <p
-                  class="text-slate-400 text-[10px] mb-4 text-center uppercase tracking-wider"
-                >
-                  الخطة الذهنية
-                </p>
+                  الخريطة الذهنية
+                </a>
 
-                <div class="w-full space-y-2">
-                  <a
-                    href="../CH.7.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-xs transition-all hover:bg-white"
-                    >الخطة الذهنية</a
-                  >
-                  <a
-                    href="../files/CH7 _merged.pdf"
-                    download
-                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-400/20 font-bold text-xs transition-all hover:bg-cyan-400/10"
-                    >الملخص</a
-                  >
-                </div>
+                <a
+                  href="../files/CH7 _merged.pdf"
+                  target="_blank"
+                  class="block border border-emerald-400/10 px-4 py-3 text-sm text-slate-400 hover:text-emerald-400 hover:border-emerald-400/30 transition"
+                >
+                  الملخص
+                </a>
               </div>
             </div>
           </div>
@@ -939,682 +1100,390 @@
       </div>
     </div>
 
-    <!-- Modal for Discrete Math -->
+    <!-- ================= MODAL DISCRETE ================= -->
+
     <div
       id="modal-discrete"
-      class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md p-4 flex items-center justify-center"
     >
-      <div
-        class="modal-content bg-secondary border border-blue-500/20 rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden"
-      >
-        <div
-          class="flex items-center justify-between p-6 border-b border-blue-500/10"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 rounded-xl bg-blue-400/10 text-blue-400 flex items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                <path d="M2 12h20" />
-              </svg>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-slate-50">
-                الرياضيات المتقطعة
-              </h2>
-              <p class="text-sm text-slate-400">Discrete Mathematics</p>
-            </div>
+      <div class="modal-box w-full max-w-2xl terminal-window">
+        <div class="terminal-top p-5 flex items-center justify-between">
+          <div>
+            <div class="mono text-[10px] text-cyan-400/50">MODULE // 02</div>
+
+            <h2 class="text-xl font-bold text-white mt-1">
+              الرياضيات المتقطعة
+            </h2>
           </div>
+
           <button
             onclick="closeModal('discrete')"
-            class="w-10 h-10 rounded-lg bg-slate-700/50 text-slate-400 flex items-center justify-center transition-all duration-300 hover:bg-rose-500/20 hover:text-rose-400"
+            class="w-9 h-9 border border-red-400/20 text-red-400 hover:bg-red-400/10 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            ×
           </button>
         </div>
-        <div class="p-6 overflow-y-auto max-h-[calc(85vh-88px)]">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Discrete Summary -->
-            <div
-              class="file-card bg-card p-6 rounded-xl border border-blue-500/10 flex flex-col items-center"
-            >
-              <div
-                class="w-14 h-14 flex items-center justify-center rounded-xl bg-blue-400/10 text-blue-400 mb-4"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                  />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <polyline points="10 9 9 9 8 9" />
-                </svg>
-              </div>
-              <h3 class="text-base font-bold text-slate-50 mb-2">ملخص شامل</h3>
-              <p class="text-slate-400 text-xs mb-4 text-center">
-                ملخص كامل لمادة الرياضيات المتقطعة
-              </p>
-              <a
-                href="https://drive.google.com/file/d/18lkr03UDyYqfgg1tnYS0nCNh-vKMFPhn/view?usp=sharing"
-                target="_blank"
-                rel="noopener"
-                class="w-full py-2.5 rounded-lg bg-blue-400 text-primary font-bold text-sm text-center transition-all duration-300 hover:bg-white"
-                >تحميل الملخص</a
-              >
-            </div>
 
-            <!-- More files can be added here -->
-            <div
-              class="file-card bg-card p-6 rounded-xl border border-slate-500/10 flex flex-col items-center opacity-50"
-            >
-              <div
-                class="w-14 h-14 flex items-center justify-center rounded-xl bg-slate-400/10 text-slate-400 mb-4"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-              </div>
-              <h3 class="text-base font-bold text-slate-50 mb-2">قريباً</h3>
-              <p class="text-slate-400 text-xs mb-4 text-center">
-                ملفات إضافية قادمة
-              </p>
-              <span
-                class="w-full py-2.5 rounded-lg bg-slate-700 text-slate-400 font-bold text-sm text-center cursor-not-allowed"
-                >قريباً</span
-              >
+        <div class="p-5 space-y-3">
+          <a
+            href="https://drive.google.com/file/d/18lkr03UDyYqfgg1tnYS0nCNh-vKMFPhn/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="file-row block terminal-border p-5"
+          >
+            <div class="mono text-xs text-cyan-400 mb-2">RESOURCE_01</div>
+
+            <div class="font-bold text-white">ملفات الرياضيات المتقطعة</div>
+
+            <div class="text-xs text-slate-600 mt-2">
+              Google Drive // open file
             </div>
+          </a>
+
+          <div class="terminal-border p-5 opacity-50">
+            <div class="mono text-xs text-yellow-400 mb-2">RESOURCE_02</div>
+
+            <div class="font-bold text-slate-500">قريباً</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Modal for Programming -->
+    <!-- ================= MODAL PROGRAMMING ================= -->
+
     <div
       id="modal-programming"
-      class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md p-4 flex items-center justify-center"
     >
-      <div
-        class="modal-content bg-secondary border border-emerald-500/20 rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden"
-      >
-        <div
-          class="flex items-center justify-between p-6 border-b border-emerald-500/10"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-slate-50">برمجة 1</h2>
-              <p class="text-sm text-slate-400">Programming 1</p>
-            </div>
+      <div class="modal-box w-full max-w-2xl terminal-window">
+        <div class="terminal-top p-5 flex items-center justify-between">
+          <div>
+            <div class="mono text-[10px] text-blue-400/50">MODULE // 03</div>
+
+            <h2 class="text-xl font-bold text-white mt-1">برمجة 1</h2>
           </div>
+
           <button
             onclick="closeModal('programming')"
-            class="w-10 h-10 rounded-lg bg-slate-700/50 text-slate-400 flex items-center justify-center transition-all duration-300 hover:bg-rose-500/20 hover:text-rose-400"
+            class="w-9 h-9 border border-red-400/20 text-red-400 hover:bg-red-400/10 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            ×
           </button>
         </div>
-        <div class="p-6 overflow-y-auto max-h-[calc(85vh-88px)]">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Coming Soon -->
-            <div
-              class="file-card bg-card p-6 rounded-xl border border-amber-500/10 flex flex-col items-center"
-            >
-              <div
-                class="w-14 h-14 flex items-center justify-center rounded-xl bg-amber-400/10 text-amber-400 mb-4"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-                  />
-                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                  <path d="M10 9H8" />
-                  <path d="M16 13H8" />
-                  <path d="M16 17H8" />
-                </svg>
-              </div>
 
-              <h3 class="text-base font-bold text-slate-50 mb-2">
-                ملفات برمجة 1
-              </h3>
+        <div class="p-5">
+          <a
+            href="../cpp.1.pdf"
+            target="_blank"
+            class="file-row block terminal-border p-6"
+          >
+            <div class="mono text-xs text-blue-400 mb-2">CPP_01</div>
 
-              <p class="text-slate-400 text-xs mb-4 text-center">
-                تحميل ملفات ومستندات خاصة بمادة برمجة 1
-              </p>
+            <div class="font-bold text-white">ملفات برمجة 1</div>
 
-              <!-- زر التحميل -->
-              <a
-                href="../cpp.1.pdf"
-                download
-                class="w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm text-center hover:bg-amber-600 transition"
-              >
-                تحميل الملف
-              </a>
-            </div>
-          </div>
+            <div class="text-xs text-slate-600 mt-2">PDF // open</div>
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- Modal for Files -->
+    <!-- ================= MODAL FILES ================= -->
+
     <div
       id="modal-files"
-      class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md p-4 flex items-center justify-center"
     >
-      <div
-        class="modal-content bg-secondary border border-amber-500/20 rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden"
-      >
-        <div
-          class="flex items-center justify-between p-6 border-b border-amber-500/10"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-                />
-                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                <path d="M10 9H8" />
-                <path d="M16 13H8" />
-                <path d="M16 17H8" />
-              </svg>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-slate-50">
-                ملفات الخطط الشجرية
-              </h2>
-              <p class="text-sm text-slate-400">General Files</p>
-            </div>
+      <div class="modal-box w-full max-w-2xl terminal-window">
+        <div class="terminal-top p-5 flex items-center justify-between">
+          <div>
+            <div class="mono text-[10px] text-yellow-400/50">MODULE // 04</div>
+
+            <h2 class="text-xl font-bold text-white mt-1">
+              ملفات الخطط الشجرية
+            </h2>
           </div>
+
           <button
             onclick="closeModal('files')"
-            class="w-10 h-10 rounded-lg bg-slate-700/50 text-slate-400 flex items-center justify-center transition-all duration-300 hover:bg-rose-500/20 hover:text-rose-400"
+            class="w-9 h-9 border border-red-400/20 text-red-400 hover:bg-red-400/10 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            ×
           </button>
         </div>
-        <div class="p-6 overflow-y-auto max-h-[calc(85vh-88px)]">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Coming Soon -->
-            <div
-              class="file-card bg-card p-6 rounded-xl border border-amber-500/10 flex flex-col items-center"
-            >
-              <div
-                class="w-14 h-14 flex items-center justify-center rounded-xl bg-amber-400/10 text-amber-400 mb-4"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-                  />
-                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                  <path d="M10 9H8" />
-                  <path d="M16 13H8" />
-                  <path d="M16 17H8" />
-                </svg>
-              </div>
 
-              <h3 class="text-base font-bold text-slate-50 mb-2">
-                الخريطة الشجرية للامن السيبراني
-              </h3>
+        <div class="p-5">
+          <a
+            href="../files/rodmap.jpeg"
+            target="_blank"
+            class="file-row block terminal-border p-6"
+          >
+            <div class="mono text-xs text-yellow-400 mb-2">IMAGE_01</div>
 
-              <p class="text-slate-400 text-xs mb-4 text-center">
-                تحميل ملفات ومستندات عامة
-              </p>
-
-              <!-- زر التحميل -->
-              <a
-                href="../files/rodmap.jpeg"
-                download
-                class="w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm text-center hover:bg-amber-600 transition"
-              >
-                تحميل الملف
-              </a>
+            <div class="font-bold text-white">
+              الخريطة الشجرية للامن السيبراني
             </div>
-          </div>
+
+            <div class="text-xs text-slate-600 mt-2">IMAGE // open</div>
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- Modal for Past Exams -->
+    <!-- ================= MODAL EXAMS ================= -->
+
     <div
       id="modal-exams"
-      class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md p-4 flex items-center justify-center"
     >
       <div
-        class="modal-content bg-secondary border border-rose-500/20 rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden"
+        class="modal-box w-full max-w-3xl max-h-[90vh] overflow-hidden terminal-window"
       >
-        <div
-          class="flex items-center justify-between p-6 border-b border-rose-500/10"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 rounded-xl bg-rose-400/10 text-rose-400 flex items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-                />
-                <path
-                  d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"
-                />
-                <path d="m9 14 2 2 4-4" />
-              </svg>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-slate-50">
-                أسئلة الامتحانات السابقة
-              </h2>
-              <p class="text-sm text-slate-400">Past Exams</p>
-            </div>
+        <div class="terminal-top p-5 flex items-center justify-between">
+          <div>
+            <div class="mono text-[10px] text-rose-400/50">MODULE // 05</div>
+
+            <h2 class="text-xl font-bold text-white mt-1">
+              أسئلة الامتحانات السابقة
+            </h2>
           </div>
+
           <button
             onclick="closeModal('exams')"
-            class="w-10 h-10 rounded-lg bg-slate-700/50 text-slate-400 flex items-center justify-center transition-all duration-300 hover:bg-rose-500/20 hover:text-rose-400"
+            class="w-9 h-9 border border-red-400/20 text-red-400 hover:bg-red-400/10 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            ×
           </button>
         </div>
-        <div class="p-6 overflow-y-auto max-h-[calc(85vh-88px)]">
-          <!-- Subject Tabs -->
-          <div class="flex flex-wrap gap-2 mb-6">
+
+        <div class="p-5 overflow-y-auto max-h-[calc(90vh-90px)]">
+          <!-- TABS -->
+          <div class="grid grid-cols-3 gap-2 mb-6">
             <button
-              onclick="showExamSubject('basics-exams')"
-              class="exam-tab active px-4 py-2 rounded-lg bg-cyan-400/10 text-cyan-400 text-sm font-semibold transition-all duration-300 hover:bg-cyan-400 hover:text-primary"
-              data-tab="basics-exams"
+              onclick="showExamSubject('exam-basics')"
+              class="exam-tab border border-rose-400/20 px-3 py-3 text-xs text-rose-400 hover:bg-rose-400/5 transition"
             >
               أساسيات IT
             </button>
+
             <button
-              onclick="showExamSubject('discrete-exams')"
-              class="exam-tab px-4 py-2 rounded-lg bg-blue-400/10 text-blue-400 text-sm font-semibold transition-all duration-300 hover:bg-blue-400 hover:text-primary"
-              data-tab="discrete-exams"
+              onclick="showExamSubject('exam-discrete')"
+              class="exam-tab border border-cyan-400/20 px-3 py-3 text-xs text-cyan-400 hover:bg-cyan-400/5 transition"
             >
               رياضيات متقطعة
             </button>
+
             <button
-              onclick="showExamSubject('programming-exams')"
-              class="exam-tab px-4 py-2 rounded-lg bg-emerald-400/10 text-emerald-400 text-sm font-semibold transition-all duration-300 hover:bg-emerald-400 hover:text-primary"
-              data-tab="programming-exams"
+              onclick="showExamSubject('exam-programming')"
+              class="exam-tab border border-blue-400/20 px-3 py-3 text-xs text-blue-400 hover:bg-blue-400/5 transition"
             >
               برمجة 1
             </button>
           </div>
 
-          <!-- Basics Exams -->
-          <div id="basics-exams" class="exam-content">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                class="file-card bg-card p-5 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <line x1="10" y1="9" x2="8" y2="9" />
-                  </svg>
-                </div>
-                <h3 class="text-sm font-bold text-slate-50 mb-1 text-center">
-                  امتحان نصفي 2024
-                </h3>
-                <p class="text-slate-400 text-xs mb-3">أساسيات IT - Midterm</p>
-                <a
-                  href="#"
-                  class="w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-sm text-center transition-all duration-300 hover:bg-white"
-                  >تحميل</a
-                >
+          <!-- BASICS -->
+          <div id="exam-basics" class="exam-content">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="terminal-border p-5 opacity-50">
+                <div class="mono text-xs text-rose-400">2026 // MIDTERM</div>
+
+                <div class="font-bold text-slate-500 mt-3">قريباً</div>
               </div>
-              <div
-                class="file-card bg-card p-5 rounded-xl border border-cyan-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-400 mb-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <line x1="10" y1="9" x2="8" y2="9" />
-                  </svg>
-                </div>
-                <h3 class="text-sm font-bold text-slate-50 mb-1 text-center">
-                  امتحان نهائي 2024
-                </h3>
-                <p class="text-slate-400 text-xs mb-3">أساسيات IT - Final</p>
-                <a
-                  href="#"
-                  class="w-full py-2 rounded-lg bg-cyan-400 text-primary font-bold text-sm text-center transition-all duration-300 hover:bg-white"
-                  >تحميل</a
-                >
+
+              <div class="terminal-border p-5 opacity-50">
+                <div class="mono text-xs text-rose-400">2026 // FINAL</div>
+
+                <div class="font-bold text-slate-500 mt-3">قريباً</div>
               </div>
             </div>
           </div>
 
-          <!-- Discrete Math Exams -->
-          <div id="discrete-exams" class="exam-content hidden">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                class="file-card bg-card p-5 rounded-xl border border-blue-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-400/10 text-blue-400 mb-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <line x1="10" y1="9" x2="8" y2="9" />
-                  </svg>
-                </div>
-                <h3 class="text-sm font-bold text-slate-50 mb-1 text-center">
-                  امتحان نصفي 2024
-                </h3>
-                <p class="text-slate-400 text-xs mb-3">
-                  رياضيات متقطعة - Midterm
-                </p>
-                <a
-                  href="#"
-                  class="w-full py-2 rounded-lg bg-blue-400 text-primary font-bold text-sm text-center transition-all duration-300 hover:bg-white"
-                  >تحميل</a
-                >
+          <!-- DISCRETE -->
+          <div id="exam-discrete" class="exam-content hidden">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="terminal-border p-5 opacity-50">
+                <div class="mono text-xs text-cyan-400">2026 // MIDTERM</div>
+
+                <div class="font-bold text-slate-500 mt-3">قريباً</div>
               </div>
-              <div
-                class="file-card bg-card p-5 rounded-xl border border-blue-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-400/10 text-blue-400 mb-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <line x1="10" y1="9" x2="8" y2="9" />
-                  </svg>
-                </div>
-                <h3 class="text-sm font-bold text-slate-50 mb-1 text-center">
-                  امتحان نهائي 2024
-                </h3>
-                <p class="text-slate-400 text-xs mb-3">
-                  رياضيات متقطعة - Final
-                </p>
-                <a
-                  href="#"
-                  class="w-full py-2 rounded-lg bg-blue-400 text-primary font-bold text-sm text-center transition-all duration-300 hover:bg-white"
-                  >تحميل</a
-                >
+
+              <div class="terminal-border p-5 opacity-50">
+                <div class="mono text-xs text-cyan-400">2026 // FINAL</div>
+
+                <div class="font-bold text-slate-500 mt-3">قريباً</div>
               </div>
             </div>
           </div>
 
-          <!-- Programming Exams -->
-          <div id="programming-exams" class="exam-content hidden">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                class="file-card bg-card p-5 rounded-xl border border-emerald-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-12 h-12 flex items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-400 mb-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <line x1="10" y1="9" x2="8" y2="9" />
-                  </svg>
-                </div>
-                <h3 class="text-sm font-bold text-slate-50 mb-1 text-center">
-                  امتحان نصفي 2024
-                </h3>
-                <p class="text-slate-400 text-xs mb-3">برمجة 1 - Midterm</p>
-                <a
-                  href="#"
-                  class="w-full py-2 rounded-lg bg-emerald-400 text-primary font-bold text-sm text-center transition-all duration-300 hover:bg-white"
-                  >تحميل</a
-                >
+          <!-- PROGRAMMING -->
+          <div id="exam-programming" class="exam-content hidden">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="terminal-border p-5 opacity-50">
+                <div class="mono text-xs text-blue-400">2026 // MIDTERM</div>
+
+                <div class="font-bold text-slate-500 mt-3">قريباً</div>
               </div>
-              <div
-                class="file-card bg-card p-5 rounded-xl border border-emerald-500/10 flex flex-col items-center"
-              >
-                <div
-                  class="w-12 h-12 flex items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-400 mb-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <line x1="10" y1="9" x2="8" y2="9" />
-                  </svg>
+
+              <div class="terminal-border p-5 opacity-50">
+                <div class="mono text-xs text-blue-400">2026 // FINAL</div>
+
+                <div class="font-bold text-slate-500 mt-3">قريباً</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================= MODAL OPERATING SYSTEMS ================= -->
+
+    <div
+      id="modal-os"
+      class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md p-4 flex items-center justify-center"
+    >
+      <div
+        class="modal-box w-full max-w-4xl max-h-[90vh] overflow-hidden terminal-window"
+      >
+        <!-- HEADER -->
+
+        <div class="terminal-top p-5 flex items-center justify-between">
+          <div>
+            <div class="mono text-[10px] text-purple-400/50">MODULE // 06</div>
+
+            <h2 class="text-xl font-bold text-white mt-1">أنظمة التشغيل</h2>
+
+            <div class="mono text-[10px] text-slate-600 mt-1">
+              OPERATING SYSTEMS
+            </div>
+          </div>
+
+          <button
+            onclick="closeModal('os')"
+            class="w-9 h-9 border border-red-400/20 text-red-400 hover:bg-red-400/10 transition"
+          >
+            ×
+          </button>
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="p-5 overflow-y-auto max-h-[calc(90vh-110px)]">
+          <div class="grid sm:grid-cols-2 gap-3">
+            <!-- CHAPTER 01 -->
+
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="mono text-xs text-purple-400">CHAPTER_01</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 1</h3>
                 </div>
-                <h3 class="text-sm font-bold text-slate-50 mb-1 text-center">
-                  امتحان نهائي 2024
-                </h3>
-                <p class="text-slate-400 text-xs mb-3">برمجة 1 - Final</p>
+
+                <span class="mono text-xs text-purple-400/40"> OS_01 </span>
+              </div>
+
+              <div class="mt-5">
                 <a
-                  href="#"
-                  class="w-full py-2 rounded-lg bg-emerald-400 text-primary font-bold text-sm text-center transition-all duration-300 hover:bg-white"
-                  >تحميل</a
+                  href="../OS ch1.pdf"
+                  target="_blank"
+                  class="block border border-purple-400/10 px-4 py-3 text-sm text-slate-400 hover:text-purple-400 hover:border-purple-400/30 transition"
                 >
+                  فتح الملفات
+                </a>
+              </div>
+            </div>
+
+            <!-- CHAPTER 02 -->
+
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="mono text-xs text-purple-400">CHAPTER_02</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 2</h3>
+                </div>
+
+                <span class="mono text-xs text-purple-400/40"> OS_02 </span>
+              </div>
+
+              <div class="mt-5">
+                <a
+                  href="../OS ch2.pdf"
+                  target="_blank"
+                  class="block border border-purple-400/10 px-4 py-3 text-sm text-slate-400 hover:text-purple-400 hover:border-purple-400/30 transition"
+                >
+                  فتح الملفات
+                </a>
+              </div>
+            </div>
+
+            <!-- CHAPTER 03 -->
+
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="mono text-xs text-purple-400">CHAPTER_03</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 3</h3>
+                </div>
+
+                <span class="mono text-xs text-purple-400/40"> OS_03 </span>
+              </div>
+
+              <div class="mt-5">
+                <a
+                  href="../OS ch3.pdf"
+                  target="_blank"
+                  class="block border border-purple-400/10 px-4 py-3 text-sm text-slate-400 hover:text-purple-400 hover:border-purple-400/30 transition"
+                >
+                  فتح الملفات
+                </a>
+              </div>
+            </div>
+
+            <!-- CHAPTER 04 -->
+
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="mono text-xs text-purple-400">CHAPTER_04</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 4</h3>
+                </div>
+
+                <span class="mono text-xs text-purple-400/40"> OS_04 </span>
+              </div>
+
+              <div class="mt-5">
+                <a
+                  href="../OS ch4.pdf"
+                  target="_blank"
+                  class="block border border-purple-400/10 px-4 py-3 text-sm text-slate-400 hover:text-purple-400 hover:border-purple-400/30 transition"
+                >
+                  فتح الملفات
+                </a>
+              </div>
+            </div>
+
+            <!-- CHAPTER 05 -->
+
+            <div class="file-row terminal-border p-5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="mono text-xs text-purple-400">CHAPTER_05</div>
+
+                  <h3 class="font-bold text-white mt-2">شابتر 5</h3>
+                </div>
+
+                <span class="mono text-xs text-purple-400/40"> OS_05 </span>
+              </div>
+
+              <div class="mt-5">
+                <a
+                  href="../OS ch5.pdf"
+                  target="_blank"
+                  class="block border border-purple-400/10 px-4 py-3 text-sm text-slate-400 hover:text-purple-400 hover:border-purple-400/30 transition"
+                >
+                  فتح الملفات
+                </a>
               </div>
             </div>
           </div>
@@ -1622,266 +1491,151 @@
       </div>
     </div>
 
-    <footer class="border-t border-cyan-500/10 bg-secondary py-8 mt-12">
-      <div class="max-w-6xl mx-auto px-5">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8">
+    <!-- FOOTER -->
+    <footer class="border-t border-emerald-400/10 bg-black/30">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-12">
+        <div class="grid md:grid-cols-2 gap-10">
           <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="text-cyan-400">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-              </div>
-              <div class="flex flex-col leading-tight">
-                <span
-                  class="text-xl font-black font-space bg-gradient-to-br from-cyan-400 to-blue-400 bg-clip-text text-transparent"
-                  >ROOT TEAM</span
-                >
-                <span
-                  class="text-[0.6rem] font-bold font-space text-slate-500 tracking-[0.25em] uppercase"
-                  >AHU</span
-                >
-              </div>
+            <div class="mono text-xl font-bold text-emerald-400 glow-text">
+              ROOT TEAM
             </div>
-            <p class="text-sm text-slate-500 leading-relaxed">
+
+            <p class="text-slate-600 text-sm mt-3 max-w-md leading-7">
               فريق جامعي تقني في جامعة الحسين بن طلال
             </p>
           </div>
 
-          <div>
-            <h4 class="text-sm font-bold text-slate-50 mb-4">تواصل معنا</h4>
-            <div class="flex flex-col gap-2">
+          <div class="md:text-left">
+            <div class="mono text-xs text-slate-600 mb-4">// CONTACT</div>
+
+            <div class="space-y-2 text-sm">
               <a
                 href="mailto:root30123@gmail.com"
-                class="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors"
+                class="block text-slate-500 hover:text-emerald-400 transition"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect width="20" height="16" x="2" y="4" rx="2" />
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
                 root30123@gmail.com
               </a>
+
               <a
                 href="tel:+962780630881"
-                class="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors"
+                class="block text-slate-500 hover:text-emerald-400 transition"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                  />
-                </svg>
-                <span dir="ltr">+962 78 063 0881</span>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-bold text-slate-50 mb-4">تابعنا على</h4>
-            <div class="flex items-center gap-3">
-                       <a href="https://www.linkedin.com/company/root-team/" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400 transition-all duration-300 hover:bg-cyan-400 hover:text-primary" title="LinkedIn">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V24h-4V8zm7 0h3.83v2.18h.05c.53-1.01 1.84-2.18 3.79-2.18 4.05 0 4.8 2.67 4.8 6.14V24h-4v-7.1c0-1.69-.03-3.87-2.36-3.87-2.37 0-2.73 1.85-2.73 3.75V24h-4V8z"/>
-  </svg>
-</a>
-              <a
-                href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frootteamcs%2F&is_from_rle"
-                target="_blank"
-                rel="noopener"
-                class="w-9 h-9 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400 transition-all duration-300 hover:bg-cyan-400 hover:text-primary"
-                title="Instagram"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-              </a>
-              <a
-                href="https://x.com/0x13O__"
-                target="_blank"
-                rel="noopener"
-                class="w-9 h-9 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400 transition-all duration-300 hover:bg-cyan-400 hover:text-primary"
-                title="X (Twitter)"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://github.com/root31023-ux"
-                target="_blank"
-                rel="noopener"
-                class="w-9 h-9 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400 transition-all duration-300 hover:bg-cyan-400 hover:text-primary"
-                title="GitHub"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
-                  />
-                  <path d="M9 18c-4.51 2-5-2-7-2" />
-                </svg>
+                +962 78 063 0881
               </a>
             </div>
           </div>
         </div>
 
         <div
-          class="border-t border-cyan-500/10 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-3"
+          class="border-t border-emerald-400/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-4"
         >
-          <span>ROOT TEAM 2025 </span>
-          <a
-            href="index.html"
-            class="text-cyan-400 hover:text-white transition-colors"
-            >العودة للرئيسية</a
-          >
+          <div class="mono text-[10px] text-slate-700">ROOT TEAM // 2025</div>
+
+          <div class="flex flex-wrap gap-5 mono text-[10px]">
+            <a
+              href="https://www.linkedin.com/company/root-team/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-slate-600 hover:text-emerald-400 transition"
+            >
+              LINKEDIN
+            </a>
+
+            <a
+              href="https://www.instagram.com/rootteamcs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-slate-600 hover:text-emerald-400 transition"
+            >
+              INSTAGRAM
+            </a>
+
+            <a
+              href="https://x.com/0x13O__"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-slate-600 hover:text-emerald-400 transition"
+            >
+              X
+            </a>
+
+            <a
+              href="https://github.com/root31023-ux"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-slate-600 hover:text-emerald-400 transition"
+            >
+              GITHUB
+            </a>
+          </div>
         </div>
       </div>
     </footer>
 
+    <!-- JAVASCRIPT -->
     <script>
-      // Mobile menu
       const menuBtn = document.getElementById("menuBtn");
       const mobileMenu = document.getElementById("mobileMenu");
 
       menuBtn.addEventListener("click", () => {
-        menuBtn.classList.toggle("open");
-        mobileMenu.classList.toggle("active");
+        mobileMenu.classList.toggle("hidden");
       });
 
       document.querySelectorAll("#mobileMenu a").forEach((link) => {
         link.addEventListener("click", () => {
-          menuBtn.classList.remove("open");
-          mobileMenu.classList.remove("active");
+          mobileMenu.classList.add("hidden");
         });
       });
 
-      // Modal functions
       function openModal(subject) {
         const modal = document.getElementById(`modal-${subject}`);
-        if (modal) {
-          modal.classList.add("active");
-          document.body.style.overflow = "hidden";
-        }
+
+        if (!modal) return;
+
+        modal.classList.add("active");
+
+        document.body.style.overflow = "hidden";
       }
 
       function closeModal(subject) {
         const modal = document.getElementById(`modal-${subject}`);
-        if (modal) {
-          modal.classList.remove("active");
-          document.body.style.overflow = "";
-        }
+
+        if (!modal) return;
+
+        modal.classList.remove("active");
+
+        document.body.style.overflow = "";
       }
 
-      // Close modal on backdrop click
       document.querySelectorAll(".modal").forEach((modal) => {
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) {
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) {
             modal.classList.remove("active");
             document.body.style.overflow = "";
           }
         });
       });
 
-      // Close modal on Escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
           document.querySelectorAll(".modal.active").forEach((modal) => {
             modal.classList.remove("active");
           });
+
           document.body.style.overflow = "";
         }
       });
 
-      // Exam subject tabs
-      function showExamSubject(tabId) {
-        // Hide all exam content
+      function showExamSubject(id) {
         document.querySelectorAll(".exam-content").forEach((content) => {
           content.classList.add("hidden");
         });
 
-        // Remove active class from all tabs
-        document.querySelectorAll(".exam-tab").forEach((tab) => {
-          tab.classList.remove("active");
-          // Reset styles
-          const color = tab.dataset.tab.includes("discrete")
-            ? "blue"
-            : tab.dataset.tab.includes("programming")
-              ? "emerald"
-              : "cyan";
-          tab.className = `exam-tab px-4 py-2 rounded-lg bg-${color}-400/10 text-${color}-400 text-sm font-semibold transition-all duration-300 hover:bg-${color}-400 hover:text-primary`;
-        });
+        const selected = document.getElementById(id);
 
-        // Show selected content
-        document.getElementById(tabId).classList.remove("hidden");
-
-        // Add active class to clicked tab
-        const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
-        activeTab.classList.add("active");
-        const color = tabId.includes("discrete")
-          ? "blue"
-          : tabId.includes("programming")
-            ? "emerald"
-            : "cyan";
-        activeTab.className = `exam-tab active px-4 py-2 rounded-lg bg-${color}-400 text-primary text-sm font-semibold`;
+        if (selected) {
+          selected.classList.remove("hidden");
+        }
       }
     </script>
   </body>
