@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta
+      name="description"
+      content="أعضاء وقادة فريق ROOT TEAM في جامعة الحسين بن طلال والأقسام والفرق المسؤولة."
+    />
+    <title>الأعضاء | ROOT TEAM</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/members.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <!-- Subtle Mountain & Eye Background Layer -->
+      <div class="members-bg-layer" aria-hidden="true"></div>
+
+      <!-- HEADER / NAVIGATION -->
+      <header class="topbar" id="top">
+        <a class="brand" href="./index.html" aria-label="ROOT TEAM home">
+          <span class="brand-main"
+            >R<span class="brand-eye-wrap" aria-hidden="true">
+              <svg
+                viewBox="0 0 84 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 22C18 11 30 6 42 6C54 6 66 11 72 22C66 33 54 38 42 38C30 38 18 33 12 22Z"
+                  stroke="#ff5100"
+                  stroke-width="2.5"
+                  stroke-dasharray="4 3"
+                />
+                <path
+                  d="M18 22C23 14 32 10 42 10C52 10 61 14 66 22C61 30 52 34 42 34C32 34 23 30 18 22Z"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  stroke-dasharray="6 2"
+                />
+                <path
+                  d="M25 22C29 16 35 14 42 14C49 14 55 16 59 22C55 28 49 30 42 30C35 30 29 28 25 22Z"
+                  stroke="#ff5100"
+                  stroke-width="2.2"
+                />
+                <circle
+                  cx="42"
+                  cy="22"
+                  r="6"
+                  fill="#050505"
+                  stroke="#ff5100"
+                  stroke-width="2.2"
+                />
+                <circle cx="42" cy="22" r="2.2" fill="#ff5100" />
+              </svg> </span
+            >T</span
+          >
+          <span class="brand-sub">TEAM</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="navigation"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="navigation" id="navigation" aria-label="التنقل الرئيسي">
+          <a class="nav-link" href="./index.html">الرئيسية</a>
+          <a class="nav-link" href="./index.html#about">من نحن</a>
+          <a class="nav-link" href="./index.html#features">المميزات</a>
+          <a class="nav-link" href="./cyber.html">الأمن السيبراني</a>
+          <a class="nav-link active" href="./members.html">الأعضاء</a>
+          <a class="nav-link" href="./library.html">المكتبة</a>
+          <a class="nav-link" href="./index.html#contact">تواصل معنا</a>
+          <a class="nav-link" href="./writeups.html">Writeups</a>
+        </nav>
+
+        <a class="join-link" href="./index.html#contact">
+          <span>انضم للفريق</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 2c-2.7 0-6 1.35-6 3v2h12v-2c0-1.65-3.3-3-6-3Zm8 0c-.35 0-.73.02-1.12.07 1.3.78 2.12 1.8 2.12 2.93v2h5v-2c0-1.65-3.3-3-6-3Z"
+            />
+          </svg>
+        </a>
+      </header>
+
+      <main class="members-page">
+        <!-- PAGE HEADER -->
+        <section class="members-hero">
+          <div class="section-kicker">
+            01 / LEADERSHIP &amp; DEPARTMENTS — ROOT TEAM
+          </div>
+          <h1>قادة الأقسام <span>والأعضاء</span></h1>
+          <p>
+            مرّر المؤشر على أي بطاقة لإضاءة الصورة واستعراض الاسم والمعلومات،
+            واضغط على البطاقة لعرض الأعضاء المسؤول عنهم ضمن القسم.
+          </p>
+        </section>
+
+        <!-- 6 LEADERS CARDS -->
+        <section class="members-section" aria-label="بطاقات القادة والأقسام">
+          <div class="members-grid" id="leadersGrid">
+            <!-- 1. إبراهيم الطريفي - القيادة -->
+            <article
+              class="member-card active-leader"
+              data-leader="ibrahim"
+              tabindex="0"
+              role="button"
+              aria-pressed="true"
+            >
+              <div class="member-media">
+                <img
+                  src="./img/ibrahime.jpeg"
+                  alt="إبراهيم الطريفي"
+                  loading="lazy"
+                />
+                <div class="member-scrim"></div>
+                <span class="member-tag">LEADERSHIP</span>
+              </div>
+              <div class="member-info">
+                <span class="member-role">القيادة — ليدر الفريق</span>
+                <h2 class="member-name">إبراهيم الطريفي</h2>
+                <p class="member-bio">
+                  يقود رؤية الفريق وتوجهاته العامة في جامعة الحسين بن طلال. اضغط
+                  لعرض أعضاء القيادة.
+                </p>
+                <span class="member-action-hint"
+                  >عرض الأعضاء المسؤول عنهم ↓</span
+                >
+              </div>
+            </article>
+            <!-- 3. أحمد أبو غيث - القسم التقني -->
+            <article
+              class="member-card"
+              data-leader="ahmad"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <div class="member-media">
+                <img src="./img/ahmad.jpg" alt="أحمد أبو غيث" loading="lazy" />
+                <div class="member-scrim"></div>
+                <span class="member-tag">TECH DEPT</span>
+              </div>
+              <div class="member-info">
+                <span class="member-role">القسم التقني — الليدر</span>
+                <h2 class="member-name">أحمد أبو غيث</h2>
+                <p class="member-bio">
+                  يقود القسم التقني والمسارات العملية. اضغط لعرض أعضاء القسم
+                  التقني.
+                </p>
+                <span class="member-action-hint">عرض أعضاء القسم التقني ↓</span>
+              </div>
+            </article>
+
+            <article
+              class="member-card"
+              data-leader="sadeen"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <div class="member-media">
+                <img src="./img/avatar.jpg" alt="سدين العيسوي" loading="lazy" />
+                <div class="member-scrim"></div>
+                <span class="member-tag">ASSISTANT LEAD</span>
+              </div>
+              <div class="member-info">
+                <span class="member-role">القيادة — مساعد ليدر</span>
+                <h2 class="member-name">سدين العيسوي</h2>
+                <p class="member-bio">
+                  تسانده في قيادة الفريق ومتابعة سير العمل والتنسيق. اضغط لعرض
+                  أعضاء القيادة.
+                </p>
+                <span class="member-action-hint"
+                  >عرض الأعضاء المسؤول عنهم ↓</span
+                >
+              </div>
+            </article>
+
+         
+            <article
+              class="member-card"
+              data-leader="aryam"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <div class="member-media">
+                <img
+                  src="./img/avatar.jpg"
+                  alt="أريام المراعية"
+                  loading="lazy"
+                />
+                <div class="member-scrim"></div>
+                <span class="member-tag">MEDIA DEPT</span>
+              </div>
+              <div class="member-info">
+                <span class="member-role">القسم الإعلامي — الليدر</span>
+                <h2 class="member-name">أريام المراعية</h2>
+                <p class="member-bio">
+                  تقود القسم الإعلامي والمحتوى البصري. اضغط لعرض أعضاء القسم
+                  الإعلامي.
+                </p>
+                <span class="member-action-hint"
+                  >عرض أعضاء القسم الإعلامي ↓</span
+                >
+              </div>
+            </article>
+
+            <!-- 5. سلمى الغزيوات - القسم الأكاديمي -->
+            <article
+              class="member-card"
+              data-leader="salma"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <div class="member-media">
+                <img
+                  src="./img/avatar.jpg"
+                  alt="سلمى الغزيوات"
+                  loading="lazy"
+                />
+                <div class="member-scrim"></div>
+                <span class="member-tag">ACADEMIC DEPT</span>
+              </div>
+              <div class="member-info">
+                <span class="member-role">القسم الأكاديمي — الليدر</span>
+                <h2 class="member-name">سلمى الغزيوات</h2>
+                <p class="member-bio">
+                  تقود القسم الأكاديمي وتنظيم المواد التعليمية. اضغط لعرض أعضاء
+                  القسم الأكاديمي.
+                </p>
+                <span class="member-action-hint"
+                  >عرض أعضاء القسم الأكاديمي ↓</span
+                >
+              </div>
+            </article>
+
+            <!-- 6. بتول الخطايبة - قسم البحث والموارد -->
+            <article
+              class="member-card"
+              data-leader="batool"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <div class="member-media">
+                <img
+                  src="./img/avatar.jpg"
+                  alt="بتول الخطايبة"
+                  loading="lazy"
+                />
+                <div class="member-scrim"></div>
+                <span class="member-tag">RESEARCH DEPT</span>
+              </div>
+              <div class="member-info">
+                <span class="member-role">قسم البحث والموارد — ليدر القسم</span>
+                <h2 class="member-name">بتول الخطايبة</h2>
+                <p class="member-bio">
+                  تقود قسم البحث والموارد وجمع المصادر. اضغط لعرض أعضاء قسم
+                  البحث والموارد.
+                </p>
+                <span class="member-action-hint"
+                  >عرض أعضاء قسم البحث والموارد ↓</span
+                >
+              </div>
+            </article>
+          </div>
+
+          <!-- ASSIGNED MEMBERS PANEL (Appears/Updates when clicking any of the 6 leader cards) -->
+          <div class="assigned-panel" id="assignedPanel" aria-live="polite">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <a class="footer-brand" href="./index.html"
+              >ROOT <span>TEAM</span></a
+            >
+            <p>
+              فريق جامعي تقني من جامعة الحسين بن طلال يهتم بالأمن السيبراني
+              والشبكات والبرمجة والتعلم التقني التطبيقي.
+            </p>
+            <div class="footer-status">
+              <span class="eyebrow-dot"></span> STATUS: ONLINE // AHU CYBER
+              COMMUNITY
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>الصفحات</h4>
+            <a href="./index.html">الرئيسية</a>
+            <a href="./index.html#features">المميزات</a>
+            <a href="./cyber.html">الأمن السيبراني</a>
+            <a href="./members.html">الأعضاء</a>
+            <a href="./library.html">المكتبة</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>تواصل معنا</h4>
+            <a href="mailto:root31023@gmail.com">root31023@gmail.com</a>
+            <a href="tel:+962780630881" dir="ltr">+962 780 630 881</a>
+            <a
+              href="https://t.me/rootteam_ahu"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Telegram</a
+            >
+            <a
+              href="https://www.instagram.com/rootteamcs"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram</a
+            >
+            <a
+              href="https://x.com/0x13O__"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X / Twitter</a
+            >
+            <a
+              href="https://github.com/root31023-ux"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            © <span id="year"></span> ROOT TEAM · AL-HUSSEIN BIN TALAL
+            UNIVERSITY
+          </p>
+          <a href="#top">العودة للأعلى ↑</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script>
+      (() => {
+        const LEADERS_DEPARTMENTS = {
+          ibrahim: {
+            code: "DEPARTMENT // LEADERSHIP",
+            department: "القيادة",
+            leaderName: "إبراهيم الطريفي",
+            leaderRole: "ليدر الفريق",
+            description: "الأعضاء المسؤول عنهم ضمن القيادة ومتابعة الفريق.",
+            members: [
+              { index: "01", name: "إبراهيم الطريفي", role: "ليدر" },
+              { index: "02", name: "سدين العيسوي", role: "مساعد ليدر" },
+            ],
+          },
+          ahmad: {
+            code: "DEPARTMENT // TECHNICAL",
+            department: "القسم التقني",
+            leaderName: "أحمد أبو غيث",
+            leaderRole: "الليدر",
+            description: "الأعضاء المسؤول عنهم ضمن القسم التقني.",
+            members: [
+              { index: "01", name: "أحمد أبو غيث", role: "الليدر" },
+              {
+                index: "02",
+                name: "إبراهيم الطريفي",
+                role: "عضو القسم التقني",
+              },
+            ],
+          },
+          sadeen: {
+            code: "DEPARTMENT // LEADERSHIP",
+            department: "مساعد ليدر",
+            leaderName: "سدين العيسوي",
+            leaderRole: "مساعد ليدر",
+            description: "الأعضاء المسؤول عنهم ضمن القيادة ومتابعة التنسيق.",
+            members: [
+              { index: "01", name: "سدين العيسوي", role: "مساعد ليدر" },
+            ],
+          },
+
+          aryam: {
+            code: "DEPARTMENT // MEDIA",
+            department: "القسم الإعلامي",
+            leaderName: "أريام المراعية",
+            leaderRole: "الليدر",
+            description: "الأعضاء المسؤول عنهم ضمن القسم الإعلامي.",
+            members: [
+              { index: "01", name: "أريام المراعية", role: "الليدر" },
+              { index: "02", name: "بُشرى", role: "عضو القسم الإعلامي" },
+              { index: "03", name: "روعة السبوت", role: "عضو القسم الإعلامي" },
+            ],
+          },
+          salma: {
+            code: "DEPARTMENT // ACADEMIC",
+            department: "القسم الأكاديمي",
+            leaderName: "سلمى الغزيوات",
+            leaderRole: "الليدر",
+            description: "الأعضاء المسؤول عنهم ضمن القسم الأكاديمي.",
+            members: [
+              { index: "01", name: "سلمى الغزيوات", role: "الليدر" },
+              { index: "02", name: "ياسمين", role: "عضو القسم الأكاديمي" },
+              { index: "03", name: "شيماء", role: "عضو القسم الأكاديمي" },
+              { index: "04", name: "زين", role: "عضو القسم الأكاديمي" },
+            ],
+          },
+          batool: {
+            code: "DEPARTMENT // RESEARCH & RESOURCES",
+            department: "قسم البحث والموارد",
+            leaderName: "بتول الخطايبة",
+            leaderRole: "ليدر القسم",
+            description: "الأعضاء المسؤول عنهم ضمن قسم البحث والموارد.",
+            members: [
+              { index: "01", name: "بتول الخطايبة", role: "ليدر القسم" },
+              { index: "02", name: "مرح", role: "عضو قسم البحث والموارد" },
+              {
+                index: "03",
+                name: "طارق القيسي",
+                role: "عضو قسم البحث والموارد",
+              },
+              { index: "04", name: "بهاء", role: "عضو قسم البحث والموارد" },
+              { index: "05", name: "عبد الله", role: "عضو قسم البحث والموارد" },
+            ],
+          },
+        };
+
+        const cards = [
+          ...document.querySelectorAll(".member-card[data-leader]"),
+        ];
+        const panel = document.getElementById("assignedPanel");
+
+        function renderAssignedMembers(leaderKey, shouldScroll = false) {
+          const info =
+            LEADERS_DEPARTMENTS[leaderKey] || LEADERS_DEPARTMENTS.ibrahim;
+
+          cards.forEach((card) => {
+            const isSelected = card.dataset.leader === leaderKey;
+            card.classList.toggle("active-leader", isSelected);
+            card.setAttribute("aria-pressed", String(isSelected));
+          });
+
+          const membersCardsHtml = info.members
+            .map(
+              (m) => `
+              <div class="assigned-member-item">
+                <span class="assigned-idx">${m.index}</span>
+                <div>
+                  <h4>${m.name}</h4>
+                  <span>${m.role}</span>
+                </div>
+              </div>
+            `,
+            )
+            .join("");
+
+          panel.innerHTML = `
+          <div class="assigned-head">
+            <div>
+              <span class="assigned-code">${info.code}</span>
+              <h3>${info.department} — <span>${info.leaderName}</span> (${info.leaderRole})</h3>
+              <p>${info.description}</p>
+            </div>
+            <span class="assigned-count">${info.members.length} أعضاء</span>
+          </div>
+          <div class="assigned-members-grid">${membersCardsHtml}</div>
+        `;
+
+          if (shouldScroll) {
+            panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        }
+
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+            renderAssignedMembers(card.dataset.leader, true);
+          });
+          card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              renderAssignedMembers(card.dataset.leader, true);
+            }
+          });
+        });
+
+        renderAssignedMembers("ibrahim", false);
+      })();
+    </script>
+    <source src="./js/script.js" />
+  </body>
+</html>

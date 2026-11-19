@@ -1,0 +1,16 @@
+@media (max-width: 920px) {
+  .topbar {
+    z-index: 1000 !important;
+  }
+
+  .navigation {
+    position: fixed !important;
+    z-index: 9999 !important;
+    background: #080808 !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(255, 81, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  }
+}

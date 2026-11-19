@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="خارطة طريق Backend المتكاملة — ROOT TEAM في جامعة الحسين بن طلال." />
+  <title>خارطة Backend | ROOT TEAM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/backend-roadmap.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <!-- Subtle Mountain & Eye Background Layer -->
+    <div class="be-bg-layer" aria-hidden="true"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="topbar" id="top">
+      <a class="brand" href="./index.html" aria-label="ROOT TEAM home">
+        <span class="brand-main">R<span class="brand-eye-wrap" aria-hidden="true">
+          <svg viewBox="0 0 84 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C18 11 30 6 42 6C54 6 66 11 72 22C66 33 54 38 42 38C30 38 18 33 12 22Z" stroke="#ff5100" stroke-width="2.5" stroke-dasharray="4 3"/>
+            <path d="M18 22C23 14 32 10 42 10C52 10 61 14 66 22C61 30 52 34 42 34C32 34 23 30 18 22Z" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 2"/>
+            <path d="M25 22C29 16 35 14 42 14C49 14 55 16 59 22C55 28 49 30 42 30C35 30 29 28 25 22Z" stroke="#ff5100" stroke-width="2.2"/>
+            <circle cx="42" cy="22" r="6" fill="#050505" stroke="#ff5100" stroke-width="2.2"/>
+            <circle cx="42" cy="22" r="2.2" fill="#ff5100"/>
+          </svg>
+        </span>T</span>
+        <span class="brand-sub">TEAM</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="navigation" id="navigation" aria-label="التنقل الرئيسي">
+        <a class="nav-link" href="./index.html">الرئيسية</a>
+        <a class="nav-link" href="./index.html#features">المميزات</a>
+        <a class="nav-link active" href="./cyber.html">الأمن السيبراني</a>
+        <a class="nav-link" href="./member.html">الأعضاء</a>
+        <a class="nav-link" href="./index.html#about">من نحن</a>
+        <a class="nav-link" href="./library.html">المكتبة</a>
+        <a class="nav-link" href="./index.html#contact">تواصل معنا</a>
+        <a class="nav-link" href="./writeups.html">Writeups</a>
+      </nav>
+
+      <a class="join-link" href="./index.html#contact">
+        <span>انضم للفريق</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 2c-2.7 0-6 1.35-6 3v2h12v-2c0-1.65-3.3-3-6-3Zm8 0c-.35 0-.73.02-1.12.07 1.3.78 2.12 1.8 2.12 2.93v2h5v-2c0-1.65-3.3-3-6-3Z"/></svg>
+      </a>
+    </header>
+
+    <main class="be-main">
+      <!-- HERO -->
+      <section class="be-hero">
+        <div class="be-top-row">
+          <a href="./cyber.html" class="back-pill">← العودة إلى المسارات</a>
+          <span class="be-tag">ROOT_TEAM / BACKEND ENGINEERING ROADMAP</span>
+        </div>
+
+        <h1>خارطة طريق <span>Backend</span> المتكاملة</h1>
+
+        <p>
+          مسار عملي لبناء الخوادم، قواعد البيانات، واجهات البرمجة (APIs)، والأنظمة الموزعة بموثوقية وأمان عالٍ.
+        </p>
+
+        <div class="be-stats">
+          <div class="be-stat">
+            <b>06</b>
+            <span>مراحل هندسية</span>
+          </div>
+          <div class="be-stat">
+            <b>APIs &amp; DB</b>
+            <span>تصميم قواعد البيانات والخدمات</span>
+          </div>
+          <div class="be-stat">
+            <b>SECURITY</b>
+            <span>حماية الخوادم والصلاحيات</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROADMAP STAGES -->
+      <section class="be-section" aria-label="مراحل خارطة طريق Backend">
+        <div class="be-head">
+          <div class="section-kicker">01 / SERVER &amp; DATA TRACK</div>
+          <h2>مراحل بناء مهندس <span>Backend</span> قوي</h2>
+          <p>ابدأ بفهم كيفية عمل الإنترنت والخوادم ثم انتقل لبناء أنظمة قابلة للتوسع والاعتمادية.</p>
+        </div>
+
+        <div class="be-grid">
+          <!-- STAGE 01 -->
+          <article class="be-card">
+            <div class="be-card-head">
+              <span class="be-num">STAGE 01</span>
+              <span class="be-level">CORE CONCEPTS</span>
+            </div>
+            <h3>أساسيات الإنترنت، الشبكات، وLinux</h3>
+            <p>
+              فهم آلية عمل الشبكات والطلبات والخدمات على الخوادم، وإتقان إدارة بيئة Linux وسطر الأوامر.
+            </p>
+            <ul class="be-topics">
+              <li>HTTP/HTTPS, DNS, TCP/IP, Ports &amp; TLS</li>
+              <li>Linux File System, Permissions, SSH &amp; Processes</li>
+              <li>Environment Variables, Logs &amp; Reverse Proxies</li>
+            </ul>
+          </article>
+
+          <!-- STAGE 02 -->
+          <article class="be-card">
+            <div class="be-card-head">
+              <span class="be-num">STAGE 02</span>
+              <span class="be-level">LANGUAGE &amp; RUNTIME</span>
+            </div>
+            <h3>لغة برمجة وبيئة تشغيل للخادم</h3>
+            <p>
+              إتقان لغة قوية في تطوير الخوادم مع فهم البرمجة كائنية التوجه، معالجة الأخطاء، والبرمجة غير المتزامنة.
+            </p>
+            <ul class="be-topics">
+              <li>Node.js / TypeScript أو Python أو C# / Go</li>
+              <li>Async Execution, Streams, Exceptions &amp; Modules</li>
+              <li>Clean Architecture, SOLID &amp; Dependency Injection</li>
+            </ul>
+          </article>
+
+          <!-- STAGE 03 -->
+          <article class="be-card">
+            <div class="be-card-head">
+              <span class="be-num">STAGE 03</span>
+              <span class="be-level">DATABASES</span>
+            </div>
+            <h3>قواعد البيانات العلائقية وغير العلائقية</h3>
+            <p>
+              تصميم مخططات بيانات سليمة، كتابة استعلامات فعالة، وفهم الفهارس والمعاملات لضمان سلامة البيانات.
+            </p>
+            <ul class="be-topics">
+              <li>PostgreSQL / MySQL, Normalization &amp; Indexing</li>
+              <li>Transactions (ACID), Joins &amp; Query Optimization</li>
+              <li>Redis Caching &amp; NoSQL (MongoDB) Concepts</li>
+            </ul>
+          </article>
+
+          <!-- STAGE 04 -->
+          <article class="be-card">
+            <div class="be-card-head">
+              <span class="be-num">STAGE 04</span>
+              <span class="be-level">APIS &amp; AUTH</span>
+            </div>
+            <h3>بناء APIs والمصادقة والصلاحيات</h3>
+            <p>
+              تطوير واجهات برمجة واضحة ومنظمة مع التحقق من المدخلات، إدارة الجلسات أو التوكنات، وضبط الصلاحيات.
+            </p>
+            <ul class="be-topics">
+              <li>RESTful APIs Design, Status Codes &amp; Pagination</li>
+              <li>Authentication (JWT / Sessions / OAuth2) &amp; RBAC</li>
+              <li>Input Validation, Rate Limiting &amp; API Documentation</li>
+            </ul>
+          </article>
+
+          <!-- STAGE 05 -->
+          <article class="be-card">
+            <div class="be-card-head">
+              <span class="be-num">STAGE 05</span>
+              <span class="be-level">SECURITY &amp; TESTING</span>
+            </div>
+            <h3>أمن الخوادم والاختبار الآلي</h3>
+            <p>
+              حماية التطبيقات الخلفية من الثغرات الشائعة وفحص الكود عبر اختبارات الوحدة والتكامل قبل النشر.
+            </p>
+            <ul class="be-topics">
+              <li>SQL Injection, Auth/Access Flaws &amp; SSRF Protection</li>
+              <li>Password Hashing, Secrets Management &amp; CORS</li>
+              <li>Unit Tests, Integration Tests &amp; Structured Logging</li>
+            </ul>
+          </article>
+
+          <!-- STAGE 06 -->
+          <article class="be-card">
+            <div class="be-card-head">
+              <span class="be-num">STAGE 06</span>
+              <span class="be-level">DEVOPS &amp; SCALING</span>
+            </div>
+            <h3>الحاويات، النشر، والتوسع</h3>
+            <p>
+              تغليف التطبيقات بالحاويات، أتمتة النشر، ومراقبة الأداء والجاهزية في بيئات الإنتاج الحقيقية.
+            </p>
+            <ul class="be-topics">
+              <li>Docker &amp; Docker Compose for Local/Prod Parity</li>
+              <li>CI/CD Pipelines, Nginx &amp; Health Monitoring</li>
+              <li>Message Queues, Background Jobs &amp; Horizontal Scaling</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- PRACTICAL MILESTONES -->
+      <section class="be-projects-section">
+        <div class="be-head">
+          <div class="section-kicker">02 / BUILD REAL SYSTEMS</div>
+          <h2>مشاريع عملية <span>لتثبيت مهارات Backend</span></h2>
+          <p>حوّل المفاهيم إلى أنظمة فعلية تتعامل مع قاعدة بيانات، صلاحيات، وأخطاء واقعية.</p>
+        </div>
+
+        <div class="be-projects-grid">
+          <div class="be-project-box">
+            <span class="proj-tag">SYSTEM 01</span>
+            <h3>REST API متكامل مع صلاحيات ومستخدمين</h3>
+            <p>نظام إدارة مهام أو متجر يدعم التسجيل، التحقق من المدخلات، الأدوار، والعمليات الأساسية CRUD.</p>
+          </div>
+          <div class="be-project-box">
+            <span class="proj-tag">SYSTEM 02</span>
+            <h3>نظام تقارير وفواتير مع فهارس وCaching</h3>
+            <p>تطبيق يعتمد على قاعدة بيانات منظمة مع تحسين الاستعلامات واستخدام التخزين المؤقت لتسريع الاستجابة.</p>
+          </div>
+          <div class="be-project-box">
+            <span class="proj-tag">SYSTEM 03</span>
+            <h3>خدمة خلفية مجهزة بـ Docker واختبارات</h3>
+            <p>مشروع يعمل داخل Docker مع متغيرات بيئة آمنة، سجلات واضحة، واختبارات تغطي المسارات الأساسية.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="footer-brand" href="./index.html">ROOT <span>TEAM</span></a>
+          <p>فريق جامعي تقني من جامعة الحسين بن طلال يهتم بالأمن السيبراني والشبكات والبرمجة والتعلم التقني التطبيقي.</p>
+          <div class="footer-status"><span class="eyebrow-dot"></span> STATUS: ONLINE // AHU CYBER COMMUNITY</div>
+        </div>
+
+        <div class="footer-col">
+          <h4>الصفحات</h4>
+          <a href="./index.html">الرئيسية</a>
+          <a href="./index.html#features">المميزات</a>
+          <a href="./cyber.html">الأمن السيبراني</a>
+          <a href="./member.html">الأعضاء</a>
+          <a href="./library.html">المكتبة</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>تواصل معنا</h4>
+          <a href="mailto:root31023@gmail.com">root31023@gmail.com</a>
+          <a href="tel:+962780630881" dir="ltr">+962 780 630 881</a>
+          <a href="https://www.linkedin.com/company/root-team/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/rootteamcs/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://x.com/Dexters_75" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+          <a href="https://github.com/root31023-ux" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> ROOT TEAM · AL-HUSSEIN BIN TALAL UNIVERSITY</p>
+        <a href="#top">العودة للأعلى ↑</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>

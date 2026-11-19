@@ -1,0 +1,284 @@
+.site-shell {
+  position: relative;
+}
+
+/* Subtle Mountain & Eye background layer */
+.fe-bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 80% 22%, rgba(255, 81, 0, .09), transparent 42%),
+    url("./background.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.13;
+  filter: saturate(0.85) contrast(1.05);
+}
+
+
+
+.fe-main {
+  padding-top: 132px;
+}
+
+/* ================= HERO ================= */
+.fe-hero {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 36px 8% 48px;
+}
+
+.fe-top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.back-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #2b1f19;
+  background: rgba(12, 10, 9, .88);
+  color: #cfcfcf;
+  font-size: 14px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.back-pill:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.fe-tag {
+  font: 700 12px/1 "Rajdhani", sans-serif;
+  letter-spacing: 2px;
+  color: var(--orange);
+}
+
+.fe-hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(36px, 4.6vw, 62px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.fe-hero h1 span {
+  color: var(--orange);
+}
+
+.fe-hero p {
+  margin: 0;
+  max-width: 740px;
+  font-size: 18px;
+  line-height: 1.85;
+  color: #b4b4b4;
+}
+
+.fe-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.fe-stat {
+  padding: 20px 22px;
+  border-radius: 14px;
+  border: 1px solid #261b15;
+  background: rgba(10, 9, 8, .88);
+}
+
+.fe-stat b {
+  display: block;
+  font: 700 28px/1.1 "Rajdhani", sans-serif;
+  color: var(--orange);
+}
+
+.fe-stat span {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #9e9e9e;
+}
+
+/* ================= ROADMAP STAGES ================= */
+.fe-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px 8% 80px;
+}
+
+.fe-head {
+  margin-bottom: 36px;
+}
+
+.fe-head h2 {
+  margin: 10px 0 10px;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 900;
+}
+
+.fe-head h2 span {
+  color: var(--orange);
+}
+
+.fe-head p {
+  margin: 0;
+  max-width: 680px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #a4a4a4;
+}
+
+.fe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.fe-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid #261c17;
+  background: linear-gradient(155deg, rgba(16, 13, 11, .94), rgba(8, 8, 8, .97));
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.fe-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--orange);
+  box-shadow: 0 14px 36px rgba(255, 81, 0, .11);
+}
+
+.fe-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.fe-num {
+  font: 700 13px/1 "Rajdhani", sans-serif;
+  letter-spacing: 1.5px;
+  color: var(--orange);
+}
+
+.fe-level {
+  font: 700 10px/1 "Rajdhani", sans-serif;
+  letter-spacing: 1.5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 81, 0, .35);
+  background: rgba(255, 81, 0, .08);
+  color: #ffb085;
+}
+
+.fe-card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.fe-card p {
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #a3a3a3;
+}
+
+.fe-topics {
+  margin: auto 0 0;
+  padding: 16px 0 0;
+  list-style: none;
+  border-top: 1px solid #1f1612;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fe-topics li {
+  font-size: 13px;
+  color: #cfcfcf;
+  position: relative;
+  padding-right: 14px;
+}
+
+.fe-topics li::before {
+  content: "▸";
+  position: absolute;
+  right: 0;
+  color: var(--orange);
+}
+
+/* ================= PRACTICAL MILESTONES ================= */
+.fe-projects-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 16px 8% 110px;
+}
+
+.fe-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.fe-project-box {
+  padding: 26px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 81, 0, .3);
+  background: rgba(11, 9, 8, .92);
+}
+
+.proj-tag {
+  font: 700 11px/1 "Rajdhani", sans-serif;
+  letter-spacing: 2px;
+  color: var(--orange);
+}
+
+.fe-project-box h3 {
+  margin: 10px 0 8px;
+  font-size: 19px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.fe-project-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #a3a3a3;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .fe-grid,
+  .fe-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .fe-main {
+    padding-top: 112px;
+  }
+  .fe-stats,
+  .fe-grid,
+  .fe-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

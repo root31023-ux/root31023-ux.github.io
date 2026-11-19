@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta
+      name="description"
+      content="Writeups وتحليلات أمنية — ROOT TEAM في جامعة الحسين بن طلال."
+    />
+    <title>Writeups | ROOT TEAM</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <style>
+      .site-shell {
+        position: relative;
+      }
+
+      /* Subtle Mountain & Eye background layer */
+      .wu-bg-layer {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image:
+          radial-gradient(
+            circle at 80% 18%,
+            rgba(255, 81, 0, 0.09),
+            transparent 42%
+          ),
+          url("./img/background.png");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.12;
+        filter: saturate(0.85) contrast(1.05);
+      }
+
+      .site-shell > :not(.wu-bg-layer) {
+        position: relative;
+        z-index: 1;
+      }
+
+      .wu-main {
+        padding-top: 132px;
+        padding-bottom: 110px;
+      }
+
+      /* ================= HERO ================= */
+      .wu-hero {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 36px 8% 36px;
+      }
+
+      .wu-hero h1 {
+        margin: 12px 0 14px;
+        font-size: clamp(36px, 4.5vw, 60px);
+        font-weight: 900;
+        line-height: 1.2;
+      }
+
+      .wu-hero h1 span {
+        color: var(--orange);
+      }
+
+      .wu-hero p {
+        margin: 0;
+        max-width: 760px;
+        font-size: 18px;
+        line-height: 1.85;
+        color: #adadad;
+      }
+
+      /* ================= 3 REPORT BUTTON CARDS ================= */
+      .wu-cards-section {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 12px 8% 40px;
+      }
+
+      .wu-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .wu-report-btn {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        padding: 0;
+        border-radius: 20px;
+        border: 1px solid #2a1e18;
+        background: linear-gradient(
+          155deg,
+          rgba(18, 14, 12, 0.96),
+          rgba(8, 8, 8, 0.98)
+        );
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      .wu-report-btn:hover,
+      .wu-report-btn.active {
+        transform: translateY(-6px);
+        border-color: var(--orange);
+        box-shadow: 0 16px 42px rgba(255, 81, 0, 0.16);
+      }
+
+      .wu-report-thumb {
+        position: relative;
+        height: 195px;
+        width: 100%;
+        overflow: hidden;
+        background: #060606;
+        border-bottom: 1px solid #221712;
+      }
+
+      .wu-report-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.35s ease,
+          filter 0.35s ease;
+        filter: brightness(0.85);
+      }
+
+      .wu-report-btn:hover .wu-report-thumb img,
+      .wu-report-btn.active .wu-report-thumb img {
+        transform: scale(1.05);
+        filter: brightness(1);
+      }
+
+      .wu-report-num {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: rgba(5, 5, 5, 0.86);
+        border: 1px solid rgba(255, 81, 0, 0.5);
+        color: var(--orange);
+        font:
+          700 12px/1 "Rajdhani",
+          sans-serif;
+        letter-spacing: 1.5px;
+      }
+
+      .wu-report-btn.active .wu-report-num {
+        background: var(--orange);
+        color: #050505;
+      }
+
+      .wu-report-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 22px;
+      }
+
+      .wu-report-title {
+        margin: 0 0 14px;
+        font-size: 19px;
+        font-weight: 800;
+        line-height: 1.5;
+        color: #ffffff;
+      }
+
+      .wu-report-open {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 12px;
+        border-top: 1px solid #1e1511;
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--orange);
+      }
+
+      /* ================= OPEN ARTICLE READER ================= */
+      .wu-reader-wrap {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 0 8%;
+      }
+
+      .writeup-card {
+        display: none;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 81, 0, 0.5);
+        background: linear-gradient(
+          155deg,
+          rgba(16, 13, 11, 0.97),
+          rgba(7, 7, 7, 0.99)
+        );
+        padding: 36px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+      }
+
+      .writeup-card.open {
+        display: block;
+      }
+
+      .wu-meta-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .wu-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .wu-badge {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 81, 0, 0.4);
+        background: rgba(255, 81, 0, 0.1);
+        color: #ff9c66;
+        font:
+          700 11px/1 "Rajdhani",
+          sans-serif;
+        letter-spacing: 1.5px;
+      }
+
+      .wu-badge.crit {
+        border-color: rgba(239, 68, 68, 0.55);
+        background: rgba(239, 68, 68, 0.14);
+        color: #fca5a5;
+      }
+
+      .wu-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .wu-action-btn {
+        padding: 7px 14px;
+        border-radius: 10px;
+        border: 1px solid #2e211b;
+        background: #0b0b0b;
+        color: #cfcfcf;
+        font-family: "Tajawal", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .wu-action-btn:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+      }
+
+      .writeup-card h2 {
+        margin: 0 0 22px;
+        font-size: clamp(24px, 3vw, 36px);
+        font-weight: 900;
+        line-height: 1.35;
+        color: #ffffff;
+      }
+
+      .wu-body {
+        font-size: 17px;
+        line-height: 1.95;
+        color: #cccccc;
+      }
+
+      .wu-body p {
+        margin: 0 0 16px;
+      }
+
+      .wu-body h3 {
+        margin: 28px 0 12px;
+        font-size: 21px;
+        font-weight: 800;
+        color: var(--orange);
+      }
+
+      .wu-body ul {
+        margin: 0 0 20px;
+        padding-right: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .wu-body li {
+        color: #d6d6d6;
+      }
+
+      .wu-code-snippet {
+        direction: ltr;
+        text-align: left;
+        margin: 14px 0 20px;
+        padding: 14px 18px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 81, 0, 0.35);
+        background: #050505;
+        color: #ffb285;
+        font-family: "Rajdhani", monospace;
+        font-size: 16px;
+        font-weight: 600;
+        overflow-x: auto;
+      }
+
+      .wu-callout {
+        margin: 22px 0;
+        padding: 18px 22px;
+        border-radius: 14px;
+        border-right: 4px solid var(--orange);
+        background: rgba(255, 81, 0, 0.06);
+        color: #e4e4e4;
+      }
+
+      /* ================= ARTICLE IMAGES GALLERY ================= */
+      .wu-images-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 26px;
+        padding-top: 24px;
+        border-top: 1px solid #221712;
+      }
+
+      .wu-figure {
+        margin: 0;
+        border-radius: 14px;
+        border: 1px solid #261b15;
+        background: #060606;
+        overflow: hidden;
+        cursor: zoom-in;
+        transition:
+          border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .wu-figure:hover {
+        border-color: var(--orange);
+        transform: translateY(-3px);
+      }
+
+      .wu-figure img {
+        display: block;
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        background: #090909;
+      }
+
+      .wu-figure figcaption {
+        padding: 12px 15px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #b5b5b5;
+        border-top: 1px solid #1b1310;
+      }
+
+      /* ================= LIGHTBOX MODAL ================= */
+      .wu-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.86);
+        backdrop-filter: blur(8px);
+      }
+
+      .wu-lightbox.open {
+        display: flex;
+      }
+
+      .wu-lightbox-box {
+        position: relative;
+        max-width: 960px;
+        width: 100%;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 81, 0, 0.55);
+        background: #090909;
+        padding: 16px;
+        text-align: center;
+      }
+
+      .wu-lightbox-box img {
+        max-height: 75vh;
+        width: auto;
+        max-width: 100%;
+        border-radius: 12px;
+        margin: 0 auto;
+      }
+
+      .wu-lightbox-caption {
+        margin-top: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #e5e5e5;
+      }
+
+      .wu-lightbox-close {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 81, 0, 0.45);
+        background: rgba(5, 5, 5, 0.85);
+        color: var(--orange);
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      @media (max-width: 960px) {
+        .wu-cards-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .wu-images-grid {
+          grid-template-columns: 1fr;
+        }
+        .writeup-card {
+          padding: 22px;
+        }
+        .wu-main {
+          padding-top: 112px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <!-- Subtle Mountain & Eye background layer -->
+      <div class="wu-bg-layer" aria-hidden="true"></div>
+
+      <!-- HEADER / NAVIGATION -->
+      <header class="topbar" id="top">
+        <a class="brand" href="./index.html" aria-label="ROOT TEAM home">
+          <span class="brand-main"
+            >R<span class="brand-eye-wrap" aria-hidden="true">
+              <svg
+                viewBox="0 0 84 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 22C18 11 30 6 42 6C54 6 66 11 72 22C66 33 54 38 42 38C30 38 18 33 12 22Z"
+                  stroke="#ff5100"
+                  stroke-width="2.5"
+                  stroke-dasharray="4 3"
+                />
+                <path
+                  d="M18 22C23 14 32 10 42 10C52 10 61 14 66 22C61 30 52 34 42 34C32 34 23 30 18 22Z"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  stroke-dasharray="6 2"
+                />
+                <path
+                  d="M25 22C29 16 35 14 42 14C49 14 55 16 59 22C55 28 49 30 42 30C35 30 29 28 25 22Z"
+                  stroke="#ff5100"
+                  stroke-width="2.2"
+                />
+                <circle
+                  cx="42"
+                  cy="22"
+                  r="6"
+                  fill="#050505"
+                  stroke="#ff5100"
+                  stroke-width="2.2"
+                />
+                <circle cx="42" cy="22" r="2.2" fill="#ff5100" />
+              </svg> </span
+            >T</span
+          >
+          <span class="brand-sub">TEAM</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="navigation"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="navigation" id="navigation" aria-label="التنقل الرئيسي">
+          <a class="nav-link" href="./index.html">الرئيسية</a>
+          <a class="nav-link" href="./index.html#about">من نحن</a>
+          <a class="nav-link" href="./index.html#features">المميزات</a>
+          <a class="nav-link" href="./cyber.html">الأمن السيبراني</a>
+          <a class="nav-link" href="./members.html">الأعضاء</a>
+          <a class="nav-link" href="./library.html">المكتبة</a>
+          <a class="nav-link active" href="./writeups.html">Writeups</a>
+          <a class="nav-link" href="./index.html#contact">تواصل معنا</a>
+        </nav>
+
+        <a class="join-link" href="./index.html#contact">
+          <span>انضم للفريق</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 2c-2.7 0-6 1.35-6 3v2h12v-2c0-1.65-3.3-3-6-3Zm8 0c-.35 0-.73.02-1.12.07 1.3.78 2.12 1.8 2.12 2.93v2h5v-2c0-1.65-3.3-3-6-3Z"
+            />
+          </svg>
+        </a>
+      </header>
+
+      <main class="wu-main">
+        <!-- HERO -->
+        <section class="wu-hero">
+          <div class="section-kicker">
+            01 / OFFENSIVE RESEARCH &amp; WRITEUPS — ROOT TEAM
+          </div>
+          <h1>تقارير وتحليلات <span>Writeups</span></h1>
+          <p>
+            اضغط على أي بطاقة تقرير لفتح المقال الكامل وقراءة التحليل والصور
+            التوضيحية.
+          </p>
+        </section>
+
+        <!-- 3 REPORT BUTTONS (IMAGE + TITLE) -->
+        <section class="wu-cards-section" aria-label="اختيار التقرير">
+          <div class="wu-cards-grid" id="reportButtonsGrid">
+            <button
+              type="button"
+              class="wu-report-btn"
+              data-target="wu-otp"
+              aria-expanded="false"
+            >
+              <div class="wu-report-thumb">
+                <img
+                  src="./img/cover3.png"
+                  alt="عندما يصبح رمز OTP مجرد رقم"
+                  loading="lazy"
+                />
+                <span class="wu-report-num">REPORT 01</span>
+              </div>
+              <div class="wu-report-body">
+                <h2 class="wu-report-title">
+                  عندما يصبح رمز OTP مجرد رقم: طريق هادئ للاستيلاء على الحسابات
+                </h2>
+                <span class="wu-report-open">فتح المقال <b>↙</b></span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              class="wu-report-btn"
+              data-target="wu-xss"
+              aria-expanded="false"
+            >
+              <div class="wu-report-thumb">
+                <img
+                  src="./img/cover2.png"
+                  alt="ثلاث ثغرات في موقع واحد"
+                  loading="lazy"
+                />
+                <span class="wu-report-num">REPORT 02</span>
+              </div>
+              <div class="wu-report-body">
+                <h2 class="wu-report-title">
+                  ثلاث ثغرات في موقع واحد: HTML Injection + Reflected XSS +
+                  Stored XSS
+                </h2>
+                <span class="wu-report-open">فتح المقال <b>↙</b></span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              class="wu-report-btn"
+              data-target="wu-ato"
+              aria-expanded="false"
+            >
+              <div class="wu-report-thumb">
+                <img
+                  src="./img/cover1.png"
+                  alt="Account Takeover Through Improper Password Reset Validation"
+                  loading="lazy"
+                />
+                <span class="wu-report-num">REPORT 03</span>
+              </div>
+              <div class="wu-report-body">
+                <h2 class="wu-report-title">
+                  Account Takeover Through Improper Password Reset Validation
+                </h2>
+                <span class="wu-report-open">فتح المقال <b>↙</b></span>
+              </div>
+            </button>
+          </div>
+        </section>
+
+        <!-- ARTICLES CONTAINER (OPENS WHEN CLICKING A BUTTON ABOVE) -->
+        <section
+          class="wu-reader-wrap"
+          id="writeupsContainer"
+          aria-live="polite"
+        >
+          <!-- ARTICLE 01: OTP -->
+          <article class="writeup-card" id="wu-otp">
+            <div class="wu-meta-top">
+              <div class="wu-badges">
+                <span class="wu-badge">WRITEUP #01</span>
+                <span class="wu-badge">LOGIC FLAW</span>
+                <span class="wu-badge">OTP VERIFICATION</span>
+              </div>
+              <div class="wu-actions">
+                <button
+                  type="button"
+                  class="wu-action-btn wu-copy-btn"
+                  data-copy-id="wu-otp"
+                >
+                  نسخ رابط المقال
+                </button>
+                <button type="button" class="wu-action-btn wu-close-btn">
+                  إغلاق المقال ×
+                </button>
+              </div>
+            </div>
+
+            <h2>
+              عندما يصبح رمز OTP مجرد رقم: طريق هادئ للاستيلاء على الحسابات
+            </h2>
+
+            <div class="wu-body">
+              <p>السلام عليكم،</p>
+              <p>
+                اليوم حاب أشارككم قصة وتحليل أمني يوضح كيف يمكن لرمز OTP، الذي
+                اعتدنا اعتباره خط دفاع قوي، أن يتحول إلى ثغرة خطيرة إذا بُني على
+                منطق برمجي خاطئ.
+              </p>
+
+              <h3>من أين بدأت القصة؟</h3>
+              <p>
+                أثناء فحصي للنظام، أول شيء لفت انتباهي أن رمز OTP مكوّن من أربعة
+                أرقام فقط.
+              </p>
+              <div class="wu-callout">
+                "حسناً... تصميم بسيط، لكنه ليس كارثة بحد ذاته." — لكن عندما
+                تنتهي من الفحص وتنظر إلى الصورة كاملة، هنا تبدأ المشكلة
+                الحقيقية.
+              </div>
+
+              <h3>الوقت الذي يُفترض أن يحميك... أصبح ضدك</h3>
+              <p>
+                مدة صلاحية الرمز كانت ربع ساعة. بحد ذاتها، هذه ليست مشكلة كبيرة.
+                لكن خلال هذه الدقائق الخمس عشرة، كان بإمكانك طلب أكثر من رمز،
+                والغريب في الأمر؟ أن الرموز القديمة لا يتم إلغاؤها.
+              </p>
+              <p>
+                بمعنى أنه بدلاً من امتلاك رمز واحد صالح، ينتهي بك الأمر مع
+                مجموعة من الرموز الصالحة في الوقت نفسه. وهنا يتوقف OTP عن كونه
+                رمزاً يُستخدم لمرة واحدة (One-Time Password).
+              </p>
+
+              <h3>المشكلة مش بالرقم… المشكلة بالمنطق</h3>
+              <p>
+                اللي بصير هون مش ضعف تخمين، ولا سرعة، ولا ذكاء خارق. اللي بصير
+                هو إن:
+              </p>
+              <ul>
+                <li>ما في حدّ لمحاولات التحقق.</li>
+                <li>ما في ربط حقيقي بين الرمز والمحاولة.</li>
+                <li>ما في إلغاء فوري بعد الاستخدام.</li>
+                <li>وما في منطق يقول: "وقف، هذا خطر".</li>
+              </ul>
+              <p>
+                حتى وجود Cloudflare ما غيّر شي. ببساطة، الحماية الخارجية لا
+                تستطيع إصلاح منطق داخلي مكسور.
+              </p>
+
+              <h3>النتيجة؟</h3>
+              <p>
+                لم يحدث شيء بشكل مفاجئ. ولم يكن هناك هجوم عنيف أو معقد. لكن ما
+                حدث كان أخطر من ذلك. مع مرور الوقت، ونتيجة تكرار قرارات برمجية
+                بسيطة، اكتشفت أنه خلال فترة الصلاحية نفسها، كان النظام قادراً
+                على إنشاء عدد هائل من رموز OTP. وكان كل رمز منها يُعتبر صالحاً.
+              </p>
+              <p>
+                بمعنى أبسط؟ لم يكن الأمر متعلقاً برمز واحد أو اثنين، بل بآلاف
+                الرموز في الوقت نفسه، وجميعها مقبولة من النظام. وهنا تكمن
+                المشكلة الحقيقية.
+              </p>
+
+              <h3>لماذا هذه النقطة خطيرة؟</h3>
+              <p>لأنك عندما تصل إلى مرحلة يصبح فيها:</p>
+              <ul>
+                <li>الرمز لا يُلغى عند إنشاء رمز جديد.</li>
+                <li>الرمز غير مرتبط بمحاولة تحقق واحدة.</li>
+                <li>الرمز لا تنتهي صلاحيته فور استخدامه.</li>
+              </ul>
+              <p>
+                فإن OTP يتوقف عن كونه وسيلة حماية، ويتحول إلى نقطة ضعف في آلية
+                التحقق من هوية المستخدم.
+              </p>
+            </div>
+
+            <div class="wu-images-grid">
+              <figure
+                class="wu-figure"
+                data-caption="صورة توضيحية 1: طلب أكثر من رمز OTP وبقاء الرموز السابقة فعالة"
+              >
+                <img
+                  src="./img/O1.png"
+                  alt="تعدد رموز OTP الصالحة"
+                  loading="lazy"
+                />
+                   <img
+                  src="./img/O4.png"
+                  alt="تعدد رموز OTP الصالحة"
+                  loading="lazy"
+                />
+                <figcaption>
+                  01 — تعدد الرموز الصالحة خلال نافذة الـ 15 دقيقة
+                </figcaption>
+              </figure>
+              <figure
+                class="wu-figure"
+                data-caption="صورة توضيحية 2: تحليل منطق التحقق وغياب حدود المحاولات"
+              >
+                <img
+                  src="./img/o2.png"
+                  alt="تحليل منطق التحقق من OTP"
+                  loading="lazy"
+                />
+                    <img
+                  src="./img/o3.png"
+                  alt="تحليل منطق التحقق من OTP"
+                  loading="lazy"
+                />
+                <figcaption>
+                  02 — غياب Rate Limiting والربط بالمحاولة الواحدة
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ARTICLE 02: 3 VULNS IN ONE SITE -->
+          <article class="writeup-card" id="wu-xss">
+            <div class="wu-meta-top">
+              <div class="wu-badges">
+                <span class="wu-badge">WRITEUP #02</span>
+                <span class="wu-badge">HTML INJECTION</span>
+                <span class="wu-badge">REFLECTED XSS</span>
+                <span class="wu-badge">STORED XSS</span>
+              </div>
+              <div class="wu-actions">
+                <button
+                  type="button"
+                  class="wu-action-btn wu-copy-btn"
+                  data-copy-id="wu-xss"
+                >
+                  نسخ رابط المقال
+                </button>
+                <button type="button" class="wu-action-btn wu-close-btn">
+                  إغلاق المقال ×
+                </button>
+              </div>
+            </div>
+
+            <h2>
+              ثلاث ثغرات في موقع واحد: HTML Injection + Reflected XSS + Stored
+              XSS
+            </h2>
+
+            <div class="wu-body">
+              <p>السلام عليكم،</p>
+              <p>
+                اليوم كان مليان ثغرات. 3 ثغرات في نفس الموقع: HTML Injection،
+                Reflected XSS، و Stored XSS، وراح أحكي كيف تم اكتشافهم بعد فضل
+                الله.
+              </p>
+
+              <h3>أولاً: HTML Injection</h3>
+              <p>أول شيء فحصنا HTML Injection. أدخلت:</p>
+              <div class="wu-code-snippet">&lt;h1&gt;TEST&lt;/h1&gt;</div>
+              <p>وفعلاً ظهر النص بخط كبير، وهذا دل على وجود ضعف في الفلاتر.</p>
+
+              <h3>ثانياً: Reflected XSS</h3>
+              <p>
+                بعدها توجهت لفحص خاصية البحث (Search). أول كم كود ما ظهر معي أي
+                شيء، لكن استخدمت كود عرضه شخص وكان فعالاً، وحاب أشكره:
+                <strong>@nhyy_SA</strong>
+              </p>
+
+              <h3>ثالثاً: Stored XSS</h3>
+              <p>
+                بعدها توجهت إلى قسم "نبذة عني" في الموقع، ووضعت الكود. وهون ظهر
+                Stored XSS. كل شخص يزور ملفي الشخصي تظهر له الرسالة من الموقع.
+              </p>
+              <div class="wu-callout">
+                طبعاً ما استخدمت Script لسرقة الكوكيز، فقط Script للإثبات.
+              </div>
+            </div>
+
+            <div class="wu-images-grid">
+              <figure
+                class="wu-figure"
+                data-caption="صورة توضيحية 1: إثبات HTML Injection عبر وسم H1"
+              >
+                <img
+                  src="./img/34.png"
+                  alt="إثبات ثغرة HTML Injection"
+                  loading="lazy"
+                />
+                  <img
+                  src="./img/33.png"
+                  alt="إثبات ثغرة HTML Injection"
+                  loading="lazy"
+                />
+                <figcaption>
+                  01 — ظهور وسم HTML Injection وتأثيره على الصفحة
+                </figcaption>
+              </figure>
+              <figure
+                class="wu-figure"
+                data-caption="صورة توضيحية 2: تنفيذ Reflected و Stored XSS في البحث والملف الشخصي"
+              >
+                <img
+                  src="./img/32.png"
+                  alt="إثبات ثغرات XSS"
+                  loading="lazy"
+                />
+             
+                <figcaption>
+                        <img
+                  src="./img/31.png"
+                  alt="إثبات ثغرات XSS"
+                  loading="lazy"
+                />
+                  02 — إثبات تنفيذ الكود في البحث و"نبذة عني"
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ARTICLE 03: ACCOUNT TAKEOVER -->
+          <article class="writeup-card" id="wu-ato">
+            <div class="wu-meta-top">
+              <div class="wu-badges">
+                <span class="wu-badge">WRITEUP #03</span>
+                <span class="wu-badge crit">CVSS 9.1 — CRITICAL</span>
+                <span class="wu-badge">CWE-640</span>
+              </div>
+              <div class="wu-actions">
+                <button
+                  type="button"
+                  class="wu-action-btn wu-copy-btn"
+                  data-copy-id="wu-ato"
+                >
+                  نسخ رابط المقال
+                </button>
+                <button type="button" class="wu-action-btn wu-close-btn">
+                  إغلاق المقال ×
+                </button>
+              </div>
+            </div>
+
+            <h2>Account Takeover Through Improper Password Reset Validation</h2>
+
+            <div class="wu-body">
+              <p>
+                وأنا بفحص وحدة من المنصات، ركّزت على خاصية استعادة كلمة المرور.
+                بالبداية كل شي كان طبيعي، إرسال رابط إعادة التعيين شغّال.
+              </p>
+              <p>
+                بس المشكلة ظهرت بمرحلة تغيير كلمة المرور، لما تبيّن إن السيرفر
+                بعتمد بس على الإيميل من جهة المستخدم، بدون تحقق من رمز
+                الاستعادة.
+              </p>
+
+              <h3>كيف تم اكتشاف المشكلة؟</h3>
+              <p>
+                اعترضت طلب تغيير كلمة المرور باستخدام Burp Suite، ولاحظت إن
+                السيرفر بعتمد بس على الإيميل الموجود بالطلب. جربت أغيّر الإيميل
+                لإيميل ثاني، وكلمة المرور انغيّرت مباشرة بدون أي تحقق من رمز
+                الاستعادة.
+              </p>
+
+              <h3>التأثير الأمني</h3>
+              <p>
+                هيك أي شخص بعرف إيميل مستخدم بقدر يسيطر على حسابه بالكامل
+                (Account Takeover)، بدون ما يوصل على البريد ولا يكون معه Reset
+                Token. الخطورة بتزيد أكثر إذا كانت الإيميلات ظاهرة أو ممكن جمعها
+                من مصادر عامة.
+              </p>
+
+              <h3>التصنيف الأمني</h3>
+              <ul>
+                <li>
+                  <strong>CWE-640:</strong> Weak Password Recovery Mechanism
+                </li>
+                <li><strong>CVSS:</strong> 9.1 — Critical</li>
+              </ul>
+
+              <h3>الحل</h3>
+              <ul>
+                <li>ربط Reset Token بالحساب.</li>
+                <li>التحقق منه قبل تغيير كلمة المرور.</li>
+                <li>عدم الاعتماد على بيانات جاية من جهة المستخدم.</li>
+                <li>تفعيل Rate Limiting.</li>
+                <li>تفعيل 2FA.</li>
+              </ul>
+            </div>
+
+            <div class="wu-images-grid">
+              <figure
+                class="wu-figure"
+                data-caption="صورة توضيحية 1: اعتراض طلب تغيير كلمة المرور في Burp Suite"
+              >
+                <img
+                  src="./img/R1.png"
+                  alt="اعتراض طلب إعادة التعيين في Burp Suite"
+                  loading="lazy"
+                />
+                <figcaption>
+                  01 — اعتراض الطلب وتعديل حقل البريد الإلكتروني
+                </figcaption>
+              </figure>
+              <figure
+                class="wu-figure"
+                data-caption="صورة توضيحية 2: نجاح تغيير كلمة المرور دون Reset Token"
+              >
+                <img
+                  src="./img/R2.png"
+                  alt="تغيير كلمة المرور بدون تحقق"
+                  loading="lazy"
+                />
+                <figcaption>
+                  02 — استجابة السيرفر وتأكيد أثر الثغرة (Account Takeover)
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <!-- LIGHTBOX MODAL FOR IMAGES -->
+      <div
+        class="wu-lightbox"
+        id="wuLightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="معاينة الصورة"
+      >
+        <div class="wu-lightbox-box">
+          <button
+            type="button"
+            class="wu-lightbox-close"
+            id="wuLightboxClose"
+            aria-label="إغلاق"
+          >
+            ×
+          </button>
+          <img id="wuLightboxImg" src="" alt="" />
+          <p class="wu-lightbox-caption" id="wuLightboxCaption"></p>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <a class="footer-brand" href="./index.html"
+              >ROOT <span>TEAM</span></a
+            >
+            <p>
+              فريق جامعي تقني من جامعة الحسين بن طلال يهتم بالأمن السيبراني
+              والشبكات والبرمجة والتعلم التقني التطبيقي.
+            </p>
+            <div class="footer-status">
+              <span class="eyebrow-dot"></span> STATUS: ONLINE // AHU CYBER
+              COMMUNITY
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>الصفحات</h4>
+            <a href="./index.html">الرئيسية</a>
+            <a href="./index.html#features">المميزات</a>
+            <a href="./cyber.html">الأمن السيبراني</a>
+            <a href="./members.html">الأعضاء</a>
+            <a href="./library.html">المكتبة</a>
+            <a href="./writeups.html">Writeups</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>تواصل معنا</h4>
+            <a href="mailto:root31023@gmail.com">root31023@gmail.com</a>
+            <a href="tel:+962780630881" dir="ltr">+962 780 630 881</a>
+            <a
+              href="https://t.me/rootteam_ahu"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Telegram</a
+            >
+            <a
+              href="https://www.instagram.com/rootteamcs"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram</a
+            >
+            <a
+              href="https://x.com/0x13O__"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X / Twitter</a
+            >
+            <a
+              href="https://github.com/root31023-ux"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            © <span id="year"></span> ROOT TEAM · AL-HUSSEIN BIN TALAL
+            UNIVERSITY
+          </p>
+          <a href="#top">العودة للأعلى ↑</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script>
+      (() => {
+        const buttons = [
+          ...document.querySelectorAll(".wu-report-btn[data-target]"),
+        ];
+        const articles = [...document.querySelectorAll(".writeup-card[id]")];
+
+        function openArticle(targetId, shouldScroll = true) {
+          articles.forEach((art) => {
+            art.classList.toggle("open", art.id === targetId);
+          });
+
+          buttons.forEach((btn) => {
+            const isSelected = btn.dataset.target === targetId;
+            btn.classList.toggle("active", isSelected);
+            btn.setAttribute("aria-expanded", String(isSelected));
+          });
+
+          const activeArticle = document.getElementById(targetId);
+          if (activeArticle && shouldScroll) {
+            activeArticle.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }
+
+        function closeAllArticles() {
+          articles.forEach((art) => art.classList.remove("open"));
+          buttons.forEach((btn) => {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-expanded", "false");
+          });
+        }
+
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const targetId = btn.dataset.target;
+            const isAlreadyOpen = document
+              .getElementById(targetId)
+              ?.classList.contains("open");
+            if (isAlreadyOpen) {
+              closeAllArticles();
+            } else {
+              openArticle(targetId, true);
+            }
+          });
+        });
+
+        document.querySelectorAll(".wu-close-btn").forEach((closeBtn) => {
+          closeBtn.addEventListener("click", closeAllArticles);
+        });
+
+        // Open article if URL has #wu-otp / #wu-xss / #wu-ato
+        const initialHash = window.location.hash.replace(/^#/, "");
+        if (
+          initialHash &&
+          document
+            .getElementById(initialHash)
+            ?.classList.contains("writeup-card")
+        ) {
+          openArticle(initialHash, false);
+        }
+
+        // Copy link to specific article
+        document.querySelectorAll(".wu-copy-btn").forEach((btn) => {
+          btn.addEventListener("click", async () => {
+            const hash = btn.dataset.copyId || "";
+            const url = `${window.location.origin}${window.location.pathname}#${hash}`;
+            try {
+              await navigator.clipboard.writeText(url);
+              const oldText = btn.textContent;
+              btn.textContent = "تم نسخ الرابط ✓";
+              setTimeout(() => {
+                btn.textContent = oldText;
+              }, 1600);
+            } catch {
+              btn.textContent = url;
+            }
+          });
+        });
+
+        // Image Lightbox
+        const lightbox = document.getElementById("wuLightbox");
+        const lightboxImg = document.getElementById("wuLightboxImg");
+        const lightboxCaption = document.getElementById("wuLightboxCaption");
+        const lightboxClose = document.getElementById("wuLightboxClose");
+
+        document.querySelectorAll(".wu-figure").forEach((fig) => {
+          fig.addEventListener("click", () => {
+            const img = fig.querySelector("img");
+            if (!img || !lightbox || !lightboxImg) return;
+            lightboxImg.src = img.currentSrc || img.src;
+            lightboxImg.alt = img.alt || "";
+            if (lightboxCaption) {
+              lightboxCaption.textContent = fig.dataset.caption || "";
+            }
+            lightbox.classList.add("open");
+          });
+        });
+
+        function closeLightbox() {
+          lightbox?.classList.remove("open");
+        }
+
+        lightboxClose?.addEventListener("click", closeLightbox);
+        lightbox?.addEventListener("click", (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeLightbox();
+        });
+      })();
+    </script>
+  </body>
+</html>
