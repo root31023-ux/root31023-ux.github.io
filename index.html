@@ -20,48 +20,21 @@
   </head>
   <body>
     <div class="site-shell">
-      <!-- HEADER / NAVIGATION -->
+      
       <header class="topbar" id="top">
-        <a class="brand" href="./index.html" aria-label="ROOT TEAM home">
-          <span class="brand-main"
-            >R<span class="brand-eye-wrap" aria-hidden="true">
-              <!-- Custom Fingerprint Eye Logo -->
-              <svg
-                viewBox="0 0 84 44"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 22C18 11 30 6 42 6C54 6 66 11 72 22C66 33 54 38 42 38C30 38 18 33 12 22Z"
-                  stroke="#ff5100"
-                  stroke-width="2.5"
-                  stroke-dasharray="4 3"
-                />
-                <path
-                  d="M18 22C23 14 32 10 42 10C52 10 61 14 66 22C61 30 52 34 42 34C32 34 23 30 18 22Z"
-                  stroke="#9ca3af"
-                  stroke-width="2"
-                  stroke-dasharray="6 2"
-                />
-                <path
-                  d="M25 22C29 16 35 14 42 14C49 14 55 16 59 22C55 28 49 30 42 30C35 30 29 28 25 22Z"
-                  stroke="#ff5100"
-                  stroke-width="2.2"
-                />
-                <circle
-                  cx="42"
-                  cy="22"
-                  r="6"
-                  fill="#050505"
-                  stroke="#ff5100"
-                  stroke-width="2.2"
-                />
-                <circle cx="42" cy="22" r="2.2" fill="#ff5100" />
-              </svg> </span
-            >T</span
-          >
-          <span class="brand-sub">TEAM</span>
-        </a>
+          <a class="brand" href="./index.html" aria-label="ROOT TEAM home">
+        <span class="brand-main">R<span class="brand-eye-wrap" aria-hidden="true">
+          <svg viewBox="0 0 84 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C18 11 30 6 42 6C54 6 66 11 72 22C66 33 54 38 42 38C30 38 18 33 12 22Z" stroke="#ff5100" stroke-width="2.5" stroke-dasharray="4 3"/>
+            <path d="M18 22C23 14 32 10 42 10C52 10 61 14 66 22C61 30 52 34 42 34C32 34 23 30 18 22Z" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 2"/>
+            <path d="M25 22C29 16 35 14 42 14C49 14 55 16 59 22C55 28 49 30 42 30C35 30 29 28 25 22Z" stroke="#ff5100" stroke-width="2.2"/>
+            <circle cx="42" cy="22" r="6" fill="#050505" stroke="#ff5100" stroke-width="2.2"/>
+            <circle cx="42" cy="22" r="2.2" fill="#ff5100"/>
+          </svg>
+        </span>T</span>
+        <span class="brand-sub">TEAM</span>
+      </a>
+
 
         <button
           class="menu-toggle"
@@ -77,12 +50,13 @@
           <a class="nav-link" href="#about">من نحن</a>
           <a class="nav-link" href="#features">المميزات</a>
           <a class="nav-link" href="#contact">تواصل معنا</a>
-          <a class="nav-link" href="./cyber.html">الأمن السيبراني</a>
+          <a class="nav-link" href="./library.html">المكتبة</a>
+          <a class="nav-link" href="./cyber.html"> مسارات تعليمية </a>
           <a class="nav-link" href="./members.html">الاعضاء</a>
           <a class="nav-link" href="./writeups.html">Writeups</a>
         </nav>
 
-        <a class="join-link" href="#contact">
+        <a class="join-link" href="https://forms.gle/eDNmukrXjSwcbBjB6" target="_blank" rel="noopener noreferrer">
           <span>انضم للفريق</span>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -93,12 +67,12 @@
       </header>
 
       <main>
-        <!-- HERO SECTION (Background Image ./background.png sits cleanly on the right) -->
+    
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-overlay"></div>
           <div class="hero-grid"></div>
 
-          <!-- Strictly constrained to the left 48% so the right side stays clear for the Mountain & Eye background -->
+
           <div class="hero-content">
             <div class="eyebrow">
               <span class="eyebrow-dot"></span>
@@ -111,20 +85,20 @@
             </h1>
 
             <p class="hero-description">
-              فريق جامعي تقني يجمع المعرفة ويستكشف آفاق الأمن السيبراني والشبكات
-              والبرمجة، لنبني معاً جيلاً قادراً على الفهم والتطبيق والابتكار.
+              فريق جامعي تقني يجمع المعرفة ويستكشف آفاق البرمجة والأمن السيبراني والشبكات
+              و لنبني معاً جيلاً قادراً على الفهم والتطبيق والابتكار.
             </p>
 
             <div class="hero-actions">
               <a class="action action-primary" href="./cyber.html">
-                <span>ابدأ المسار السيبراني</span>
+                <span>اختر مسارك التعليمي</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M5 12h13.2l-5.6-5.6L14 5l8 7-8 7-1.4-1.4 5.6-5.6H5z"
                   />
                 </svg>
               </a>
-              <a class="action action-outline" href="./pages/library.html">
+              <a class="action action-outline" href="./library.html">
                 <span>تصفح المكتبة</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
@@ -231,7 +205,7 @@
           </div>
 
           <div class="feature-cards">
-            <a class="feature-card" href="./pages/library.html">
+            <a class="feature-card" href="./library.html">
               <span class="card-index">01 // LIBRARY</span>
               <span class="card-symbol">⌁</span>
               <h3>مصادر تعليمية مختارة</h3>
@@ -242,18 +216,17 @@
               <span class="card-more">تصفح المكتبة <b>↗</b></span>
             </a>
 
-            <a class="feature-card" href="./pages/resorses.html">
+            <a class="feature-card" href="./cyber.html">
               <span class="card-index">02 // ROADMAP</span>
               <span class="card-symbol">◈</span>
               <h3>خارطة طريق واضحة</h3>
               <p>
-                انتقل من الأساسيات إلى المواضيع المتقدمة بخطوات منهجية واضحة
-                ومفهومة.
+              مسار تعليمي لبناء تطبيقات WEB 
               </p>
               <span class="card-more">استكشف المصادر <b>↗</b></span>
             </a>
 
-            <a class="feature-card" href="./cyber.html">
+            <a class="feature-card" href="./cybersecurity-roadmap.html">
               <span class="card-index">03 // CYBER SECURITY</span>
               <span class="card-symbol">⌘</span>
               <h3>مسار الأمن السيبراني</h3>
@@ -306,14 +279,14 @@
               <div class="section-kicker">
                 THREAT LEVEL: EDUCATIONAL // STEP INTO THE FIELD
               </div>
-              <h2>جاهز تدخل أعمق في الأمن السيبراني؟</h2>
+              <h2>جاهز تدخل اعماق البرمجة والابداع</h2>
               <p>
-                ابدأ من مسار الأمن السيبراني وتعرف على المفاهيم الأساسية
+                ابدأ من مسار تختاره وتعرف على المفاهيم الأساسية
                 والأدوات والتقنيات خطوة بخطوة.
               </p>
             </div>
             <a class="action action-primary" href="./cyber.html">
-              <span>فتح المسار السيبراني</span>
+              <span>فتح المسارات</span>
               <b>↗</b>
             </a>
           </div>
@@ -327,7 +300,7 @@
             المستقبل لا ينتظر أحداً.<br /><span>كن جزءاً من صناعته.</span>
           </h2>
           <p class="closing-desc">
-            سواء كنت في بداية طريقك أو لديك شغف بالتقنية والأمن السيبراني، مكانك
+            سواء كنت في بداية طريقك أو لديك شغف بالتقنية والبرمجة، مكانك
             محفوظ بيننا.
           </p>
           <div class="closing-actions">
@@ -378,9 +351,7 @@
             <h4>تواصل معنا</h4>
             <a href="mailto:root31023@gmail.com">root31023@gmail.com</a>
             <a href="tel:+962780630881" dir="ltr">+962 780 630 881</a>
-            <a href="https://t.me/rootteam_ahu" target="_blank" rel="noopener"
-              >Telegram</a
-            >
+       
             <a
               href="https://www.instagram.com/rootteamcs"
               target="_blank"

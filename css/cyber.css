@@ -1,15 +1,13 @@
 .site-shell {
   position: relative;
 }
-
-/* Subtle Mountain & Eye background layer */
 .cyber-bg-layer {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 82% 28%, rgba(255, 81, 0, .09), transparent 42%),
+    radial-gradient(circle at 82% 28%, rgba(255, 81, 0, 0.09), transparent 42%),
     url("../img/background.png");
   background-position: right center;
   background-size: cover;
@@ -17,23 +15,14 @@
   opacity: 0.14;
   filter: saturate(0.85) contrast(1.05);
 }
-
-.site-shell > :not(.cyber-bg-layer) {
-  position: relative;
-  z-index: 1;
-}
-
 .cyber-main {
   padding-top: 132px;
 }
-
-/* ================= HERO ================= */
 .cyber-hero {
   max-width: 1320px;
   margin: 0 auto;
   padding: 36px 8% 42px;
 }
-
 .cyber-meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -41,37 +30,36 @@
   gap: 14px;
   margin-bottom: 18px;
 }
-
 .cyber-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 7px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 81, 0, .4);
-  background: rgba(255, 81, 0, .07);
+  border: 1px solid rgba(255, 81, 0, 0.4);
+  background: rgba(255, 81, 0, 0.07);
   color: var(--orange);
-  font: 700 12px/1 "Rajdhani", sans-serif;
+  font:
+    700 12px/1 "Rajdhani",
+    sans-serif;
   letter-spacing: 2px;
 }
-
 .cyber-code {
-  font: 600 12px/1 "Rajdhani", sans-serif;
+  font:
+    600 12px/1 "Rajdhani",
+    sans-serif;
   letter-spacing: 2px;
   color: #8f8f8f;
 }
-
 .cyber-hero h1 {
   margin: 0 0 16px;
   font-size: clamp(38px, 4.8vw, 66px);
   font-weight: 900;
   line-height: 1.15;
 }
-
 .cyber-hero h1 span {
   color: var(--orange);
 }
-
 .cyber-hero p {
   margin: 0;
   max-width: 720px;
@@ -79,7 +67,6 @@
   line-height: 1.85;
   color: #b4b4b4;
 }
-
 .cyber-specs {
   display: flex;
   flex-wrap: wrap;
@@ -87,22 +74,20 @@
   margin-top: 28px;
   padding-top: 20px;
   border-top: 1px solid #221712;
-  font: 600 12px/1 "Rajdhani", sans-serif;
+  font:
+    600 12px/1 "Rajdhani",
+    sans-serif;
   letter-spacing: 2px;
   color: #888;
 }
-
 .cyber-specs b {
   color: var(--orange);
 }
-
-/* ================= PATHS GRID ================= */
 .paths-section {
   max-width: 1320px;
   margin: 0 auto;
   padding: 20px 8% 110px;
 }
-
 .paths-head {
   display: flex;
   align-items: flex-end;
@@ -110,90 +95,88 @@
   gap: 16px;
   margin-bottom: 28px;
 }
-
 .paths-head h2 {
   margin: 8px 0 0;
   font-size: clamp(28px, 3.2vw, 42px);
   font-weight: 900;
 }
-
 .paths-head h2 span {
   color: var(--orange);
 }
-
 .paths-count {
-  font: 700 13px/1 "Rajdhani", sans-serif;
+  font:
+    700 13px/1 "Rajdhani",
+    sans-serif;
   letter-spacing: 2px;
   color: #a3a3a3;
   padding: 8px 14px;
   border: 1px solid #261b15;
   border-radius: 999px;
-  background: rgba(10, 9, 8, .85);
+  background: rgba(10, 9, 8, 0.85);
 }
-
 .paths-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
 .path-card {
   display: flex;
   flex-direction: column;
   padding: 28px;
   border-radius: 18px;
   border: 1px solid #261c17;
-  background: linear-gradient(155deg, rgba(16, 13, 11, .94), rgba(8, 8, 8, .96));
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  background: linear-gradient(
+    155deg,
+    rgba(16, 13, 11, 0.94),
+    rgba(8, 8, 8, 0.96)
+  );
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
-
 .path-card.featured-path {
-  border-color: rgba(255, 81, 0, .55);
-  box-shadow: 0 0 30px rgba(255, 81, 0, .06);
+  border-color: rgba(255, 81, 0, 0.55);
+  box-shadow: 0 0 30px rgba(255, 81, 0, 0.06);
 }
-
 .path-card:hover {
   transform: translateY(-5px);
   border-color: var(--orange);
-  box-shadow: 0 14px 36px rgba(255, 81, 0, .12);
+  box-shadow: 0 14px 36px rgba(255, 81, 0, 0.12);
 }
-
 .path-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 22px;
 }
-
 .path-icon {
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 81, 0, .35);
-  background: rgba(255, 81, 0, .08);
+  border: 1px solid rgba(255, 81, 0, 0.35);
+  background: rgba(255, 81, 0, 0.08);
   color: var(--orange);
   display: grid;
   place-items: center;
 }
-
 .path-icon svg {
   width: 22px;
   height: 22px;
 }
-
 .path-num {
-  font: 700 12px/1 "Rajdhani", sans-serif;
+  font:
+    700 12px/1 "Rajdhani",
+    sans-serif;
   letter-spacing: 1.5px;
   color: #8f776c;
 }
-
 .path-card h3 {
   margin: 0 0 10px;
   font-size: 22px;
   font-weight: 800;
   color: #fff;
 }
-
 .path-card p {
   margin: 0 0 24px;
   font-size: 15px;
@@ -201,33 +184,28 @@
   color: #a3a3a3;
   flex: 1;
 }
-
 .path-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 13px 16px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 81, 0, .35);
-  background: rgba(255, 81, 0, .06);
+  border: 1px solid rgba(255, 81, 0, 0.35);
+  background: rgba(255, 81, 0, 0.06);
   color: var(--orange);
   font-size: 14px;
   font-weight: 800;
-  transition: .2s;
+  transition: 0.2s;
 }
-
 .path-link:hover {
   background: var(--orange);
   color: #050505;
 }
-
-/* ================= RESPONSIVE ================= */
 @media (max-width: 1024px) {
   .paths-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 680px) {
   .cyber-main {
     padding-top: 112px;
