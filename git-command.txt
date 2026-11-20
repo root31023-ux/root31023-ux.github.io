@@ -1,0 +1,7 @@
+git add .
+
+git reset -- remove_comments.py
+
+git commit -m "Update website"
+
+git push origin main
