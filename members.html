@@ -18,13 +18,938 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/members.css" />
+
+    <style>
+      :root {
+        --root-orange: #ff5100;
+        --root-orange-soft: rgba(255, 81, 0, 0.16);
+        --root-surface: rgba(12, 13, 18, 0.9);
+        --root-border: rgba(255, 255, 255, 0.09);
+      }
+
+      @keyframes cardEnter {
+        0% {
+          opacity: 0;
+          transform: translateY(26px) scale(0.96);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes shutterSweep {
+        0% {
+          transform: translateX(110%) skewX(-18deg);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.9;
+        }
+        80% {
+          opacity: 0.9;
+        }
+        100% {
+          transform: translateX(-120%) skewX(-18deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes panelSlideReveal {
+        0% {
+          opacity: 0;
+          transform: translateY(18px) scale(0.99);
+          filter: blur(5px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes pulseRing {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 81, 0, 0.45);
+        }
+        70% {
+          box-shadow: 0 0 0 9px rgba(255, 81, 0, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 81, 0, 0);
+        }
+      }
+
+      .members-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 28px;
+        padding: 16px 20px;
+        border-radius: 18px;
+        background: rgba(12, 13, 18, 0.84);
+        border: 1px solid var(--root-border);
+        backdrop-filter: blur(14px);
+      }
+
+      .filter-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .filter-pill {
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        color: #d1d5db;
+        font-family: "Tajawal", sans-serif;
+        font-size: 0.86rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.22s ease;
+      }
+
+      .filter-pill:hover,
+      .filter-pill.is-active {
+        background: var(--root-orange-soft);
+        border-color: var(--root-orange);
+        color: #ffffff;
+        box-shadow: 0 0 18px rgba(255, 81, 0, 0.22);
+      }
+
+      .toolbar-stats {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.94rem;
+        color: #9ca3af;
+      }
+
+      .toolbar-stats strong {
+        color: var(--root-orange);
+        font-size: 1.08rem;
+      }
+
+      .members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 24px;
+        margin-bottom: 36px;
+      }
+
+      .member-card.is-hidden {
+        display: none;
+      }
+
+      .member-card {
+        --mx: 50%;
+        --my: 50%;
+        position: relative;
+        background: var(--root-surface);
+        border: 1px solid var(--root-border);
+        border-radius: 22px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        opacity: 0;
+        animation: cardEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        transition:
+          transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .member-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          270px circle at var(--mx) var(--my),
+          rgba(255, 81, 0, 0.18),
+          transparent 72%
+        );
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 6;
+      }
+
+      .member-card:hover::after,
+      .member-card:focus-visible::after {
+        opacity: 1;
+      }
+
+      .member-card:hover,
+      .member-card:focus-visible {
+        transform: translateY(-8px);
+        border-color: rgba(255, 81, 0, 0.72);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.72), 0 0 32px rgba(255, 81, 0, 0.2);
+        outline: none;
+      }
+
+      .member-card.active-leader {
+        border-color: var(--root-orange);
+        box-shadow: 0 0 0 1px rgba(255, 81, 0, 0.6), 0 18px 42px rgba(255, 81, 0, 0.2);
+      }
+
+      .member-media {
+        position: relative;
+        height: 248px;
+        overflow: hidden;
+        background: #06070b;
+      }
+
+      .member-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        clip-path: inset(0% 0% 0% 0% round 0px);
+        transition:
+          clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.45s ease,
+          filter 0.45s ease;
+      }
+
+      .member-card:hover .member-media img,
+      .member-card:focus-visible .member-media img {
+        clip-path: inset(14% 50% 14% 50% round 14px);
+        transform: scale(1.16);
+        opacity: 0.08;
+        filter: blur(6px) saturate(0);
+      }
+
+      .member-scrim {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(5, 5, 5, 0.05) 30%, rgba(5, 5, 5, 0.9) 100%);
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+      }
+
+      .member-card:hover .member-scrim {
+        opacity: 0.25;
+      }
+
+      .shutter-flash {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 45%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 81, 0, 0.35),
+          rgba(255, 168, 120, 0.7),
+          transparent
+        );
+        pointer-events: none;
+        opacity: 0;
+        z-index: 4;
+      }
+
+      .member-card:hover .shutter-flash,
+      .member-card:focus-visible .shutter-flash {
+        animation: shutterSweep 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      .creative-overlay {
+        position: absolute;
+        inset: 0;
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+          linear-gradient(rgba(255, 81, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 81, 0, 0.04) 1px, transparent 1px),
+          radial-gradient(circle at 80% 15%, rgba(255, 81, 0, 0.24), transparent 55%),
+          linear-gradient(155deg, rgba(14, 15, 22, 0.97), rgba(6, 7, 11, 0.99));
+        background-size: 22px 22px, 22px 22px, 100% 100%, 100% 100%;
+        opacity: 0;
+        transform: scale(0.96) rotateX(4deg);
+        transition:
+          opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.08s,
+          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+        z-index: 2;
+      }
+
+      .member-card:hover .creative-overlay,
+      .member-card:focus-visible .creative-overlay {
+        opacity: 1;
+        transform: scale(1) rotateX(0deg);
+      }
+
+      .overlay-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 1px;
+        color: #ff9461;
+      }
+
+      .cipher-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: rgba(255, 81, 0, 0.16);
+        border: 1px solid rgba(255, 81, 0, 0.42);
+        color: #ffd0b8;
+        font-weight: 700;
+        animation: pulseRing 2.2s infinite;
+      }
+
+      .overlay-focus-box {
+        border-right: 3px solid var(--root-orange);
+        padding-right: 12px;
+      }
+
+      .overlay-focus-label {
+        display: block;
+        font-size: 0.74rem;
+        color: #9ca3af;
+        margin-bottom: 4px;
+      }
+
+      .overlay-focus-value {
+        font-size: 0.98rem;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.45;
+      }
+
+      .overlay-cipher-line {
+        font-family: "Rajdhani", monospace;
+        font-size: 0.78rem;
+        color: #ff8c52;
+        letter-spacing: 0.8px;
+        margin-top: 6px;
+        word-break: break-all;
+      }
+
+      .overlay-terminal {
+        background: rgba(0, 0, 0, 0.62);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 10px;
+        padding: 9px 11px;
+        font-family: "Rajdhani", monospace;
+        font-size: 0.8rem;
+        color: #d1d5db;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .overlay-terminal span:last-child {
+        color: var(--root-orange);
+        font-weight: 700;
+      }
+
+      .member-tag {
+        z-index: 5;
+      }
+
+      .member-info {
+        position: relative;
+        z-index: 7;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .member-name {
+        transition: color 0.25s ease, transform 0.25s ease;
+      }
+
+      .member-card:hover .member-name {
+        color: #ff7a3d;
+        transform: translateX(-3px);
+      }
+
+      .member-bio-wrap {
+        position: relative;
+        min-height: 48px;
+      }
+
+      .member-bio,
+      .member-bio-alt {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .member-bio-alt {
+        position: absolute;
+        inset: 0;
+        color: #ffd0b8;
+        opacity: 0;
+        transform: translateY(6px);
+        pointer-events: none;
+      }
+
+      .member-card:hover .member-bio,
+      .member-card:focus-visible .member-bio {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      .member-card:hover .member-bio-alt,
+      .member-card:focus-visible .member-bio-alt {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .member-footer-bar {
+        margin-top: auto;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .member-action-hint {
+        transition: transform 0.25s ease, color 0.25s ease;
+      }
+
+      .member-card:hover .member-action-hint {
+        color: var(--root-orange);
+        transform: translateY(2px);
+      }
+
+      .social-links {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .social-btn,
+      .copy-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e5e7eb;
+        cursor: pointer;
+        transition:
+          background-color 0.22s ease,
+          border-color 0.22s ease,
+          color 0.22s ease,
+          transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .social-btn:hover,
+      .copy-btn:hover {
+        background: rgba(255, 81, 0, 0.18);
+        border-color: var(--root-orange);
+        color: var(--root-orange);
+        transform: translateY(-2px);
+      }
+
+      .copy-btn.is-copied {
+        background: rgba(34, 197, 94, 0.18);
+        border-color: #22c55e;
+        color: #86efac;
+        width: auto;
+        padding: 0 9px;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .social-btn svg,
+      .copy-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      .mobile-wheel-wrap {
+        display: none;
+        margin-bottom: 30px;
+      }
+
+      .mobile-wheel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
+        padding: 12px 15px;
+        border-radius: 16px;
+        background: rgba(12, 13, 18, 0.92);
+        border: 1px solid rgba(255, 81, 0, 0.35);
+      }
+
+      .mobile-wheel-spotlight {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .mobile-wheel-kicker {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 1.1px;
+        color: #ff9461;
+        font-weight: 700;
+      }
+
+      .mobile-wheel-owner {
+        font-size: 1.08rem;
+        font-weight: 800;
+        color: #ffffff;
+      }
+
+      .mobile-wheel-owner span {
+        color: var(--root-orange);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .mobile-wheel-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .wheel-nav-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+        color: #ffffff;
+        font-size: 1.02rem;
+        font-weight: 800;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.24s ease;
+      }
+
+      .wheel-nav-btn:active,
+      .wheel-nav-btn:hover {
+        border-color: var(--root-orange);
+        background: var(--root-orange-soft);
+        color: var(--root-orange);
+        transform: scale(1.04);
+      }
+
+      .mobile-wheel-stage {
+        position: relative;
+        height: 575px;
+        perspective: 1100px;
+        border-radius: 26px;
+        padding: 18px 14px;
+        background:
+          linear-gradient(180deg, rgba(255, 81, 0, 0.06) 0%, rgba(255, 81, 0, 0.16) 50%, rgba(255, 81, 0, 0.06) 100%),
+          rgba(8, 9, 14, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+        touch-action: pan-y;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .wheel-axis-line {
+        position: absolute;
+        top: 24px;
+        bottom: 24px;
+        left: 50%;
+        width: 1px;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, transparent, rgba(255, 81, 0, 0.28), transparent);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .wheel-slot-card {
+        position: absolute;
+        width: calc(100% - 28px);
+        max-width: 364px;
+        border-radius: 22px;
+        background: rgba(15, 16, 24, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.68);
+        transform-style: preserve-3d;
+        transition:
+          transform 0.58s cubic-bezier(0.18, 0.9, 0.25, 1),
+          opacity 0.45s ease,
+          filter 0.45s ease,
+          border-color 0.35s ease,
+          box-shadow 0.45s ease;
+        cursor: pointer;
+      }
+
+      .wheel-slot-card.is-center {
+        z-index: 4;
+        opacity: 1;
+        filter: none;
+        transform: translate3d(0, 0, 28px) rotateX(0deg) scale(1.01);
+        border-color: var(--root-orange);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.85), 0 0 32px rgba(255, 81, 0, 0.28);
+      }
+
+      .wheel-slot-card.is-top {
+        z-index: 2;
+        opacity: 0.42;
+        filter: blur(1.2px) brightness(0.68);
+        transform: translate3d(0, -225px, -45px) rotateX(12deg) scale(0.8);
+      }
+
+      .wheel-slot-card.is-bottom {
+        z-index: 2;
+        opacity: 0.42;
+        filter: blur(1.2px) brightness(0.68);
+        transform: translate3d(0, 225px, -45px) rotateX(-12deg) scale(0.8);
+      }
+
+      .wheel-slot-card.is-hidden-slot {
+        z-index: 1;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate3d(0, 310px, -90px) scale(0.68);
+      }
+
+      .wheel-card-media {
+        position: relative;
+        height: 146px;
+        overflow: hidden;
+        background: #06070b;
+      }
+
+      .wheel-card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .wheel-card-body {
+        padding: 14px 16px;
+      }
+
+      .wheel-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      .wheel-card-role {
+        font-size: 0.78rem;
+        color: #ff9461;
+        font-weight: 700;
+      }
+
+      .wheel-card-badge {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 2px 9px;
+        border-radius: 999px;
+        background: rgba(255, 81, 0, 0.16);
+        border: 1px solid rgba(255, 81, 0, 0.42);
+        color: #ffd0b8;
+      }
+
+      .wheel-card-name {
+        margin: 0 0 6px;
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: #ffffff;
+      }
+
+      .wheel-card-bio {
+        margin: 0 0 10px;
+        font-size: 0.84rem;
+        color: #b8c0cc;
+        line-height: 1.45;
+      }
+
+      .wheel-card-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .wheel-tap-hint {
+        font-size: 0.76rem;
+        color: #9ca3af;
+      }
+
+      .mobile-wheel-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin-top: 14px;
+      }
+
+      .wheel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        padding: 0;
+        transition: all 0.28s ease;
+      }
+
+      .wheel-dot.is-active {
+        width: 24px;
+        background: var(--root-orange);
+      }
+
+      @media (max-width: 768px) {
+        .members-grid {
+          display: none;
+        }
+
+        .mobile-wheel-wrap {
+          display: block;
+        }
+      }
+
+      .assigned-panel {
+        background: rgba(12, 13, 18, 0.95);
+        border: 1px solid rgba(255, 81, 0, 0.42);
+        border-radius: 24px;
+        padding: 26px;
+        box-shadow: 0 22px 48px rgba(0, 0, 0, 0.62);
+      }
+
+      .panel-animate {
+        animation: panelSlideReveal 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      .assigned-quick-tabs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        margin-bottom: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        scrollbar-width: none;
+      }
+
+      .assigned-quick-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .quick-dept-tab {
+        flex: 0 0 auto;
+        padding: 7px 13px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(255, 255, 255, 0.025);
+        color: #cbd5e1;
+        font-family: "Tajawal", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.22s ease;
+      }
+
+      .quick-dept-tab:hover,
+      .quick-dept-tab.is-current {
+        background: rgba(255, 81, 0, 0.16);
+        border-color: var(--root-orange);
+        color: #ffffff;
+      }
+
+      .assigned-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding-bottom: 18px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .assigned-code {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--root-orange);
+      }
+
+      .assigned-head h3 {
+        margin: 4px 0 6px;
+        color: #ffffff;
+        font-size: 1.35rem;
+      }
+
+      .assigned-head h3 span {
+        color: var(--root-orange);
+      }
+
+      .assigned-head p {
+        margin: 0;
+        color: #9ca3af;
+        font-size: 0.92rem;
+      }
+
+      .assigned-meta-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .assigned-search {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 8px 12px;
+        color: #ffffff;
+        font-family: "Tajawal", sans-serif;
+        font-size: 0.85rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .assigned-search:focus {
+        border-color: var(--root-orange);
+      }
+
+      .assigned-count {
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(255, 81, 0, 0.14);
+        border: 1px solid rgba(255, 81, 0, 0.35);
+        color: #ff9461;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      .assigned-members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+        gap: 14px;
+      }
+
+      .assigned-member-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 15px 17px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          background-color 0.25s ease;
+      }
+
+      .assigned-member-item.is-lead-row {
+        background: linear-gradient(135deg, rgba(255, 81, 0, 0.1), rgba(255, 255, 255, 0.02));
+        border-color: rgba(255, 81, 0, 0.34);
+      }
+
+      .assigned-member-item.is-filtered-out {
+        display: none;
+      }
+
+      .assigned-member-item:hover {
+        transform: translateX(-4px);
+        background: rgba(255, 81, 0, 0.07);
+        border-color: rgba(255, 81, 0, 0.45);
+      }
+
+      .assigned-member-main {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .assigned-idx {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--root-orange);
+        background: rgba(255, 81, 0, 0.12);
+        border: 1px solid rgba(255, 81, 0, 0.25);
+      }
+
+      .assigned-name-row {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 3px;
+      }
+
+      .assigned-member-item h4 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 1rem;
+      }
+
+      .lead-pill {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        padding: 2px 7px;
+        border-radius: 999px;
+        background: rgba(255, 81, 0, 0.2);
+        border: 1px solid rgba(255, 81, 0, 0.45);
+        color: #ffb088;
+      }
+
+      .assigned-member-item span {
+        color: #9ca3af;
+        font-size: 0.84rem;
+      }
+    </style>
   </head>
   <body>
     <div class="site-shell">
-      
       <div class="members-bg-layer" aria-hidden="true"></div>
 
-      
       <header class="topbar" id="top">
         <a class="brand" href="./index.html" aria-label="ROOT TEAM home">
           <span class="brand-main"
@@ -88,7 +1013,12 @@
           <a class="nav-link" href="./writeups.html">Writeups</a>
         </nav>
 
-        <a class="join-link" href="https://forms.gle/eDNmukrXjSwcbBjB6" target="_blank" rel="noopener noreferrer">
+        <a
+          class="join-link"
+          href="https://forms.gle/eDNmukrXjSwcbBjB6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <span>انضم للفريق</span>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -99,25 +1029,51 @@
       </header>
 
       <main class="members-page">
-        
         <section class="members-hero">
           <div class="section-kicker">
             01 / LEADERSHIP &amp; DEPARTMENTS — ROOT TEAM
           </div>
           <h1>قادة الأقسام <span>والأعضاء</span></h1>
           <p>
-            مرّر المؤشر على أي بطاقة لإضاءة الصورة واستعراض الاسم والمعلومات،
-            واضغط على البطاقة لعرض الأعضاء المسؤول عنهم ضمن القسم.
+            مرّر المؤشر على أي بطاقة لتفكيك الصورة وظهور بطاقة الهوية والمفتاح الرقمي فوقها، واضغط لعرض أعضاء القسم.
           </p>
         </section>
 
-        
         <section class="members-section" aria-label="بطاقات القادة والأقسام">
+          <div class="members-toolbar">
+            <div class="filter-pills" id="filterPills" role="group" aria-label="تصفية الأقسام">
+              <button type="button" class="filter-pill is-active" data-filter="all">الكل (6)</button>
+              <button type="button" class="filter-pill" data-filter="leadership">القيادة</button>
+              <button type="button" class="filter-pill" data-filter="tech">القسم التقني</button>
+              <button type="button" class="filter-pill" data-filter="media">القسم الإعلامي</button>
+              <button type="button" class="filter-pill" data-filter="academic">القسم الأكاديمي</button>
+              <button type="button" class="filter-pill" data-filter="research">البحث والموارد</button>
+            </div>
+
+            <div class="toolbar-stats" id="toolbarStats"></div>
+          </div>
+
+          <div class="mobile-wheel-wrap" id="mobileWheelWrap" aria-label="عجلة القادة للهاتف">
+            <div class="mobile-wheel-header">
+              <div class="mobile-wheel-spotlight" id="wheelSpotlight"></div>
+              <div class="mobile-wheel-controls">
+                <button type="button" class="wheel-nav-btn" id="wheelPrevBtn" aria-label="البطاقة السابقة">↑</button>
+                <button type="button" class="wheel-nav-btn" id="wheelNextBtn" aria-label="البطاقة التالية">↓</button>
+              </div>
+            </div>
+
+            <div class="mobile-wheel-stage" id="mobileWheelStage">
+              <div class="wheel-axis-line" aria-hidden="true"></div>
+            </div>
+            <div class="mobile-wheel-dots" id="mobileWheelDots"></div>
+          </div>
+
           <div class="members-grid" id="leadersGrid">
-            
             <article
               class="member-card active-leader"
               data-leader="ibrahim"
+              data-category="leadership"
+              data-cipher="0xROOT_CMD_01"
               tabindex="0"
               role="button"
               aria-pressed="true"
@@ -129,24 +1085,47 @@
                   loading="lazy"
                 />
                 <div class="member-scrim"></div>
+                <div class="shutter-flash" aria-hidden="true"></div>
                 <span class="member-tag">LEADERSHIP</span>
+                <div class="creative-overlay" aria-hidden="true">
+                  <div class="overlay-top">
+                    <span>KEY // ROOT-01</span>
+                    <span class="cipher-badge">DECRYPTED</span>
+                  </div>
+                  <div class="overlay-focus-box">
+                    <span class="overlay-focus-label">المحور القيادي</span>
+                    <div class="overlay-focus-value">استراتيجية الفريق وبناء المجتمع التقني في جامعة الحسين بن طلال</div>
+                    <div class="overlay-cipher-line" data-scramble-target>0xROOT_CMD_01</div>
+                  </div>
+                  <div class="overlay-terminal">
+                    <span>CLEARANCE: L5</span>
+                    <span>[OPEN ROSTER]</span>
+                  </div>
+                </div>
               </div>
               <div class="member-info">
                 <span class="member-role">القيادة — ليدر الفريق</span>
                 <h2 class="member-name">إبراهيم الطريفي</h2>
-                <p class="member-bio">
-                  يقود رؤية الفريق وتوجهاته العامة في جامعة الحسين بن طلال. اضغط
-                  لعرض أعضاء القيادة.
-                </p>
-                <span class="member-action-hint"
-                  >عرض الأعضاء المسؤول عنهم ↓</span
-                >
+                <div class="member-bio-wrap">
+                  <p class="member-bio">
+                    يقود رؤية الفريق وتوجهاته العامة في جامعة الحسين بن طلال.
+                  </p>
+                  <p class="member-bio-alt">
+                    إشراف عام على الخطط الفصلية، تمثيل الفريق، ومتابعة التنسيق بين جميع الأقسام.
+                  </p>
+                </div>
+                <div class="member-footer-bar">
+                  <span class="member-action-hint">عرض الأعضاء ↓</span>
+                  <div class="social-links" data-leader-socials="ibrahim"></div>
+                </div>
               </div>
             </article>
-            
+
             <article
               class="member-card"
               data-leader="ahmad"
+              data-category="tech"
+              data-cipher="0xTECH_LAB_02"
               tabindex="0"
               role="button"
               aria-pressed="false"
@@ -154,22 +1133,47 @@
               <div class="member-media">
                 <img src="./img/ahmad.jpg" alt="أحمد أبو غيث" loading="lazy" />
                 <div class="member-scrim"></div>
+                <div class="shutter-flash" aria-hidden="true"></div>
                 <span class="member-tag">TECH DEPT</span>
+                <div class="creative-overlay" aria-hidden="true">
+                  <div class="overlay-top">
+                    <span>KEY // TECH-02</span>
+                    <span class="cipher-badge">DECRYPTED</span>
+                  </div>
+                  <div class="overlay-focus-box">
+                    <span class="overlay-focus-label">التركيز التقني</span>
+                    <div class="overlay-focus-value">الأمن السيبراني، التطبيق العملي، والورشات التقنية التفاعلية</div>
+                    <div class="overlay-cipher-line" data-scramble-target>0xTECH_LAB_02</div>
+                  </div>
+                  <div class="overlay-terminal">
+                    <span>UNIT: OFFENSE_LABS</span>
+                    <span>[OPEN ROSTER]</span>
+                  </div>
+                </div>
               </div>
               <div class="member-info">
                 <span class="member-role">القسم التقني — الليدر</span>
                 <h2 class="member-name">أحمد أبو غيث</h2>
-                <p class="member-bio">
-                  يقود القسم التقني والمسارات العملية. اضغط لعرض أعضاء القسم
-                  التقني.
-                </p>
-                <span class="member-action-hint">عرض أعضاء القسم التقني ↓</span>
+                <div class="member-bio-wrap">
+                  <p class="member-bio">
+                    يقود القسم التقني والمسارات العملية للفريق.
+                  </p>
+                  <p class="member-bio-alt">
+                    توجيه التدريب العملي، تحضير التحديات والتمارين، ودعم الأعضاء تقنياً.
+                  </p>
+                </div>
+                <div class="member-footer-bar">
+                  <span class="member-action-hint">عرض الأعضاء ↓</span>
+                  <div class="social-links" data-leader-socials="ahmad"></div>
+                </div>
               </div>
             </article>
 
             <article
               class="member-card"
               data-leader="sadeen"
+              data-category="leadership"
+              data-cipher="0xOPS_SYNC_03"
               tabindex="0"
               role="button"
               aria-pressed="false"
@@ -177,25 +1181,47 @@
               <div class="member-media">
                 <img src="./img/avatar.jpg" alt="سدين العيسوي" loading="lazy" />
                 <div class="member-scrim"></div>
+                <div class="shutter-flash" aria-hidden="true"></div>
                 <span class="member-tag">ASSISTANT LEAD</span>
+                <div class="creative-overlay" aria-hidden="true">
+                  <div class="overlay-top">
+                    <span>KEY // OPS-03</span>
+                    <span class="cipher-badge">DECRYPTED</span>
+                  </div>
+                  <div class="overlay-focus-box">
+                    <span class="overlay-focus-label">دور المتابعة والتنسيق</span>
+                    <div class="overlay-focus-value">مزامنة المهام، متابعة الأداء، وتسهيل سير العمل اليومي</div>
+                    <div class="overlay-cipher-line" data-scramble-target>0xOPS_SYNC_03</div>
+                  </div>
+                  <div class="overlay-terminal">
+                    <span>CLEARANCE: L4</span>
+                    <span>[OPEN ROSTER]</span>
+                  </div>
+                </div>
               </div>
               <div class="member-info">
                 <span class="member-role">القيادة — مساعد ليدر</span>
                 <h2 class="member-name">سدين العيسوي</h2>
-                <p class="member-bio">
-                  تسانده في قيادة الفريق ومتابعة سير العمل والتنسيق. اضغط لعرض
-                  أعضاء القيادة.
-                </p>
-                <span class="member-action-hint"
-                  >عرض الأعضاء المسؤول عنهم ↓</span
-                >
+                <div class="member-bio-wrap">
+                  <p class="member-bio">
+                    تسانده في قيادة الفريق ومتابعة سير العمل والتنسيق.
+                  </p>
+                  <p class="member-bio-alt">
+                    متابعة التقدم في المبادرات وتنسيق الجداول والاجتماعات بين الفرق.
+                  </p>
+                </div>
+                <div class="member-footer-bar">
+                  <span class="member-action-hint">عرض الأعضاء ↓</span>
+                  <div class="social-links" data-leader-socials="sadeen"></div>
+                </div>
               </div>
             </article>
 
-         
             <article
               class="member-card"
               data-leader="aryam"
+              data-category="media"
+              data-cipher="0xMEDIA_FX_04"
               tabindex="0"
               role="button"
               aria-pressed="false"
@@ -207,25 +1233,49 @@
                   loading="lazy"
                 />
                 <div class="member-scrim"></div>
+                <div class="shutter-flash" aria-hidden="true"></div>
                 <span class="member-tag">MEDIA DEPT</span>
+                <div class="creative-overlay" aria-hidden="true">
+                  <div class="overlay-top">
+                    <span>KEY // MEDIA-04</span>
+                    <span class="cipher-badge">DECRYPTED</span>
+                  </div>
+                  <div class="overlay-focus-box">
+                    <span class="overlay-focus-label">الهوية والمحتوى المرئي</span>
+                    <div class="overlay-focus-value">تصميم المنشورات، تغطية الفعاليات، وإبراز هوية ROOT TEAM</div>
+                    <div class="overlay-cipher-line" data-scramble-target>0xMEDIA_FX_04</div>
+                  </div>
+                  <div class="overlay-terminal">
+                    <span>UNIT: VISUAL_OPS</span>
+                    <span>[OPEN ROSTER]</span>
+                  </div>
+                </div>
               </div>
               <div class="member-info">
                 <span class="member-role">القسم الإعلامي — الليدر</span>
+  
                 <h2 class="member-name">أريام المراعيه</h2>
-                <p class="member-bio">
-                  تقود القسم الإعلامي والمحتوى البصري. اضغط لعرض أعضاء القسم
-                  الإعلامي.
-                </p>
-                <span class="member-action-hint"
-                  >عرض أعضاء القسم الإعلامي ↓</span
-                >
+                <div class="member-bio-wrap">
+                  <p class="member-bio">
+                    تقود القسم الإعلامي والمحتوى البصري للفريق.
+                  </p>
+                  <p class="member-bio-alt">
+                    إخراج الحملات البصرية وتوثيق الأنشطة بأسلوب حديث وموحد.
+                  </p>
+                </div>
+                <div class="member-footer-bar">
+                  <span class="member-action-hint">عرض الأعضاء ↓</span>
+                  <div class="social-links" data-leader-socials="aryam"></div>
+                </div>
+
               </div>
             </article>
 
-            
             <article
               class="member-card"
               data-leader="salma"
+              data-category="academic"
+              data-cipher="0xACAD_CORE_05"
               tabindex="0"
               role="button"
               aria-pressed="false"
@@ -237,25 +1287,47 @@
                   loading="lazy"
                 />
                 <div class="member-scrim"></div>
+                <div class="shutter-flash" aria-hidden="true"></div>
                 <span class="member-tag">ACADEMIC DEPT</span>
+                <div class="creative-overlay" aria-hidden="true">
+                  <div class="overlay-top">
+                    <span>KEY // ACAD-05</span>
+                    <span class="cipher-badge">DECRYPTED</span>
+                  </div>
+                  <div class="overlay-focus-box">
+                    <span class="overlay-focus-label">المسار الأكاديمي</span>
+                    <div class="overlay-focus-value">هيكلة الشروحات، تلخيص المواد، وبناء خرائط تعلم واضحة</div>
+                    <div class="overlay-cipher-line" data-scramble-target>0xACAD_CORE_05</div>
+                  </div>
+                  <div class="overlay-terminal">
+                    <span>UNIT: STUDY_GRID</span>
+                    <span>[OPEN ROSTER]</span>
+                  </div>
+                </div>
               </div>
               <div class="member-info">
                 <span class="member-role">القسم الأكاديمي — الليدر</span>
                 <h2 class="member-name">سلمى الغزيوات</h2>
-                <p class="member-bio">
-                  تقود القسم الأكاديمي وتنظيم المواد التعليمية. اضغط لعرض أعضاء
-                  القسم الأكاديمي.
-                </p>
-                <span class="member-action-hint"
-                  >عرض أعضاء القسم الأكاديمي ↓</span
-                >
+                <div class="member-bio-wrap">
+                  <p class="member-bio">
+                    تقود القسم الأكاديمي وتنظيم المواد التعليمية.
+                  </p>
+                  <p class="member-bio-alt">
+                    إعداد الملخصات والمواد الدراسية ومساعدة الطلبة في المسارات الأكاديمية.
+                  </p>
+                </div>
+                <div class="member-footer-bar">
+                  <span class="member-action-hint">عرض الأعضاء ↓</span>
+                  <div class="social-links" data-leader-socials="salma"></div>
+                </div>
               </div>
             </article>
 
-            
             <article
               class="member-card"
               data-leader="batool"
+              data-category="research"
+              data-cipher="0xRSRCH_VAULT_06"
               tabindex="0"
               role="button"
               aria-pressed="false"
@@ -267,30 +1339,47 @@
                   loading="lazy"
                 />
                 <div class="member-scrim"></div>
+                <div class="shutter-flash" aria-hidden="true"></div>
                 <span class="member-tag">RESEARCH DEPT</span>
+                <div class="creative-overlay" aria-hidden="true">
+                  <div class="overlay-top">
+                    <span>KEY // RSRCH-06</span>
+                    <span class="cipher-badge">DECRYPTED</span>
+                  </div>
+                  <div class="overlay-focus-box">
+                    <span class="overlay-focus-label">البحث والمصادر</span>
+                    <div class="overlay-focus-value">جمع المراجع الموثوقة، أرشفة الأدوات، وتغذية المكتبة التقنية</div>
+                    <div class="overlay-cipher-line" data-scramble-target>0xRSRCH_VAULT_06</div>
+                  </div>
+                  <div class="overlay-terminal">
+                    <span>UNIT: KNOWLEDGE_DB</span>
+                    <span>[OPEN ROSTER]</span>
+                  </div>
+                </div>
               </div>
               <div class="member-info">
                 <span class="member-role">قسم البحث والموارد — ليدر القسم</span>
                 <h2 class="member-name">بتول الخطايبة</h2>
-                <p class="member-bio">
-                  تقود قسم البحث والموارد وجمع المصادر. اضغط لعرض أعضاء قسم
-                  البحث والموارد.
-                </p>
-                <span class="member-action-hint"
-                  >عرض أعضاء قسم البحث والموارد ↓</span
-                >
+                <div class="member-bio-wrap">
+                  <p class="member-bio">
+                    تقود قسم البحث والموارد وجمع المصادر.
+                  </p>
+                  <p class="member-bio-alt">
+                    انتقاء الكتب والمقالات والروابط التعليمية وتنظيم قاعدة المعرفة للفريق.
+                  </p>
+                </div>
+                <div class="member-footer-bar">
+                  <span class="member-action-hint">عرض الأعضاء ↓</span>
+                  <div class="social-links" data-leader-socials="batool"></div>
+                </div>
               </div>
             </article>
           </div>
 
-          
-          <div class="assigned-panel" id="assignedPanel" aria-live="polite">
-            
-          </div>
+          <div class="assigned-panel" id="assignedPanel" aria-live="polite"></div>
         </section>
       </main>
 
-      
       <footer class="footer">
         <div class="footer-grid">
           <div class="footer-about">
@@ -320,7 +1409,6 @@
             <h4>تواصل معنا</h4>
             <a href="mailto:root31023@gmail.com">root31023@gmail.com</a>
             <a href="tel:+962780630881" dir="ltr">+962 780 630 881</a>
-         
             <a
               href="https://www.instagram.com/rootteamcs"
               target="_blank"
@@ -355,16 +1443,52 @@
     <script src="./js/script.js"></script>
     <script>
       (() => {
+        const ICONS = {
+          github: `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.17c-3.22.7-3.9-1.38-3.9-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.73 0-1.27.45-2.3 1.2-3.11-.12-.29-.52-1.47.11-3.07 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.83 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.6.23 2.78.11 3.07.75.81 1.2 1.84 1.2 3.11 0 4.45-2.71 5.44-5.29 5.72.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .5Z"/>
+            </svg>
+          `,
+          linkedin: `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.94 8.5H3.56V19.5h3.38V8.5ZM5.25 3.5a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.44 13.02c0-2.78-1.48-4.07-3.46-4.07-1.6 0-2.31.88-2.71 1.5V8.5h-3.38c.04.96 0 11 0 11h3.38v-6.14c0-.33.02-.66.12-.89.27-.66.87-1.35 1.89-1.35 1.33 0 1.87 1.02 1.87 2.51V19.5h3.38v-6.48h-.09Z"/>
+            </svg>
+          `,
+          copy: `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/>
+            </svg>
+          `,
+        };
+
         const LEADERS_DEPARTMENTS = {
           ibrahim: {
             code: "DEPARTMENT // LEADERSHIP",
             department: "القيادة",
             leaderName: "إبراهيم الطريفي",
             leaderRole: "ليدر الفريق",
+            image: "./img/ibrahime.jpeg",
+            shortBio: "يقود رؤية الفريق وتوجهاته العامة في جامعة الحسين بن طلال.",
+            github: "https://github.com/root31023-ux",
+            linkedin: "https://www.linkedin.com/in/ibrahim-altarifi-demo",
             description: "الأعضاء المسؤول عنهم ضمن القيادة ومتابعة الفريق.",
             members: [
-              { index: "01", name: "إبراهيم الطريفي", role: "ليدر" },
-              { index: "02", name: "سدين العيسوي", role: "مساعد ليدر" },
+              {
+                index: "01",
+                name: "إبراهيم الطريفي",
+                role: "ليدر",
+                isLead: true,
+                github: "https://github.com/root31023-ux",
+                linkedin: "https://www.linkedin.com/in/ibrahim-altarifi-demo",
+              },
+              {
+                index: "02",
+                name: "سدين العيسوي",
+                role: "مساعد ليدر",
+                isLead: false,
+                github: "https://github.com/sadeen-demo",
+                linkedin: "https://www.linkedin.com/in/sadeen-alaisawi-demo",
+              },
             ],
           },
           ahmad: {
@@ -372,13 +1496,27 @@
             department: "القسم التقني",
             leaderName: "أحمد أبو غيث",
             leaderRole: "الليدر",
+            image: "./img/ahmad.jpg",
+            shortBio: "يقود القسم التقني والمسارات العملية للفريق.",
+            github: "https://github.com/ahmad-abughaith-demo",
+            linkedin: "https://www.linkedin.com/in/ahmad-abughaith-demo",
             description: "الأعضاء المسؤول عنهم ضمن القسم التقني.",
             members: [
-              { index: "01", name: "أحمد أبو غيث", role: "الليدر" },
+              {
+                index: "01",
+                name: "أحمد أبو غيث",
+                role: "الليدر",
+                isLead: true,
+                github: "https://github.com/ahmad-abughaith-demo",
+                linkedin: "https://www.linkedin.com/in/ahmad-abughaith-demo",
+              },
               {
                 index: "02",
                 name: "إبراهيم الطريفي",
                 role: "عضو القسم التقني",
+                isLead: false,
+                github: "https://github.com/root31023-ux",
+                linkedin: "https://www.linkedin.com/in/ibrahim-altarifi-demo",
               },
             ],
           },
@@ -387,22 +1525,57 @@
             department: "مساعد ليدر",
             leaderName: "سدين العيسوي",
             leaderRole: "مساعد ليدر",
+            image: "./img/avatar.jpg",
+            shortBio: "تسانده في قيادة الفريق ومتابعة سير العمل والتنسيق.",
+            github: "https://github.com/sadeen-demo",
+            linkedin: "https://www.linkedin.com/in/sadeen-alaisawi-demo",
             description: "الأعضاء المسؤول عنهم ضمن القيادة ومتابعة التنسيق.",
             members: [
-              { index: "01", name: "سدين العيسوي", role: "مساعد ليدر" },
+              {
+                index: "01",
+                name: "سدين العيسوي",
+                role: "مساعد ليدر",
+                isLead: true,
+                github: "https://github.com/sadeen-demo",
+                linkedin: "https://www.linkedin.com/in/sadeen-alaisawi-demo",
+              },
             ],
           },
-
           aryam: {
             code: "DEPARTMENT // MEDIA",
             department: "القسم الإعلامي",
             leaderName: "أريام المراعية",
             leaderRole: "الليدر",
+            image: "./img/avatar.jpg",
+            shortBio: "تقود القسم الإعلامي والمحتوى البصري للفريق.",
+            github: "https://github.com/aryam-media-demo",
+            linkedin: "https://www.linkedin.com/in/aryam-almaraieh-demo",
             description: "الأعضاء المسؤول عنهم ضمن القسم الإعلامي.",
             members: [
-              { index: "01", name: "أريام المراعية", role: "الليدر" },
-              { index: "02", name: "بُشرى", role: "عضو القسم الإعلامي" },
-              { index: "03", name: "روعة السبوت", role: "عضو القسم الإعلامي" },
+              {
+                index: "01",
+                name: "أريام المراعية",
+                role: "الليدر",
+                isLead: true,
+                github: "https://github.com/aryam-media-demo",
+                linkedin: "https://www.linkedin.com/in/aryam-almaraieh-demo",
+              },
+              {
+                index: "02",
+                name: "بُشرى",
+                role: "عضو القسم الإعلامي",
+                isLead: false,
+                github: "https://github.com/bushra-media-demo",
+                linkedin: "https://www.linkedin.com/in/bushra-root-demo",
+              },
+              {
+                index: "03",
+                name: "روعة السبوت",
+                role: "عضو القسم الإعلامي",
+                isLead: false,
+                github: "https://github.com/rawaa-alsuboot-demo",
+                linkedin: "https://www.linkedin.com/in/rawaa-alsuboot-demo",
+              },
             ],
           },
           salma: {
@@ -410,12 +1583,44 @@
             department: "القسم الأكاديمي",
             leaderName: "سلمى الغزيوات",
             leaderRole: "الليدر",
+            image: "./img/avatar.jpg",
+            shortBio: "تقود القسم الأكاديمي وتنظيم المواد التعليمية.",
+            github: "https://github.com/salma-academic-demo",
+            linkedin: "https://www.linkedin.com/in/salma-alghazawat-demo",
             description: "الأعضاء المسؤول عنهم ضمن القسم الأكاديمي.",
             members: [
-              { index: "01", name: "سلمى الغزيوات", role: "الليدر" },
-              { index: "02", name: "ياسمين", role: "عضو القسم الأكاديمي" },
-              { index: "03", name: "شيماء", role: "عضو القسم الأكاديمي" },
-              { index: "04", name: "زين", role: "عضو القسم الأكاديمي" },
+              {
+                index: "01",
+                name: "سلمى الغزيوات",
+                role: "الليدر",
+                isLead: true,
+                github: "https://github.com/salma-academic-demo",
+                linkedin: "https://www.linkedin.com/in/salma-alghazawat-demo",
+              },
+              {
+                index: "02",
+                name: "ياسمين",
+                role: "عضو القسم الأكاديمي",
+                isLead: false,
+                github: "https://github.com/yasmin-acad-demo",
+                linkedin: "https://www.linkedin.com/in/yasmin-root-demo",
+              },
+              {
+                index: "03",
+                name: "شيماء",
+                role: "عضو القسم الأكاديمي",
+                isLead: false,
+                github: "https://github.com/shaimaa-acad-demo",
+                linkedin: "https://www.linkedin.com/in/shaimaa-root-demo",
+              },
+              {
+                index: "04",
+                name: "زين",
+                role: "عضو القسم الأكاديمي",
+                isLead: false,
+                github: "https://github.com/zain-acad-demo",
+                linkedin: "https://www.linkedin.com/in/zain-root-demo",
+              },
             ],
           },
           batool: {
@@ -423,29 +1628,343 @@
             department: "قسم البحث والموارد",
             leaderName: "بتول الخطايبة",
             leaderRole: "ليدر القسم",
+            image: "./img/avatar.jpg",
+            shortBio: "تقود قسم البحث والموارد وجمع المصادر.",
+            github: "https://github.com/batool-research-demo",
+            linkedin: "https://www.linkedin.com/in/batool-alkhataybeh-demo",
             description: "الأعضاء المسؤول عنهم ضمن قسم البحث والموارد.",
             members: [
-              { index: "01", name: "بتول الخطايبة", role: "ليدر القسم" },
-              { index: "02", name: "مرح", role: "عضو قسم البحث والموارد" },
+              {
+                index: "01",
+                name: "بتول الخطايبة",
+                role: "ليدر القسم",
+                isLead: true,
+                github: "https://github.com/batool-research-demo",
+                linkedin: "https://www.linkedin.com/in/batool-alkhataybeh-demo",
+              },
+              {
+                index: "02",
+                name: "مرح",
+                role: "عضو قسم البحث والموارد",
+                isLead: false,
+                github: "https://github.com/marah-research-demo",
+                linkedin: "https://www.linkedin.com/in/marah-root-demo",
+              },
               {
                 index: "03",
                 name: "طارق القيسي",
                 role: "عضو قسم البحث والموارد",
+                isLead: false,
+                github: "https://github.com/tariq-alqaisi-demo",
+                linkedin: "https://www.linkedin.com/in/tariq-alqaisi-demo",
               },
-              { index: "04", name: "بهاء", role: "عضو قسم البحث والموارد" },
-              { index: "05", name: "عبد الله", role: "عضو قسم البحث والموارد" },
+              {
+                index: "04",
+                name: "بهاء",
+                role: "عضو قسم البحث والموارد",
+                isLead: false,
+                github: "https://github.com/bahaa-research-demo",
+                linkedin: "https://www.linkedin.com/in/bahaa-root-demo",
+              },
+              {
+                index: "05",
+                name: "عبد الله",
+                role: "عضو قسم البحث والموارد",
+                isLead: false,
+                github: "https://github.com/abdullah-research-demo",
+                linkedin: "https://www.linkedin.com/in/abdullah-root-demo",
+              },
             ],
           },
         };
+
+        const GLYPHS = "ABCDEF0123456789_#*/+=";
+
+        function scrambleText(el, finalText) {
+          if (!el || el.dataset.scrambling === "true") return;
+          el.dataset.scrambling = "true";
+          let frame = 0;
+          const totalFrames = 14;
+          const timer = setInterval(() => {
+            frame += 1;
+            const revealed = Math.floor((frame / totalFrames) * finalText.length);
+            let out = "";
+            for (let i = 0; i < finalText.length; i += 1) {
+              if (i < revealed) {
+                out += finalText[i];
+              } else {
+                out += GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+              }
+            }
+            el.textContent = out;
+            if (frame >= totalFrames) {
+              clearInterval(timer);
+              el.textContent = finalText;
+              el.dataset.scrambling = "false";
+            }
+          }, 28);
+        }
+
+        function buildSocialLinksHtml(personName, githubUrl, linkedinUrl) {
+          return `
+            <a
+              class="social-btn"
+              href="${githubUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub — ${personName}"
+              aria-label="حساب GitHub الخاص بـ ${personName}"
+            >
+              ${ICONS.github}
+            </a>
+            <a
+              class="social-btn"
+              href="${linkedinUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn — ${personName}"
+              aria-label="حساب LinkedIn الخاص بـ ${personName}"
+            >
+              ${ICONS.linkedin}
+            </a>
+            <button
+              type="button"
+              class="copy-btn"
+              data-copy-url="${githubUrl}"
+              title="نسخ رابط GitHub الخاص بـ ${personName}"
+              aria-label="نسخ رابط GitHub الخاص بـ ${personName}"
+            >
+              ${ICONS.copy}
+            </button>
+          `;
+        }
+
+        function attachCopyHandlers(rootEl) {
+          rootEl.querySelectorAll("[data-copy-url]").forEach((btn) => {
+            btn.addEventListener("click", async (event) => {
+              event.stopPropagation();
+              const url = btn.dataset.copyUrl;
+              try {
+                await navigator.clipboard.writeText(url);
+                btn.classList.add("is-copied");
+                const prevHtml = btn.innerHTML;
+                btn.textContent = "تم";
+                setTimeout(() => {
+                  btn.classList.remove("is-copied");
+                  btn.innerHTML = prevHtml;
+                }, 1300);
+              } catch (_) {}
+            });
+          });
+        }
+
+        const toolbarStats = document.getElementById("toolbarStats");
+        const totalRosterCount = Object.values(LEADERS_DEPARTMENTS).reduce(
+          (acc, dept) => acc + dept.members.length,
+          0,
+        );
+        toolbarStats.innerHTML = `
+          <span>LEADERS: <strong>06</strong></span>
+          <span>•</span>
+          <span>ROSTER ENTRIES: <strong>${String(totalRosterCount).padStart(2, "0")}</strong></span>
+        `;
+
+        document.querySelectorAll("[data-leader-socials]").forEach((container) => {
+          const key = container.dataset.leaderSocials;
+          const info = LEADERS_DEPARTMENTS[key];
+          if (!info) return;
+          container.innerHTML = buildSocialLinksHtml(
+            info.leaderName,
+            info.github,
+            info.linkedin,
+          );
+          container.addEventListener("click", (event) => {
+            event.stopPropagation();
+          });
+          attachCopyHandlers(container);
+        });
 
         const cards = [
           ...document.querySelectorAll(".member-card[data-leader]"),
         ];
         const panel = document.getElementById("assignedPanel");
 
+        const wheelStage = document.getElementById("mobileWheelStage");
+        const wheelSpotlight = document.getElementById("wheelSpotlight");
+        const wheelDots = document.getElementById("mobileWheelDots");
+        const wheelPrevBtn = document.getElementById("wheelPrevBtn");
+        const wheelNextBtn = document.getElementById("wheelNextBtn");
+
+        const wheelKeys = cards.map((c) => c.dataset.leader);
+        let activeWheelIndex = 0;
+
+        function renderMobileWheel(syncPanel = false) {
+          if (!wheelStage || wheelKeys.length === 0) return;
+
+          const total = wheelKeys.length;
+          const centerKey = wheelKeys[activeWheelIndex];
+          const centerInfo = LEADERS_DEPARTMENTS[centerKey];
+
+          wheelSpotlight.innerHTML = `
+            <span class="mobile-wheel-kicker">WHEEL FOCUS // ${String(activeWheelIndex + 1).padStart(2, "0")} OF ${String(total).padStart(2, "0")}</span>
+            <div class="mobile-wheel-owner">${centerInfo.leaderName} <span>— ${centerInfo.department}</span></div>
+          `;
+
+          const slotsHtml = wheelKeys
+            .map((key, idx) => {
+              const info = LEADERS_DEPARTMENTS[key];
+              const diff = (idx - activeWheelIndex + total) % total;
+              let slotClass = "is-hidden-slot";
+              if (diff === 0) slotClass = "is-center";
+              else if (diff === total - 1) slotClass = "is-top";
+              else if (diff === 1) slotClass = "is-bottom";
+
+              return `
+                <article class="wheel-slot-card ${slotClass}" data-wheel-key="${key}" data-wheel-idx="${idx}">
+                  <div class="wheel-card-media">
+                    <img src="${info.image}" alt="${info.leaderName}" loading="lazy" />
+                  </div>
+                  <div class="wheel-card-body">
+                    <div class="wheel-card-top">
+                      <span class="wheel-card-role">${info.leaderRole}</span>
+                      <span class="wheel-card-badge">${diff === 0 ? "CENTER // ACTIVE" : info.department}</span>
+                    </div>
+                    <h3 class="wheel-card-name">${info.leaderName}</h3>
+                    <p class="wheel-card-bio">${info.shortBio}</p>
+                    <div class="wheel-card-foot">
+                      <span class="wheel-tap-hint">${diff === 0 ? "الأعضاء معروضون بالأسفل ↓" : "اضغط لتدوير العجلة إلى المنتصف"}</span>
+                      <div class="social-links">${buildSocialLinksHtml(info.leaderName, info.github, info.linkedin)}</div>
+                    </div>
+                  </div>
+                </article>
+              `;
+            })
+            .join("");
+
+          wheelStage.innerHTML = `<div class="wheel-axis-line" aria-hidden="true"></div>${slotsHtml}`;
+
+          wheelDots.innerHTML = wheelKeys
+            .map(
+              (key, idx) => `
+              <button
+                type="button"
+                class="wheel-dot ${idx === activeWheelIndex ? "is-active" : ""}"
+                data-dot-idx="${idx}"
+                aria-label="عرض ${LEADERS_DEPARTMENTS[key].leaderName}"
+              ></button>
+            `,
+            )
+            .join("");
+
+          wheelStage.querySelectorAll(".wheel-slot-card").forEach((slotCard) => {
+            slotCard.addEventListener("click", () => {
+              const idx = Number(slotCard.dataset.wheelIdx);
+              if (idx !== activeWheelIndex) {
+                activeWheelIndex = idx;
+                renderMobileWheel(true);
+              } else {
+                renderAssignedMembers(slotCard.dataset.wheelKey, true);
+              }
+            });
+          });
+
+          wheelStage.querySelectorAll(".social-links").forEach((el) => {
+            el.addEventListener("click", (e) => e.stopPropagation());
+          });
+          attachCopyHandlers(wheelStage);
+
+          wheelDots.querySelectorAll(".wheel-dot").forEach((dot) => {
+            dot.addEventListener("click", () => {
+              activeWheelIndex = Number(dot.dataset.dotIdx);
+              renderMobileWheel(true);
+            });
+          });
+
+          if (syncPanel) {
+            renderAssignedMembers(centerKey, false);
+          }
+        }
+
+        function stepWheel(direction, syncPanel = true) {
+          const total = wheelKeys.length;
+          activeWheelIndex = (activeWheelIndex + direction + total) % total;
+          renderMobileWheel(syncPanel);
+        }
+
+        wheelPrevBtn?.addEventListener("click", () => stepWheel(-1, true));
+        wheelNextBtn?.addEventListener("click", () => stepWheel(1, true));
+
+        let touchStartY = 0;
+        wheelStage?.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartY = e.touches[0].clientY;
+          },
+          { passive: true },
+        );
+        wheelStage?.addEventListener(
+          "touchend",
+          (e) => {
+            const deltaY = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(deltaY) > 36) {
+              stepWheel(deltaY < 0 ? 1 : -1, true);
+            }
+          },
+          { passive: true },
+        );
+
+        cards.forEach((card) => {
+          const cipherEl = card.querySelector("[data-scramble-target]");
+          const rawCipher = card.dataset.cipher || "";
+
+          card.addEventListener("pointermove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty("--mx", `${x.toFixed(1)}%`);
+            card.style.setProperty("--my", `${y.toFixed(1)}%`);
+          });
+
+          card.addEventListener("pointerenter", () => {
+            scrambleText(cipherEl, rawCipher);
+          });
+
+          card.addEventListener("focus", () => {
+            scrambleText(cipherEl, rawCipher);
+          });
+        });
+
+        const pills = [...document.querySelectorAll(".filter-pill[data-filter]")];
+        pills.forEach((pill) => {
+          pill.addEventListener("click", () => {
+            const filter = pill.dataset.filter;
+            pills.forEach((p) => p.classList.toggle("is-active", p === pill));
+
+            cards.forEach((card) => {
+              const matches = filter === "all" || card.dataset.category === filter;
+              card.classList.toggle("is-hidden", !matches);
+            });
+
+            const firstMatchIdx = wheelKeys.findIndex((key) => {
+              const matchingCard = cards.find((c) => c.dataset.leader === key);
+              return filter === "all" || matchingCard?.dataset.category === filter;
+            });
+            if (firstMatchIdx !== -1) {
+              activeWheelIndex = firstMatchIdx;
+              renderMobileWheel(true);
+            }
+          });
+        });
+
         function renderAssignedMembers(leaderKey, shouldScroll = false) {
           const info =
             LEADERS_DEPARTMENTS[leaderKey] || LEADERS_DEPARTMENTS.ibrahim;
+
+          const matchedIdx = wheelKeys.indexOf(leaderKey);
+          if (matchedIdx !== -1 && matchedIdx !== activeWheelIndex) {
+            activeWheelIndex = matchedIdx;
+            renderMobileWheel(false);
+          }
 
           cards.forEach((card) => {
             const isSelected = card.dataset.leader === leaderKey;
@@ -453,31 +1972,89 @@
             card.setAttribute("aria-pressed", String(isSelected));
           });
 
+          const quickTabsHtml = Object.entries(LEADERS_DEPARTMENTS)
+            .map(
+              ([key, dept]) => `
+              <button
+                type="button"
+                class="quick-dept-tab ${key === leaderKey ? "is-current" : ""}"
+                data-jump-leader="${key}"
+              >
+                ${dept.leaderName} · ${dept.department}
+              </button>
+            `,
+            )
+            .join("");
+
           const membersCardsHtml = info.members
             .map(
               (m) => `
-              <div class="assigned-member-item">
-                <span class="assigned-idx">${m.index}</span>
-                <div>
-                  <h4>${m.name}</h4>
-                  <span>${m.role}</span>
+              <div class="assigned-member-item ${m.isLead ? "is-lead-row" : ""}" data-search-text="${m.name} ${m.role}">
+                <div class="assigned-member-main">
+                  <span class="assigned-idx">${m.index}</span>
+                  <div>
+                    <div class="assigned-name-row">
+                      <h4>${m.name}</h4>
+                      ${m.isLead ? `<span class="lead-pill">LEAD</span>` : ""}
+                    </div>
+                    <span>${m.role}</span>
+                  </div>
+                </div>
+                <div class="social-links">
+                  ${buildSocialLinksHtml(m.name, m.github, m.linkedin)}
                 </div>
               </div>
             `,
             )
             .join("");
 
+          panel.classList.remove("panel-animate");
+          void panel.offsetWidth;
+          panel.classList.add("panel-animate");
+
           panel.innerHTML = `
-          <div class="assigned-head">
-            <div>
-              <span class="assigned-code">${info.code}</span>
-              <h3>${info.department} — <span>${info.leaderName}</span> (${info.leaderRole})</h3>
-              <p>${info.description}</p>
+            <div class="assigned-quick-tabs" role="tablist" aria-label="تبديل سريع بين القادة">${quickTabsHtml}</div>
+            <div class="assigned-head">
+              <div>
+                <span class="assigned-code">${info.code}</span>
+                <h3>${info.department} — <span>${info.leaderName}</span> (${info.leaderRole})</h3>
+                <p>${info.description}</p>
+              </div>
+              <div class="assigned-meta-right">
+                <input
+                  type="search"
+                  class="assigned-search"
+                  id="rosterSearch"
+                  placeholder="ابحث بالاسم أو الدور..."
+                  aria-label="ابحث داخل أعضاء القسم"
+                />
+                <span class="assigned-count">${info.members.length} أعضاء</span>
+              </div>
             </div>
-            <span class="assigned-count">${info.members.length} أعضاء</span>
-          </div>
-          <div class="assigned-members-grid">${membersCardsHtml}</div>
-        `;
+            <div class="assigned-members-grid" id="rosterGrid">${membersCardsHtml}</div>
+          `;
+
+          panel.querySelectorAll("[data-jump-leader]").forEach((tabBtn) => {
+            tabBtn.addEventListener("click", () => {
+              renderAssignedMembers(tabBtn.dataset.jumpLeader, false);
+            });
+          });
+
+          panel.querySelectorAll(".social-links").forEach((el) => {
+            el.addEventListener("click", (event) => event.stopPropagation());
+          });
+          attachCopyHandlers(panel);
+
+          const searchInput = document.getElementById("rosterSearch");
+          if (searchInput) {
+            searchInput.addEventListener("input", () => {
+              const q = searchInput.value.trim().toLowerCase();
+              panel.querySelectorAll(".assigned-member-item").forEach((item) => {
+                const hay = (item.dataset.searchText || "").toLowerCase();
+                item.classList.toggle("is-filtered-out", q && !hay.includes(q));
+              });
+            });
+          }
 
           if (shouldScroll) {
             panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -496,9 +2073,9 @@
           });
         });
 
+        renderMobileWheel(false);
         renderAssignedMembers("ibrahim", false);
       })();
     </script>
-    <source src="./js/script.js" />
   </body>
 </html>
